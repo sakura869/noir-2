@@ -62,7 +62,7 @@ header {
   .header-center { font-size: 1.2em; }
 }
 
-/* ------------------ 画像 ------------------ */
+/* --------------- お困りごとありませんか --------------- */
 .overlay-image {
   max-width: 500px;
   margin: 5px auto;
@@ -78,6 +78,105 @@ header {
 @media (max-width:480px) {
   .overlay-image { max-width: 400px; }
 }
+
+/* --------------- スライダー画像 --------------- */
+.slider-section {
+        max-width: 760px;   /* スライターの背景の四角 */
+        margin: 0 auto;
+        margin-top: 5px;
+        margin-bottom: 8px;
+        background: rgba(255,255,255,0.9);
+        border-radius: 10px;
+        padding: 4px 0;
+        position: relative;
+      }
+     /* 矢印ボタン */
+      .slide-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        background: none;      /* ← 丸を消す */
+        border: none;          /* ← 枠も消す */
+        box-shadow: none;      /* ← 影も消す */
+
+        font-size: 28px;       /* ← 少し大きめで可愛く */
+        color: #9F987D;
+        cursor: pointer;
+
+        padding: 0;            /* ← ズレ防止 */
+        line-height: 1;        /* ← 中央ズレ防止 */
+
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.2s ease;
+        z-index: 10;
+      }
+
+/* 位置 */
+.slide-arrow.left { left: 8px; }
+.slide-arrow.right { right: 8px; }
+
+/* 表示 */
+.slider-section:hover .slide-arrow {
+  opacity: 1;
+}
+
+/* ホバーでちょい動く */
+.slide-arrow:hover {
+  transform: translateY(-50%) scale(1.2);
+  color: #7E7761;
+}
+
+/* スマホでは非表示 */
+@media (max-width: 480px) {
+  .slider-section {
+    border-radius: 0px; /* 小さくすると見た目も締まる */
+    margin-bottom: 20px;
+  }
+  .slide-arrow {
+    display: none;
+  }
+}
+
+      /* スライダー本体 */
+.slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  width: 100%;
+  max-width: 420px;     /* ← 画像と同じ幅 */
+  margin: 0 auto;       /* ← 完全中央 */
+  
+  scrollbar-width: none;
+}
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* 1枚ずつ表示（PC） */
+.slider img {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto;
+  scroll-snap-align: center;
+  border-radius: 0;
+  box-shadow: none;
+}
+/* スマホ */
+@media (max-width: 480px) {
+  .slider {
+    max-width: 300px;   /* ← 枠を小さく */
+  }
+
+  .slider img {
+    width: 100%;        /* ← 1枚＝100% */
+    margin: 0;
+  }
+} 
   
 /* ---------- ボックス ---------- */
 .box-container {
@@ -392,26 +491,24 @@ footer {
   <p>生活面での不安や集団活動での悩み、<br>コミュニケーションや感覚面のサポートも行っています。</p>
 </section>
  
-<div class="toggle-container流れ">
-  <h2 class="pc-title">ご利用開始までの流れ</h2>
- <button class="toggle-button流れ" onclick="toggleContent流れ()">
-  ご利用開始までの流れ
-  <span class="arrow流れ">∨</span>
-</button>
-  <div id="content流れ" class="content流れ">
-    <img src="ご利用の流れ.png">
-  </div>
-</div>
+ <div class="toggle-container流れ">
+      <button class="toggle-button流れ" onclick="toggleContent流れ()"> ご利用開始までの流れ
+        <span id="arrow流れ">∨</span>
+      </button>
+      <div id="content流れ" class="content流れ">
+        <img src="ご利用の流れ.jpg" alt="ご利用開始までの流れ">
+      </div>
+    </div>
+    
+    <div class="toggle-container料金">
+      <button class="toggle-button料金" onclick="toggleContent料金()"> ご利用料金
+        <span id="arrow料金">∨</span>
+      </button>
+      <div id="content料金" class="content料金">
+        <img src="料金.jpg" alt="ご利用料金">
+      </div>
+    </div>
 
-<div class="toggle-container料金">
-  <button class="toggle-button料金" onclick="toggleContent料金()">
-  ご利用料金
-  <span class="arrow料金">∨</span>
-</button>
-  <div id="content料金" class="content料金">
-    <img src="料金.jpg">
-  </div>
-</div>
 
 <section class="access-section" id="access">
   <h2>アクセス</h2>
@@ -477,6 +574,71 @@ function toggleContent料金() {
     }, 200);
   }
 }
+
+  // スライダー
+const slider = document.querySelector('.slider');
+const prev = document.querySelector('.slide-arrow.left');
+const next = document.querySelector('.slide-arrow.right');
+
+function getSlideWidth() {
+  return slider.clientWidth;
+}
+
+function updateArrows() {
+  const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+  // 左端
+  if (slider.scrollLeft <= 5) {
+    prev.style.opacity = 0;
+    prev.style.pointerEvents = 'none';
+  } else {
+    prev.style.opacity = 1;
+    prev.style.pointerEvents = 'auto';
+  }
+
+  // 右端
+  if (slider.scrollLeft >= maxScroll - 5) {
+    next.style.opacity = 0;
+    next.style.pointerEvents = 'none';
+  } else {
+    next.style.opacity = 1;
+    next.style.pointerEvents = 'auto';
+  }
+}
+
+prev.addEventListener('click', () => {
+  slider.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
+});
+
+next.addEventListener('click', () => {
+  slider.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+});
+
+slider.addEventListener('scroll', updateArrows);
+window.addEventListener('load', updateArrows);
+      
+  // お問い合わせフォームスクロール
+document.addEventListener('DOMContentLoaded', () => {
+  const contactLink = document.getElementById('contact-link');
+  const form = document.getElementById('contact-section');
+
+  if (contactLink && form) {
+    contactLink.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // フォームを表示
+      form.classList.add('show');
+
+      // 表示後にスクロール
+      setTimeout(() => {
+        form.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
+    });
+  }
+});
 </script>
 
 </body>
