@@ -217,26 +217,44 @@ header {
 }
 @media (max-width: 480px) {
 
-  /* PCタイトルは消す */
+  /* PC用タイトルは消す */
   .pc-title {
     display: none;
   }
 
-  /* トグルボタン復活（見た目改善） */
-  .toggle-button流れ,
-  .toggle-button料金 {
-    display: inline-block;
-    font-size: 16px;
-    padding: 10px 16px;
-    border-radius: 999px; /* ← ダサさ消える */
-    border: none;
-    background: rgba(169,169,169,0.7);
-    color: #fff;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    margin-bottom: 10px;
+  /* トグルコンテナを中央寄せ */
+  .toggle-container流れ,
+  .toggle-container料金 {
+    text-align: center;
   }
 
-  /* 中身は最初非表示 */
+  /* ボタン：元デザインを活かす */
+  .toggle-button流れ,
+  .toggle-button料金 {
+    display: inline-flex;          /* ← 中央＆中身揃う */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;                      /* 文字と矢印の間 */
+    font-size: 18px;
+    padding: 10px 18px;
+    border-radius: 10px;           /* ← 元の雰囲気 */
+    border: 1px solid #ccc;
+    background: rgba(255,255,255,0.6);
+    color: #9F987D;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    cursor: pointer;
+    margin: 0 auto 10px;           /* ← 真ん中 */
+  }
+
+  /* 矢印は必ず見えるように */
+  .toggle-button流れ span,
+  .toggle-button料金 span {
+    display: inline-block;
+    font-size: 0.9em;
+    transform: scaleX(1.5);
+  }
+
+  /* 中身はトグル */
   .content流れ,
   .content料金 {
     display: none;
@@ -252,7 +270,7 @@ header {
     transform: none;
   }
 
-  /* スマホ画像はフル幅 */
+  /* スマホ画像 */
   .content流れ img,
   .content料金 img {
     width: 100%;
