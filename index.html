@@ -190,7 +190,19 @@ header {
 .content流れ,
 .content料金 {
   display: block;
+      display: flex;
+    justify-content: center;
 }
+  .toggle-button流れ,
+  .toggle-button料金 {
+    display: none;
+  }
+
+  .content流れ img,
+  .content料金 img {
+    width: 70%;       /* ← 大きさここで調整（60%〜80%で好み） */
+    max-width: 600px; /* ← これがあると暴れない */
+  }
 
 @media (max-width:480px) {
   .toggle-container流れ,
@@ -229,12 +241,6 @@ header {
   .content料金 img {
     width: 100%;
     border-radius: 8px;
-  }
-}
-  @media (min-width: 481px) {
-  .toggle-button流れ,
-  .toggle-button料金 {
-    display: none;
   }
 }
 
