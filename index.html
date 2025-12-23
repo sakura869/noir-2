@@ -187,55 +187,30 @@ header {
 }
   
 /* ------------------ トグル ------------------ */
-/* PC用タイトル */
-.pc-title {
-  display: block;
-  text-align: center;
-  font-size: 1.8em;
-  margin: 20px 0 15px;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-  color: #9F987D;
-}
-
-@media (max-width: 480px) {
-  .pc-title {
-    display: none;
-  }
-}
-  
+/* デフォルト（＝PC） */
 .content流れ,
 .content料金 {
-  display: block;
-      display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-  .toggle-button流れ,
-  .toggle-button料金 {
-    display: none;
-  }
 
-  .content流れ img,
-  .content料金 img {
-    width: 70%;       /* ← 大きさここで調整（60%〜80%で好み） */
-    max-width: 600px; /* ← これがあると暴れない */
-  }
+.toggle-button流れ,
+.toggle-button料金 {
+  display: none;
+}
 
-@media (max-width:480px) {
-  .toggle-container流れ,
-  .toggle-container料金 {
-    text-align: center;
-    margin: 40px 0;
-  }
+.content流れ img,
+.content料金 img {
+  width: 70%;
+  max-width: 600px;
+}
+
+/* スマホだけ上書き */
+@media (max-width: 480px) {
 
   .toggle-button流れ,
   .toggle-button料金 {
-    font-size: 20px;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    background: rgba(255,255,255,0.6);
-    cursor: pointer;
-    color: #9F987D;
+    display: inline-block;
   }
 
   .content流れ,
@@ -256,10 +231,8 @@ header {
   .content流れ img,
   .content料金 img {
     width: 100%;
-    border-radius: 8px;
   }
 }
-
 /* ------------------ アクセス ------------------ */
 .access-section {
   max-width: 700px;
