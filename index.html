@@ -327,6 +327,23 @@ footer {
   padding: 20px;
   font-family: 'Kiwi Maru', cursive;
 }
+  
+  /* ===== 矢印 回転用 ===== */
+.arrow流れ,
+.arrow料金 {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 0.8em;
+  transform: scaleX(1.4);
+  transition: transform 0.3s ease;
+}
+
+/* 開いたとき */
+.arrow流れ.rotate,
+.arrow料金.rotate {
+  transform: scaleX(1.4) rotate(180deg);
+}
+</style>
 </style>
 </head>
 
@@ -378,14 +395,20 @@ footer {
  
 <div class="toggle-container流れ">
   <h2 class="pc-title">ご利用開始までの流れ</h2>
-  <button class="toggle-button流れ" onclick="toggleContent流れ()">ご利用開始までの流れ</button>
+ <button class="toggle-button流れ" onclick="toggleContent流れ()">
+  ご利用開始までの流れ
+  <span class="arrow流れ">∨</span>
+</button>
   <div id="content流れ" class="content流れ">
     <img src="ご利用の流れ.png">
   </div>
 </div>
 
 <div class="toggle-container料金">
-  <button class="toggle-button料金" onclick="toggleContent料金()">ご利用料金</button>
+  <button class="toggle-button料金" onclick="toggleContent料金()">
+  ご利用料金
+  <span class="arrow料金">∨</span>
+</button>
   <div id="content料金" class="content料金">
     <img src="料金.jpg">
   </div>
@@ -418,26 +441,43 @@ footer {
 </footer>
 
 <script>
-function toggleContent流れ(){
-  document.getElementById("content流れ").classList.toggle("show");
-}
-function toggleContent料金(){
-  document.getElementById("content料金").classList.toggle("show");
+function toggleContent流れ() {
+  const content = document.getElementById("content流れ");
+  const arrow = document.querySelector(".arrow流れ");
+
+  const opening = !content.classList.contains("show");
+
+  content.classList.toggle("show");
+  arrow.classList.toggle("rotate");
+
+  if (opening) {
+    setTimeout(() => {
+      content.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }, 200);
+  }
 }
 
-if (window.innerWidth > 480) {
-  document.getElementById("content流れ").classList.add("show");
-  document.getElementById("content料金").classList.add("show");
-}
+function toggleContent料金() {
+  const content = document.getElementById("content料金");
+  const arrow = document.querySelector(".arrow料金");
 
-document.querySelectorAll('#contact-link').forEach(link=>{
-  link.addEventListener('click', e=>{
-    e.preventDefault();
-    const form = document.getElementById('contact-section');
-    form.classList.add('show');
-    form.scrollIntoView({behavior:'smooth'});
-  });
-});
+  const opening = !content.classList.contains("show");
+
+  content.classList.toggle("show");
+  arrow.classList.toggle("rotate");
+
+  if (opening) {
+    setTimeout(() => {
+      content.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }, 200);
+  }
+}
 </script>
 
 </body>
