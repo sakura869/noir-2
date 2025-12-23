@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="新潟市にある発達支援ノワールは、放課後等デイサービス・児童発達支援を行っています。専門職が連携し、お子様に合わせた支援を提供します。">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+    <title>発達支援ノワール - 新潟市の放課後等デイサービス・児童発達支援</title>
+    <style>
+      body{
+        font-family: 'M PLUS Rounded 1c', "Helvetica Neue", sans-serif;
+        background-color: #FFFFFF;
+        color: #9F987D;
+        margin: 0;
+        padding: 0;
+        position: relative;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("がぞー.png");
+        background-size: cover;
+        background-position: center;
+        z-index: -1; opacity: 0.7;
+      }
+      header {
+        background-color: rgba(169, 169, 169, 0.5);
+        color: #fff;
+        text-align: center;
+        padding: 40px 20px;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+      } 
+      header h1 {
+        font-family: 'Kiwi Maru', cursive; font-size: 1.5em;
+        margin: 0; letter-spacing: 2px; color: #fff;
+      } 
+      header p {
+        font-family: 'Kiwi Maru', cursive;
+        font-size: 2em;
+        margin-top: 20px;
+        color: #fff;
+      } 
+      @media (max-width: 480px) {
+        header {
+          font-size: 1em;
+          padding: 10px;
+        }
+        header h1 {
+          margin-top: 20px;
+        }
+        header p {
+          font-family: 'Kiwi Maru', cursive;
+          font-size: 2em;
+          margin-top: 20px;
+          color: #fff;
+        }
+      }
+      .overlay-image {
+        text-align: center;
+        margin: 5px auto;
+        max-width: 500px;
+        line-height: 0;
+      }
+     .overlay-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 120% 60% at 35% 50%,
+    rgba(0,0,0,1) 40%,
+    rgba(0,0,0,0.85) 50%,
+    rgba(0,0,0,0.5) 60%,
+    rgba(0,0,0,0) 72%
+  );
+
+  mask-image: radial-gradient(
+    ellipse 120% 60% at 35% 50%,
+    rgba(0,0,0,1) 40%,
+    rgba(0,0,0,0.85) 50%,
+    rgba(0,0,0,0.5) 60%,
+    rgba(0,0,0,0) 72%
+  );
+}
+      @media (max-width: 480px) {
+        .overlay-image {
+          max-width: 400px;
+          margin: 5px auto;
+      }
+        .overlay-image img {
+    -webkit-mask-image: radial-gradient(
+      ellipse 135% 65% at 45% 50%,
+      rgba(0,0,0,1) 40%,
+      rgba(0,0,0,0.85) 50%,
+      rgba(0,0,0,0.5) 60%,
+      rgba(0,0,0,0) 72%
+    );
+  }
+}
+    
+      .slider-section {
+        max-width: 760px;   /* スライターの背景の四角 */
+        margin: 0 auto;
+        margin-top: 5px;
+        margin-bottom: 8px;
+        background: rgba(255,255,255,0.9);
+        border-radius: 10px;
+        padding: 4px 0;
+        position: relative;
+      }
+     /* 矢印ボタン */
+      .slide-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        background: none;      /* ← 丸を消す */
+        border: none;          /* ← 枠も消す */
+        box-shadow: none;      /* ← 影も消す */
+
+        font-size: 28px;       /* ← 少し大きめで可愛く */
+        color: #9F987D;
+        cursor: pointer;
+
+        padding: 0;            /* ← ズレ防止 */
+        line-height: 1;        /* ← 中央ズレ防止 */
+
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.2s ease;
+        z-index: 10;
+      }
+
+/* 位置 */
+.slide-arrow.left { left: 8px; }
+.slide-arrow.right { right: 8px; }
+
+/* 表示 */
+.slider-section:hover .slide-arrow {
+  opacity: 1;
+}
+
+/* ホバーでちょい動く */
+.slide-arrow:hover {
+  transform: translateY(-50%) scale(1.2);
+  color: #7E7761;
+}
+
+/* スマホでは非表示 */
+@media (max-width: 480px) {
+  .slider-section {
+    border-radius: 0px; /* 小さくすると見た目も締まる */
+    margin-bottom: 20px;
+  }
+  .slide-arrow {
+    display: none;
+  }
+}
+
+      /* スライダー本体 */
+.slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  width: 100%;
+  max-width: 420px;     /* ← 画像と同じ幅 */
+  margin: 0 auto;       /* ← 完全中央 */
+  
+  scrollbar-width: none;
+}
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* 1枚ずつ表示（PC） */
+.slider img {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto;
+  scroll-snap-align: center;
+  border-radius: 0;
+  box-shadow: none;
+}
+/* スマホ */
+@media (max-width: 480px) {
+  .slider {
+    max-width: 300px;   /* ← 枠を小さく */
+  }
+
+  .slider img {
+    width: 100%;        /* ← 1枚＝100% */
+    margin: 0;
+  }
+} 
+      .box-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        max-width: 810px;
+        margin: 40px auto;
+      }
+      .box {
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 15px;
+        padding: 15px;
+        color: #555;
+        font-weight: bold;
+        text-align: left;
+        box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+        font-size: 1em;
+        position: relative;
+      }
+      .box::before {
+        content: "✓";
+        display: inline-block;
+        background-color: rgba(169,169,169,0.9);
+        color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        margin-right: 10px;
+        font-size: 1.2em;
+      }
+      
+      @media (max-width: 480px) {
+  .box-container {
+    display: grid;
+    grid-template-columns: 1fr; /* 1列にする */
+    width: 75%; /* 画面幅にフィット */
+    margin: 20px auto; /* 上下マージン調整 */
+    gap: 10px; /* ボックス間の余白 */
+  }
+
+  .box {
+    height: auto; /* 自動で高さ調整 */
+    text-align: left;
+    padding: 10px; /* 内側の余白調整 */
+    padding-left: 30px;
+    font-size: 1.1em;
+    word-break: keep-all;   /* 日本語を自然に折り返す */
+    line-height: 1.4;
+  }
+
+  .box::before {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 0.8em;
+    margin-bottom: 0px; /* 上に少しずらす */
+    display: inline-block;
+  }
+}
+      .mobile-only {
+        display: none;
+      }
+      .pc-only {
+        display: inline;
+      }
+      .circle-container {
+        display: flex;
+        justify-content: center;
+        margin: 40px 0;
+      }
+      .circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: rgba(169,169,169,1);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2em;
+        text-align: center;
+        padding: 10px;
+        box-shadow: 4px 4px 0px #696969;
+        margin-left: -20px;
+        position: relative;
+      }
+      
+      @media (max-width: 480px) {
+  .circle-container {
+    display: flex;
+    justify-content: center;
+    gap: 0;                 /* ← 中央基準 */
+  }
+
+  .circle {
+    width: 65px;
+    height: 65px;
+    font-size: 0.95em;
+    transform: translateX(-12px);
+  }
+
+  .circle:nth-child(1) { transform: translateX(0); }
+  .circle:nth-child(2) { transform: translateX(-8px); }
+  .circle:nth-child(3) { transform: translateX(-16px); }
+  .circle:nth-child(4) { transform: translateX(-24px); }
+  .circle:nth-child(5) { transform: translateX(-32px); }
+  }
+      
+      .intro, .intro2 {
+        max-width: 630px;
+        margin: 40px auto;
+        padding: 20px;
+        text-align: center;
+        background-color: rgba(255,255,255,0.7);
+        border-radius: 140px;
+        color: #444;
+        font-size: 1.4em;
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #fff,
+                     0 0 30px #fff,
+                     0 0 40px #fff,
+                     0 0 50px #fff,
+                     0 0 60px #fff,
+                     0 0 70px #fff;
+      }
+      @media (max-width: 480px) {
+        .intro, .intro2 {
+          max-width: 85%;
+          margin: 30px auto;
+          padding: 10px;
+          font-size: 0.8em;
+        }
+      }
+      .toggle-container流れ, .toggle-container料金 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 40px 0;
+      }
+      .toggle-button流れ, .toggle-button料金 {
+        cursor: pointer;
+        font-size: 20px;
+        font-family: 'Arial', sans-serif;
+        padding: 10px 20px;
+        background-color: rgba(255,255,255,0.6);
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+        color: #9F987D;
+      }
+      .toggle-button流れ:hover, .toggle-button料金:hover {
+        background-color: #ddd;
+      }
+      /* コンテンツのふわっと表示（自然） */
+      .content流れ, .content料金 {
+        display: none;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        text-align: center;
+      }
+      .content流れ.show, .content料金.show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .content流れ img, .content料金 img {
+        width: 80%;
+        margin: 0 auto;
+        display: block;
+        border-radius: 40px;
+        border: 1px solid #ccc;
+        height: auto;
+      }
+      @media (max-width: 480px) {
+        .content流れ img, .content料金 img {
+          width: 100%;
+          max-width: none;
+          margin-left: -0.0%;
+          border: none;
+          border-radius: 8px;
+        }
+      }
+      #arrow流れ, #arrow料金 {
+        font-family: 'Kiwi Maru', cursive;
+        font-size: 0.7em;
+        display: inline-block;
+        transform: scaleX(2);
+        transition: transform 0.5s ease;
+        /* 矢印回転アニメ追加 */
+      }
+      #arrow流れ.rotate, #arrow料金.rotate {
+        transform: scaleX(2) rotate(180deg);
+        /* 矢印横伸ばし＆回転 */
+      }
+      
+.access-section {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 25px;
+  background-color: rgba(255,255,255,0.75);
+  border-radius: 20px;
+  text-align: center;
+  color: #555;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+.access-section h2 {
+  color: #9F987D;
+  margin-bottom: 30px;
+}
+
+.access-text {
+  position: relative;
+  padding-left: 1em;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  text-align: left;          /* ← 住所だけ左揃え */
+  margin: 0 auto 15px auto;  /* ← ブロック自体は中央 */
+  max-width: 550px;          /* ← 行が長くなりすぎない */
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+      .access-text::before {
+  content: "📍";
+  position: absolute;
+  left: -0.7em;
+  top: 0.05em;
+  font-size: 1.3em;
+}
+
+/* 郵便番号 */
+.access-text .postal {
+  font-size: 0.9em;
+   color: #777;
+}
+
+/* 住所メイン */
+.access-text .address {
+  font-size: 1.1em;
+   color: #777;
+}
+
+/* バス停など補足 */
+.access-text .station {
+  font-size: 1.1em;
+   color: #777;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56%; /* 16:9 */
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.map-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.access-note {
+  font-size: 0.9em;
+  margin-top: 15px;
+  color: #777;
+}
+        
+ /* フォームを非表示にする */
+      .contact-form {
+  display: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+      .contact-form.show {
+        display: block;
+      }
+      .contact-form h2 {
+        text-align: center; color: #9F987D;
+      }
+      .contact-form input, .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+      }
+      .contact-form button {
+        background-color: #9F987D;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .contact-form button:hover {
+        background-color: #7E7761;
+      }
+      .contact-form iframe {
+  border-radius: 15px;
+}
+      @media (max-width: 480px) {
+        .contact-form {
+          background-color: rgba(255, 255, 255, 0.8);
+          padding: 17px 27px 37px 27px;
+          max-width: 600px;
+          margin: 40px auto;
+          border-radius: 15px;
+          box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+          text-align: left;
+        }
+        .contact-form h2 {
+          text-align: center;
+          color: #9F987D;
+        }
+        .contact-form input, .contact-form textarea {
+          width: 100%;
+          padding: 10px 0;
+          margin-top: 5px;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+        }
+        .contact-form button {
+          background-color: #9F987D;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 8px;
+          cursor: pointer;
+          display: block;
+          margin: 20px auto 0 auto;
+        }
+        .contact-form button:hover {
+          background-color: #7E7761;
+        }
+        form {
+          padding: 10px;
+        }
+        input, textarea {
+          font-size: 1em;
+        }
+        button {
+          font-size: 1em;
+          padding: 10px 20px;
+        }
+      }
+      footer {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #9F987D;
+        text-align: center;
+        padding: 20px 20px;
+        margin: 0;
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: 'Kiwi Maru', cursive;
+        font-size: 1.1em;
+        letter-spacing: 2px;
+        z-index: 1;
+        user-select: none;
+      }
+      footer a {
+        color: #9F987D;
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 1.1em;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      .small-text {
+        font-size: 0.7em;
+      }
+      @media (max-width: 480px) {
+        footer a {
+          font-size: 1.1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-image"></div>
+    <header>
+      <h1>発達支援ノワール</h1>
+      <p>放課後等デイサービス<br>児童発達支援</p>
+    </header>
+    
+    <div class="small-circle-container">
+      <div class="small-circle"></div>
+      <div class="small-circle"></div>
+      <div class="small-circle"></div>
+      <div class="small-circle"></div>
+      <div class="small-circle"></div>
+    </div>
+    
+    <div class="overlay-image">
+     <img src="お子さまのお困りごとありませんか.png" alt="お子様のお困りごとありませんか？">
+   </div>
+    
+    <section class="slider-section">
+  <button class="slide-arrow left" aria-label="前へ">〈</button>
+
+  <div class="slider">
+    <img src="uma.png" alt="活動の様子">
+    <img src="tree.png" alt="室内の雰囲気">
+    <img src="okojo.png" alt="教材や環境">
+  </div>
+
+ <button class="slide-arrow right" aria-label="次へ">〉</button>
+</section>
+    
+    <div class="box-container">
+      <div class="box">言葉の遅れが気になる</div>
+      <div class="box">体を動かすのが苦手</div>
+      <div class="box">勉強についていけない</div>
+      <div class="box">集中力がない</div>
+      <div class="box">落ち着きがない</div>
+      <div class="box">他者とのかかわりが苦手</div>
+    </div>
+    
+    <div class="circle-container">
+      <div class="circle">保育士</div>
+      <div class="circle">言語<br>聴覚士</div>
+      <div class="circle">理学<br>療法士</div>
+      <div class="circle">作業<br>療法士</div>
+      <div class="circle">公認<br>心理士</div>
+    </div>
+    
+    <section class="intro">
+      <p>多様な専門職が在籍。経験豊富なスタッフが、<br>お子様の特性に合わせた最適な対応を致します！</p>
+    </section> <section class="intro2">
+      
+      <p>生活面での不安や集団活動での悩み、<br>コミュニケーションや感覚面のサポートも行っています。</p>
+    </section>
+    
+    <div class="toggle-container流れ">
+      <button class="toggle-button流れ" onclick="toggleContent流れ()"> ご利用開始までの流れ
+        <span id="arrow流れ">∨</span>
+      </button>
+      <div id="content流れ" class="content流れ">
+        <img src="ご利用の流れ.jpg" alt="ご利用開始までの流れ">
+      </div>
+    </div>
+    
+    <div class="toggle-container料金">
+      <button class="toggle-button料金" onclick="toggleContent料金()"> ご利用料金
+        <span id="arrow料金">∨</span>
+      </button>
+      <div id="content料金" class="content料金">
+        <img src="料金.jpg" alt="ご利用料金">
+      </div>
+    </div>
+
+<section class="access-section" id="access">
+  <h2>アクセス</h2>
+
+  <p class="access-text">
+     <span class="postal">〒950－0861</span><br>
+     <span class="address">新潟県新潟市東区中山6－19－5　ウェル新潟ビル206</span>
+  </p>
+
+  <div class="map-wrapper">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.6605220127058!2d139.08114867535681!3d37.91499690407121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff4ca2b14fe7561%3A0x41f87e9442edc71f!2z44CSOTUwLTA4NjEg5paw5r2f55yM5paw5r2f5biC5p2x5Yy65Lit5bGx77yW5LiB55uu77yR77yZ4oiS77yVIOOCpuOCp-ODq-aWsOa9nw!5e0!3m2!1sja!2sjp!4v1766382089719!5m2!1sja!2sjp"
+      width="600" height="450" style="border:0;
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <p class="access-note">
+    ※駐車場あり／送迎についてはお問い合わせください
+  </p>
+</section>
+    
+<section id="contact-section" class="contact-form">
+  <h2 id="contact">お問い合わせ</h2>
+
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSci9ClyPaBeHyqKnsIpgh6nGqeLRpV-x8E1sJ7C8qhSyth11Q/viewform?embedded=true"
+    width="100%"
+    height="700"
+    frameborder="0">
+  </iframe>
+</section>
+    
+    <script>
+  // トグル「ご利用開始までの流れ」
+  function toggleContent流れ() {
+    const content = document.getElementById("content流れ");
+    const arrow = document.getElementById("arrow流れ");
+    const isOpening = !content.classList.contains("show");
+    content.classList.toggle("show");
+    arrow.classList.toggle("rotate");
+    if (isOpening) {
+      setTimeout(() => {
+        content.scrollIntoView({behavior: "smooth", block: "center"});
+      }, 300);
+    }
+  }
+
+  // トグル「ご利用料金」
+  function toggleContent料金() {
+    const content = document.getElementById("content料金");
+    const arrow = document.getElementById("arrow料金");
+    const isOpening = !content.classList.contains("show");
+    content.classList.toggle("show");
+    arrow.classList.toggle("rotate");
+    if (isOpening) {
+      setTimeout(() => {
+        content.scrollIntoView({behavior: "smooth", block: "center"});
+      }, 300);
+    }
+  }
+
+  // スライダー
+const slider = document.querySelector('.slider');
+const prev = document.querySelector('.slide-arrow.left');
+const next = document.querySelector('.slide-arrow.right');
+
+function getSlideWidth() {
+  return slider.clientWidth;
+}
+
+function updateArrows() {
+  const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+  // 左端
+  if (slider.scrollLeft <= 5) {
+    prev.style.opacity = 0;
+    prev.style.pointerEvents = 'none';
+  } else {
+    prev.style.opacity = 1;
+    prev.style.pointerEvents = 'auto';
+  }
+
+  // 右端
+  if (slider.scrollLeft >= maxScroll - 5) {
+    next.style.opacity = 0;
+    next.style.pointerEvents = 'none';
+  } else {
+    next.style.opacity = 1;
+    next.style.pointerEvents = 'auto';
+  }
+}
+
+prev.addEventListener('click', () => {
+  slider.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
+});
+
+next.addEventListener('click', () => {
+  slider.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+});
+
+slider.addEventListener('scroll', updateArrows);
+window.addEventListener('load', updateArrows);
+      
+  // お問い合わせフォームスクロール
+document.addEventListener('DOMContentLoaded', () => {
+  const contactLink = document.getElementById('contact-link');
+  const form = document.getElementById('contact-section');
+
+  if (contactLink && form) {
+    contactLink.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // フォームを表示
+      form.classList.add('show');
+
+      // 表示後にスクロール
+      setTimeout(() => {
+        form.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
+    });
+  }
+});
+</script>
+    
+<footer>
+  <p>
+    <a href="#contact" id="contact-link">お問い合わせ</a> ｜ 
+    <a href="https://www.instagram.com/noir_niigata/" target="_blank" rel="noopener">
+      Instagram
+    </a>
+  </p>
+  <p class="small-text">
+    © 合同会社ノワール
+  </p>
+</footer>
+
+</body>
+</html>
+        
