@@ -31,11 +31,10 @@
         z-index: -1; opacity: 0.7;
       }
       header {
-  background-color: rgba(169, 169, 169, 0.5); /* ← 元の色に戻す */
-  box-shadow: none; /* 影も元に戻すなら消す */
-  padding: 16px 20px;
-  position: relative;
-  z-index: 10;
+        background-color: rgba(169, 169, 169, 0.5); /* ← 元の色に戻す */
+        box-shadow: none; /* 影も元に戻すなら消す */
+        position: relative;
+        z-index: 10;
         padding: 32px 20px;   /* ← ここを増やす（太さの正体） */
 }
 
@@ -61,16 +60,16 @@
 .logo {
   font-family: 'Kiwi Maru', cursive;
   font-size: 1.1em;
-  color: #9F987D;
+  color: #ffffff;
 }
 
 /* 右：メニュー */
 .menu a {
-  margin-left: 20px;
+  margin-left: 10px;
   text-decoration: none;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 0.95em;
-  color: #9F987D;
+  color: #ffffff;
 }
 
 .menu a:hover {
@@ -375,13 +374,19 @@
           font-size: 0.8em;
         }
       }
-       .content流れ,
-  .content料金 {
+       .content流れ, .content料金 {
     display: block;
     opacity: 1;
     transform: none;
   }
 @media (max-width: 480px) {
+      .content流れ img, .content料金 img {
+          width: 100%;
+          max-width: none;
+          margin-left: -0.0%;
+          border: none;
+          border-radius: 8px;
+        }
       .toggle-container流れ, .toggle-container料金 {
         display: flex;
         flex-direction: column;
@@ -423,15 +428,7 @@
         border: 1px solid #ccc;
         height: auto;
       }
-      @media (max-width: 480px) {
-        .content流れ img, .content料金 img {
-          width: 100%;
-          max-width: none;
-          margin-left: -0.0%;
-          border: none;
-          border-radius: 8px;
-        }
-      }
+    }
       #arrow流れ, #arrow料金 {
         font-family: 'Kiwi Maru', cursive;
         font-size: 0.7em;
@@ -656,7 +653,7 @@
     <!-- 右 -->
     <nav class="menu">
       <a href="#content料金">ご利用料金</a>
-      <a href="#content料金">ご利用の流れ</a>
+      <a href="#content流れ">ご利用の流れ</a>
       <a href="#access">アクセス</a>
       <a href="#contact">お問い合わせ</a>
       <a href="#contact">Instagram</a>
