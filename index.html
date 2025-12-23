@@ -375,6 +375,13 @@
           font-size: 0.8em;
         }
       }
+       .content流れ,
+  .content料金 {
+    display: block;
+    opacity: 1;
+    transform: none;
+  }
+@media (max-width: 480px) {
       .toggle-container流れ, .toggle-container料金 {
         display: flex;
         flex-direction: column;
@@ -819,6 +826,11 @@ next.addEventListener('click', () => {
 
 slider.addEventListener('scroll', updateArrows);
 window.addEventListener('load', updateArrows);
+
+if (window.innerWidth >= 769) {
+  document.getElementById("content流れ")?.classList.add("show");
+  document.getElementById("content料金")?.classList.add("show");
+}
       
   // お問い合わせフォームスクロール
 document.addEventListener('DOMContentLoaded', () => {
