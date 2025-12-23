@@ -187,6 +187,22 @@ header {
 }
   
 /* ------------------ トグル ------------------ */
+/* PC用タイトル */
+.pc-title {
+  display: none;
+  text-align: center;
+  font-size: 1.8em;
+  margin: 20px 0 15px;
+  font-family: 'Kiwi Maru', cursive;
+  color: #9F987D;
+}
+
+@media (max-width: 480px) {
+  .pc-title {
+    display: none;
+  }
+}
+  
 .content流れ,
 .content料金 {
   display: block;
@@ -342,8 +358,9 @@ footer {
 <section class="intro2">
   <p>生活面での不安や集団活動での悩み、<br>コミュニケーションや感覚面のサポートも行っています。</p>
 </section>
-  
+ 
 <div class="toggle-container流れ">
+  <h2 class="pc-title">ご利用開始までの流れ</h2>
   <button class="toggle-button流れ" onclick="toggleContent流れ()">ご利用開始までの流れ</button>
   <div id="content流れ" class="content流れ">
     <img src="ご利用の流れ.png">
