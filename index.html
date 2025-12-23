@@ -187,16 +187,27 @@ header {
 }
   
 /* ------------------ トグル ------------------ */
-/* デフォルト（＝PC） */
+/* PC用タイトル */
+.pc-title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.8em;
+  margin: 20px 0 15px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color: #9F987D;
+}
+
+/* PCではボタン不要 */
+.toggle-button流れ,
+.toggle-button料金 {
+  display: none;
+}
+
+/* PCでは常に表示＆中央 */
 .content流れ,
 .content料金 {
   display: flex;
   justify-content: center;
-}
-
-.toggle-button流れ,
-.toggle-button料金 {
-  display: none;
 }
 
 .content流れ img,
@@ -204,21 +215,34 @@ header {
   width: 70%;
   max-width: 600px;
 }
-
-/* スマホだけ上書き */
 @media (max-width: 480px) {
 
+  /* PCタイトルは消す */
+  .pc-title {
+    display: none;
+  }
+
+  /* トグルボタン復活（見た目改善） */
   .toggle-button流れ,
   .toggle-button料金 {
     display: inline-block;
+    font-size: 16px;
+    padding: 10px 16px;
+    border-radius: 999px; /* ← ダサさ消える */
+    border: none;
+    background: rgba(169,169,169,0.7);
+    color: #fff;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    margin-bottom: 10px;
   }
 
+  /* 中身は最初非表示 */
   .content流れ,
   .content料金 {
     display: none;
     opacity: 0;
-    transform: translateY(-8px);
-    transition: 0.3s;
+    transform: translateY(-6px);
+    transition: 0.3s ease;
   }
 
   .content流れ.show,
@@ -228,9 +252,11 @@ header {
     transform: none;
   }
 
+  /* スマホ画像はフル幅 */
   .content流れ img,
   .content料金 img {
     width: 100%;
+    max-width: 100%;
   }
 }
 /* ------------------ アクセス ------------------ */
