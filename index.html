@@ -157,7 +157,7 @@ header {
 
 /* --------------- スライダー画像 --------------- */
 .slider-section {
-        max-width: 760px;   /* スライターの背景の四角 */
+         max-width: 760px;   /* スライターの背景の四角 */
         margin: 0 auto;
         margin-top: 5px;
         margin-bottom: 8px;
@@ -448,15 +448,16 @@ header {
   .content料金 {
     display: none;
     opacity: 0;
-    transform: translateY(-6px);
-    transition: 0.3s ease;
+    transform: translateY(-8px);
+     transition: opacity 0.3s ease, transform 0.3s ease;
+        text-align: center;
   }
 
   .content流れ.show,
   .content料金.show {
     display: block;
     opacity: 1;
-    transform: none;
+    transform: translateY(0);;
   }
 
   /* スマホ画像 */
