@@ -728,6 +728,15 @@ footer {
 </footer>
 
 <script>
+   const menu = document.querySelector('.menu');
+  const menuLinks = document.querySelectorAll('.menu a');
+
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('show');
+    });
+  });
+  
 function toggleContent流れ() {
   const content = document.getElementById("content流れ");
   const arrow = document.querySelector(".arrow流れ");
