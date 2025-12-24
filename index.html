@@ -463,32 +463,42 @@ header {
   background: rgba(255,255,255,0.75);
   border-radius: 20px;
 
-  text-align: left;          /* ← 中身は左基準に */
+  text-align: left;
   font-size: 1.8em;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   color: #9F987D;
   position: relative;
 }
-  
+
+/* タイトル下のマーカー */
 .access-section::before {
   content: "";
   position: absolute;
-  left: -6px;
-  bottom: 6px;
+  left: 0;
+  bottom: 12px;
   width: 100%;
   height: 0.6em;
   background: rgba(159,152,125,0.25);
   z-index: -1;
-  border-radius: 4px;
-  );
+  border-radius: 6px;
 }
 
+/* アクセスタイトル */
+.access-title {
+  text-align: center;
+  display: block;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 1; /* マーカーより上に */
+}
 .access-text {
   position: relative;
   text-align: left;
   max-width: 550px;
   margin: 0 auto 20px;
-  padding-left: 1.6em;   /* アイコン分あける */
+  padding-left: 1.6em;
+  font-size: 0.75em;   /* ← ここ追加（おすすめ） */
+  line-height: 1.7;
 }
 
   .access-text::before {
