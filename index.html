@@ -495,7 +495,7 @@ header {
   width: 100%;
   text-align: center;
   font-size: 1.8em;
-  margin: 80px 0 25px;
+  margin: 80px 0 10px;
   position: relative;
   display: inline-block;
 }
@@ -521,14 +521,18 @@ header {
   }
 }
 
+/* 郵便番号 */
+.access-text .zip {
+  font-size: 0.9em;        /* ← 少し小さく */
+  line-height: 1.2;        /* ← 行間を詰める */
+  display: inline-block;
+  margin-bottom: 2px;     /* ← 住所との間を詰める */
+}
+
 /* 住所 */
-.access-text {
-  position: relative;
-  max-width: 550px;
-  margin: 0 auto 20px;
-  padding-left: 1.6em;
-  font-size: 1.3em;
-  line-height: 1.7;
+.access-text .address {
+  line-height: 1.4;       /* ← 住所は読みやすく */
+  display: inline-block;
 }
 
 /* 📍 */
@@ -709,9 +713,11 @@ footer {
 
 <section class="access-section" id="access">
   <p class="access-text">
-    〒950-0861<br>
+  <span class="zip">〒950-0861</span><br>
+  <span class="address">
     新潟県新潟市東区中山6-19-5　ウェル新潟ビル206
-  </p>
+  </span>
+</p>
 
   <div class="map-wrapper">
     <iframe
