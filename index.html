@@ -62,37 +62,25 @@ header {
 @media (max-width: 480px) {
   .header-inner {
     grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    gap: 8px;
+    align-items: center;
   }
 
-  .logo {
-    grid-column: 1 / -1;
-    text-align: center;
-    font-size: 0.85em;
-  }
-
+  .logo,
   .header-center {
-    grid-column: 1 / -1;
-    text-align: center;
-    font-size: 1.2em;
-    line-height: 1.2;
+    text-align: left;
+    grid-column: 1;
   }
 
-  /* メニューボタン表示 */
   .menu-toggle {
     display: block;
     grid-column: 2;
     justify-self: end;
   }
 
-  /* メニューは最初閉じる */
   .menu {
-    display: none;
     grid-column: 1 / -1;
-    text-align: center;
-    margin-top: 10px;
   }
+}
 
   .menu a {
     display: block;
@@ -350,6 +338,20 @@ header {
   margin: 20px 0 15px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   color: #9F987D;
+  position: relative;
+  display: inline-block;
+}
+
+  .pc-title::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: 6px;
+  width: 100%;
+  height: 0.6em;
+  background: rgba(159,152,125,0.25);
+  z-index: -1;
+  border-radius: 4px;
 }
 
 /* PCではボタン不要 */
@@ -520,10 +522,10 @@ footer {
 
     <!-- メニューは1つだけ！ -->
     <nav class="menu" id="menu">
-      <a href="#content料金">ご利用料金</a>
-      <a href="#content流れ">ご利用の流れ</a>
-      <a href="#access">アクセス</a>
-      <a href="#" id="contact-link">お問い合わせ</a>
+  <a href="#price">ご利用料金</a>
+  <a href="#flow">ご利用の流れ</a>
+  <a href="#access">アクセス</a>
+  <a href="#" id="contact-link">お問い合わせ</a>
     </nav>
 
   </div>
@@ -535,16 +537,16 @@ footer {
 
 <div class="slider-section">
 
-  <button class="toggle-button流れ" onclick="toggleContent流れ()">
-  ご利用開始までの流れ
-  <span class="arrow流れ">∨</span>
-</button>
+  
+  <button class="slide-arrow left">‹</button>
 
-<button class="toggle-button料金" onclick="toggleContent料金()">
-  ご利用料金
-  <span class="arrow料金">∨</span>
-</button>
+  <div class="slider">
+    <img src="景色1.jpg" alt="">
+    <img src="景色2.jpg" alt="">
+    <img src="景色3.jpg" alt="">
+  </div>
 
+  <button class="slide-arrow right">›</button>
 </div>
   
 <!-- ボックス -->
@@ -574,20 +576,22 @@ footer {
 </section>
  
  <div class="toggle-container流れ">
-    <h2 class="pc-title">ご利用開始までの流れ</h2>
-      <button class="toggle-button流れ" onclick="toggleContent流れ()"> ご利用開始までの流れ
-        <span id="arrow流れ">∨</span>
-      </button>
+     <h2 class="pc-title" id="flow">ご利用開始までの流れ</h2>
+      <button class="toggle-button流れ" onclick="toggleContent流れ()">
+  ご利用開始までの流れ
+  <span class="arrow流れ">∨</span>
+</button>
       <div id="content流れ" class="content流れ">
         <img src="ご利用の流れ.png" alt="ご利用開始までの流れ">
       </div>
     </div>
     
     <div class="toggle-container料金">
-      <h2 class="pc-title">ご利用料金について</h2>
-      <button class="toggle-button料金" onclick="toggleContent料金()"> ご利用料金
-        <span id="arrow料金">∨</span>
-      </button>
+<h2 class="pc-title" id="price">ご利用料金について</h2>
+     <button class="toggle-button料金" onclick="toggleContent料金()">
+  ご利用料金
+  <span class="arrow料金">∨</span>
+</button>
       <div id="content料金" class="content料金">
         <img src="料金.png" alt="ご利用料金">
       </div>
