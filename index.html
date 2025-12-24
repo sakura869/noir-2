@@ -572,6 +572,8 @@ header {
   .contact-title {
     display: block;
     text-align: center;
+    margin-top: 70px;
+    margin-bottom: 20px;
   }
 }
 
@@ -736,7 +738,34 @@ footer {
       menu.classList.remove('show');
     });
   });
-  
+  document.querySelectorAll('.menu a').forEach(link => {
+  link.addEventListener('click', e => {
+    const href = link.getAttribute('href');
+
+    // 通常リンクは無視
+    if (!href.startsWith('#')) return;
+
+    e.preventDefault();
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    // メニュー閉じる
+    document.getElementById('menu').classList.remove('show');
+
+    // スクロール
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
+    // ===== スマホならトグルも開く =====
+    if (window.innerWidth <= 480) {
+      if (href === '#flow') toggleContent流れ();
+      if (href === '#price') toggleContent料金();
+    }
+  });
+});
 function toggleContent流れ() {
   const content = document.getElementById("content流れ");
   const arrow = document.querySelector(".arrow流れ");
