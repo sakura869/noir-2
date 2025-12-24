@@ -505,29 +505,27 @@ footer {
 <div class="background-image"></div>
 
 <header>
-  <div class="header-inner">
-  <div class="logo">放課後等デイサービス<br>児童発達支援</div>
+ <div class="header-inner">
 
-  <div class="header-center">
-    発達支援<br>ノワール
-  </div>
+    <div class="logo">
+      放課後等デイサービス・児童発達支援
+    </div>
 
-  <!-- スマホ用メニューボタン -->
-  <button class="menu-toggle" id="menu-toggle">☰</button>
+    <div class="header-center">
+      発達支援ノワール
+    </div>
 
-  <nav class="menu" id="menu">
-    <a href="#content料金">ご利用料金</a>
-    <a href="#content流れ">ご利用の流れ</a>
-    <a href="#access">アクセス</a>
-    <a href="#" id="contact-link">お問い合わせ</a>
-  </nav>
-</div>
-    <nav class="menu">
+    <!-- スマホ用メニューボタン -->
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+
+    <!-- メニューは1つだけ！ -->
+    <nav class="menu" id="menu">
       <a href="#content料金">ご利用料金</a>
       <a href="#content流れ">ご利用の流れ</a>
       <a href="#access">アクセス</a>
       <a href="#" id="contact-link">お問い合わせ</a>
     </nav>
+
   </div>
 </header>
 
@@ -537,15 +535,15 @@ footer {
 
 <div class="slider-section">
 
-  <button class="slide-arrow left">‹</button>
+  <button class="toggle-button流れ" onclick="toggleContent流れ()">
+  ご利用開始までの流れ
+  <span class="arrow流れ">∨</span>
+</button>
 
-  <div class="slider">
-    <img src="景色1.jpg" alt="">
-    <img src="景色2.jpg" alt="">
-    <img src="景色3.jpg" alt="">
-  </div>
-
-  <button class="slide-arrow right">›</button>
+<button class="toggle-button料金" onclick="toggleContent料金()">
+  ご利用料金
+  <span class="arrow料金">∨</span>
+</button>
 
 </div>
   
