@@ -444,21 +444,26 @@ header {
   }
 
   /* 中身はトグル */
-  .content流れ,
-  .content料金 {
-    display: none;
-    opacity: 0;
-    transform: translateY(-8px);
-     transition: opacity 0.3s ease, transform 0.3s ease;
-        text-align: center;
-  }
+ .content流れ,
+.content料金 {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(6px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    filter 0.5s ease;
+  text-align: center;
+}
 
-  .content流れ.show,
-  .content料金.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);;
-  }
+.content流れ.show,
+.content料金.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
 
   /* スマホ画像 */
   .content流れ img,
