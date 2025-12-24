@@ -36,6 +36,7 @@ header {
   align-items: center;
 }
 
+/* ロゴ・メニュー文字 */
 .logo,
 .menu a {
   color: #fff;
@@ -48,9 +49,26 @@ header {
   color: #fff;
   letter-spacing: 0.15em;
 }
-/* ===== スマホヘッダー調整 ===== */
+
+/* ===== メニュー ===== */
+.menu {
+  display: flex;               /* ← PCでは横並び */
+  justify-content: flex-end;
+}
+
+.menu a {
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 0.95em;
+}
+
+.menu a:hover {
+  opacity: 0.7;
+}
+
+/* ===== ハンバーガー ===== */
 .menu-toggle {
-  display: none;
+  display: none;               /* PCでは非表示 */
   font-size: 26px;
   background: none;
   border: none;
@@ -58,52 +76,55 @@ header {
   cursor: pointer;
 }
 
-/* スマホ */
+/* ================= スマホ ================= */
 @media (max-width: 480px) {
+
+  header {
+    padding: 12px;
+  }
+
   .header-inner {
     grid-template-columns: 1fr auto;
     align-items: center;
   }
 
+  /* 会社名・サービス名は左揃え */
   .logo,
   .header-center {
-    text-align: left;
     grid-column: 1;
+    text-align: left;
   }
 
+  .header-center {
+    font-size: 1.2em;
+    line-height: 1.3;
+  }
+
+  /* ☰ は常に右 */
   .menu-toggle {
     display: block;
     grid-column: 2;
     justify-self: end;
   }
 
+  /* メニューは最初は隠す */
   .menu {
+    display: none !important;
     grid-column: 1 / -1;
+    text-align: left;
+    margin-top: 10px;
   }
-}
+
+  /* 開いた時だけ表示 */
+  .menu.show {
+    display: block !important;
+  }
 
   .menu a {
     display: block;
     margin: 12px 0;
     font-size: 1.1em;
   }
-
-  /* 開いた状態 */
-  .menu.show {
-    display: block;
-  }
-}
-.menu a {
-  margin-left: 20px;
-  text-decoration: none;
-  font-size: 0.95em;
-}
-
-.menu a:hover { opacity: 0.7; }
-
-@media (max-width:480px) {
-  header { padding: 12px; }
-  .header-center { font-size: 1.2em; }
 }
 
 /* --------------- お困りごとありませんか --------------- */
@@ -443,11 +464,32 @@ header {
   border-radius: 20px;
   text-align: center;
 }
+  /* ===== セクションタイトル マーカー（PC） ===== */
+.section-title {
+  display: inline-block;
+  font-size: 1.8em;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color: #9F987D;
+  padding: 0 6px;
+  background: linear-gradient(
+    transparent 60%,
+    rgba(169,169,169,0.4) 60%
+  );
+}
 
 .access-text {
   text-align: left;
   max-width: 550px;
   margin: 0 auto 20px;
+  padding-left: 1.6em;   /* アイコン分あける */
+}
+
+  .access-text::before {
+  content: "📍";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.2em;
 }
 
 .map-wrapper {
@@ -599,7 +641,7 @@ footer {
 
 
 <section class="access-section" id="access">
-  <h2>アクセス</h2>
+  <h2 class="section-title">アクセス</h2>
   <p class="access-text">〒950-0861<br>新潟県新潟市東区中山6-19-5　ウェル新潟ビル206</p>
   <div class="map-wrapper">
     <iframe
