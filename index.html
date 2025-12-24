@@ -48,7 +48,63 @@ header {
   color: #fff;
   letter-spacing: 0.15em;
 }
+/* ===== スマホヘッダー調整 ===== */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
 
+/* スマホ */
+@media (max-width: 480px) {
+  .header-inner {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 8px;
+  }
+
+  .logo {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 0.85em;
+  }
+
+  .header-center {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 1.2;
+  }
+
+  /* メニューボタン表示 */
+  .menu-toggle {
+    display: block;
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  /* メニューは最初閉じる */
+  .menu {
+    display: none;
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .menu a {
+    display: block;
+    margin: 12px 0;
+    font-size: 1.1em;
+  }
+
+  /* 開いた状態 */
+  .menu.show {
+    display: block;
+  }
+}
 .menu a {
   margin-left: 20px;
   text-decoration: none;
@@ -450,8 +506,22 @@ footer {
 
 <header>
   <div class="header-inner">
-    <div class="logo">放課後等デイサービス・児童発達支援</div>
-    <div class="header-center">発達支援ノワール</div>
+  <div class="logo">放課後等デイサービス<br>児童発達支援</div>
+
+  <div class="header-center">
+    発達支援<br>ノワール
+  </div>
+
+  <!-- スマホ用メニューボタン -->
+  <button class="menu-toggle" id="menu-toggle">☰</button>
+
+  <nav class="menu" id="menu">
+    <a href="#content料金">ご利用料金</a>
+    <a href="#content流れ">ご利用の流れ</a>
+    <a href="#access">アクセス</a>
+    <a href="#" id="contact-link">お問い合わせ</a>
+  </nav>
+</div>
     <nav class="menu">
       <a href="#content料金">ご利用料金</a>
       <a href="#content流れ">ご利用の流れ</a>
@@ -654,6 +724,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 100);
     });
   }
+});
+document.getElementById('menu-toggle').addEventListener('click', () => {
+  document.getElementById('menu').classList.toggle('show');
 });
 </script>
 
