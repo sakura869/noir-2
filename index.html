@@ -462,20 +462,26 @@ header {
   padding: 25px;
   background: rgba(255,255,255,0.75);
   border-radius: 20px;
-
   text-align: left;
-  font-size: 1.8em;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   color: #9F987D;
-  position: relative;
 }
 
-/* タイトル下のマーカー */
-.access-section::before {
+/* タイトル */
+.access-title {
+  text-align: center;
+  font-size: 1.8em;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+}
+
+/* タイトル下マーカー */
+.access-title::before {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 12px;
+  bottom: 6px;
   width: 100%;
   height: 0.6em;
   background: rgba(159,152,125,0.25);
@@ -483,25 +489,18 @@ header {
   border-radius: 6px;
 }
 
-/* アクセスタイトル */
-.access-title {
-  text-align: center;
-  display: block;
-  margin-bottom: 25px;
-  position: relative;
-  z-index: 1; /* マーカーより上に */
-}
+/* 住所 */
 .access-text {
   position: relative;
-  text-align: left;
   max-width: 550px;
   margin: 0 auto 20px;
   padding-left: 1.6em;
-  font-size: 0.75em;   /* ← ここ追加（おすすめ） */
+  font-size: 1.3em;
   line-height: 1.7;
 }
 
-  .access-text::before {
+/* 📍 */
+.access-text::before {
   content: "📍";
   position: absolute;
   left: 0;
@@ -509,6 +508,7 @@ header {
   font-size: 1.2em;
 }
 
+/* マップ */
 .map-wrapper {
   position: relative;
   padding-top: 56%;
@@ -658,16 +658,16 @@ footer {
 
 
 <section class="access-section" id="access">
-  <h2 class="section-title">アクセス</h2>
-  <p class="access-text">〒950-0861<br>新潟県新潟市東区中山6-19-5　ウェル新潟ビル206</p>
+  <h2 class="access-title">アクセス</h2>
+  <p class="access-text">
+    〒950-0861<br>
+    新潟県新潟市東区中山6-19-5　ウェル新潟ビル206
+  </p>
+
   <div class="map-wrapper">
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.6605220127058!2d139.08114867535681!3d37.91499690407121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff4ca2b14fe7561%3A0x41f87e9442edc71f!2z44CSOTUwLTA4NjEg5paw5r2f55yM5paw5r2f5biC5p2x5Yy65Lit5bGx77yW5LiB55uu77yR77yZ4oiS77yVIOOCpuOCp-ODq-aWsOa9nw!5e0!3m2!1sja!2sjp!4v1766382089719!5m2!1sja!2sjp"
-      width="100%"
-      height="450"
-      style="border:0;"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
+     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.6605220127058!2d139.08114867535681!3d37.91499690407121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff4ca2b14fe7561%3A0x41f87e9442edc71f!2z44CSOTUwLTA4NjEg5paw5r2f55yM5paw5r2f5biC5p2x5Yy65Lit5bGx77yW5LiB55uu77yR77yZ4oiS77yVIOOCpuOCp-ODq-aWsOa9nw!5e0!3m2!1sja!2sjp!4v1766382089719!5m2!1sja!2sjp"
+     loading="lazy">
     </iframe>
   </div>
 </section>
