@@ -521,28 +521,27 @@ header {
   }
 }
 
-/* 郵便番号 */
-.access-text .zip {
-  font-size: 0.9em;        /* ← 少し小さく */
-  line-height: 1.2;        /* ← 行間を詰める */
-  display: inline-block;
-  margin-bottom: 2px;     /* ← 住所との間を詰める */
-　position: relative;
+.access-text {
+  position: relative;   /* ← ★ここだけ */
+  max-width: 550px;
+  margin: 0 auto 20px;
+  padding-left: 1.6em;
 }
 
-/* 住所 */
-.access-text .address {
-  line-height: 1.4;       /* ← 住所は読みやすく */
-  display: inline-block;
-}
-
-/* 📍 */
 .access-text::before {
   content: "📍";
   position: absolute;
   left: 0;
   top: 0;
   font-size: 1.2em;
+}
+
+.zip {
+  font-size: 0.85em;   /* 郵便番号小さめ */
+}
+
+.address {
+  line-height: 1.3;    /* 行間詰め */
 }
 
 /* マップ */
