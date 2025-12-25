@@ -242,6 +242,19 @@ header {
   .slider {
     max-width: 300px;
   }
+
+  .slide {
+  flex: 0 0 100%;          /* ← 1枚ずつ横並びにする核心 */
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
   
 /* ---------- ボックス ---------- */
 .box-container {
@@ -741,6 +754,14 @@ footer {
       block: 'start'
     });
 
+    // ===== スマホならトグルも開く =====
+    if (window.innerWidth <= 480) {
+      if (href === '#flow') toggleContent流れ();
+      if (href === '#price') toggleContent料金();
+    }
+  });
+});
+
 const sliderSection = document.querySelector('.slider-section');
 
 function updateSliderBackground() {
@@ -752,14 +773,7 @@ function updateSliderBackground() {
 
 slider.addEventListener('scroll', updateSliderBackground);
 window.addEventListener('load', updateSliderBackground);
-    
-    // ===== スマホならトグルも開く =====
-    if (window.innerWidth <= 480) {
-      if (href === '#flow') toggleContent流れ();
-      if (href === '#price') toggleContent料金();
-    }
-  });
-});
+  
 function toggleContent流れ() {
   const content = document.getElementById("content流れ");
   const arrow = document.querySelector(".arrow流れ");
