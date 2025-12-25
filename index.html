@@ -252,25 +252,45 @@ header {
 }
 
 /* スマホ */
+/* ===== スマホ用 ===== */
 @media (max-width: 480px) {
-  .slider {
-    width: 350px;
-    margin: 0 auto;
-  }
-}
-  .slide {
-  flex: 0 0 100%;          /* ← 1枚ずつ横並びにする核心 */
-  scroll-snap-align: start;
-  display: flex;
-  justify-content: center;
-  overflow: hidden; 
-  border-radius: 16px;
-}
 
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  /* スライダーセクション */
+  .slider-section {
+    background: none;      /* 背景消す */
+    padding: 0;
+    margin: 0;
+  }
+
+  /* 外側ラッパー */
+  .slider-wrapper {
+    max-width: none;
+    width: 100vw;          /* 画面幅いっぱい */
+    margin: 0;
+    border-radius: 0;      /* 角丸なし */
+    overflow: hidden;
+  }
+
+  /* スライダー本体 */
+  .slider {
+    max-width: none;
+    width: 100vw;
+  }
+
+  /* 各スライド */
+  .slide {
+    max-width: none;
+    width: 100vw;
+    border-radius: 0;      /* 念のため */
+  }
+
+  /* 画像 */
+  .slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;      /* 完全に角丸オフ */
+    object-fit: cover;
+  }
 }
 
 .slider-dots {
