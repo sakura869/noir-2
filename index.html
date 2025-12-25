@@ -241,6 +241,7 @@ header {
   scroll-snap-align: center;
   border-radius: 0;
   box-shadow: none;
+   object-fit: contain;   /* ← これ追加 */
 }
 /* スマホ */
 @media (max-width: 480px) {
@@ -342,25 +343,6 @@ header {
   }
 }
 
-/* ---------- intro ---------- */
-.intro, .intro2 {
-  max-width: 630px;
-  margin: 40px auto;
-  padding: 20px;
-  text-align: center;
-  background-color: rgba(255,255,255,0.7);
-  border-radius: 140px;
-  color: #444;
-  font-size: 1.4em;
-}
-
-@media (max-width: 480px) {
-  .intro, .intro2 {
-    max-width: 85%;
-    font-size: 0.8em;
-  }
-}
-  
 /* ------------------ トグル ------------------ */
 /* PC用タイトル */
 .pc-title {
