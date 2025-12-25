@@ -241,7 +241,7 @@ header {
   scroll-snap-type: x mandatory;
   display: flex;
   margin: 0 auto;
-  dding: 10px 0;
+  padding: 10px 0;
 }
 .slider::-webkit-scrollbar {
   display: none;
@@ -251,7 +251,6 @@ header {
   cursor: grabbing;
 }
 
-/* スマホ */
 /* ===== スマホ用 ===== */
 @media (max-width: 480px) {
 
@@ -278,11 +277,13 @@ header {
   }
 
   /* 各スライド */
-  .slide {
-    max-width: none;
-    width: 100vw;
-    border-radius: 0;      /* 念のため */
-  }
+ .slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
   /* 画像 */
   .slide img {
@@ -638,23 +639,16 @@ footer {
 </div>
   
 <div class="slider-section">
-  
   <button class="slide-arrow left">‹</button>
-  
-<div class="slider">
-  <div class="slide bg1">
-    <img src="支援の説明.png" alt="">
+
+  <div class="slider-wrapper">
+    <div class="slider">
+      <div class="slide bg1"><img src="支援の説明.png"></div>
+      <div class="slide bg2"><img src="ノワールの得意なこと.png"></div>
+      <div class="slide bg3"><img src="多様な専門職が在籍.png"></div>
+      <div class="slide bg4"><img src="生活面での不安や.png"></div>
+    </div>
   </div>
-  <div class="slide bg2">
-    <img src="ノワールの得意なこと.png" alt="">
-  </div>
-  <div class="slide bg3">
-    <img src="多様な専門職が在籍.png" alt="">
-  </div>
-  <div class="slide bg4">
-    <img src="生活面での不安や.png" alt="">
-  </div>
-</div>
 
   <button class="slide-arrow right">›</button>
 </div>
