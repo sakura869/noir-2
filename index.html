@@ -165,7 +165,12 @@ header {
         border-radius: 10px;
         padding: 4px 0;
         position: relative;
+        transition: background 0.4s ease;
       }
+  .slider-section.bg1 { background: #f7f5f0; }
+.slider-section.bg2 { background: #eef4f7; }
+.slider-section.bg3 { background: #f9f0f3; }
+.slider-section.bg4 { background: #f2f6ef; }
      /* 矢印ボタン */
       .slide-arrow {
         position: absolute;
@@ -232,42 +237,11 @@ header {
   display: none;
 }
 
-.slide {
-  flex: 0 0 100%;
-  width: 100%;
-  max-width: 420px;
-  aspect-ratio: 4 / 3;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  scroll-snap-align: center;
-  border-radius: 12px;
-}
-
-/* 画像 */
-.slide img {
-  width: 90%;
-  height: auto;
-  object-fit: contain;
-}
-
 /* スマホ */
 @media (max-width: 480px) {
   .slider {
     max-width: 300px;
   }
-  .slide {
-    max-width: 300px;
-  }
-}
-
-/* 背景 */
-.bg1 { background: #f7f5f0; }
-.bg2 { background: #eef4f7; }
-.bg3 { background: #f9f0f3; }
-.bg4 { background: #f2f6ef; }
   
 /* ---------- ボックス ---------- */
 .box-container {
@@ -767,6 +741,18 @@ footer {
       block: 'start'
     });
 
+const sliderSection = document.querySelector('.slider-section');
+
+function updateSliderBackground() {
+  const slideWidth = slider.clientWidth;
+  const index = Math.round(slider.scrollLeft / slideWidth);
+
+  sliderSection.className = 'slider-section bg' + (index + 1);
+}
+
+slider.addEventListener('scroll', updateSliderBackground);
+window.addEventListener('load', updateSliderBackground);
+    
     // ===== スマホならトグルも開く =====
     if (window.innerWidth <= 480) {
       if (href === '#flow') toggleContent流れ();
