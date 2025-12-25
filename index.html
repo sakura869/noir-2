@@ -169,11 +169,14 @@ header {
   
 /* --------------- スライダー画像 --------------- */
 .slider-section {
-  width: fit-content;     /* 中身ぴったり */
+  width: fit-content;
   margin: 0 auto;
   background: rgba(255,255,255,0.9);
-  border-radius: 10px;
-  padding: 0;             /* ← 余白を消す */
+  padding: 6px;
+  border-radius: 14px;
+
+  position: relative;
+  overflow: visible;   /* ← ★これ超重要（矢印用） */
 }
 .slider-section.bg1 { background: #f7f5f0; }
 .slider-section.bg2 { background: #eef4f7; }
@@ -230,17 +233,10 @@ header {
       /* スライダー本体 */
 /* 1枚ずつ表示（PC） */
 .slider {
-  display: flex;
+  width: 420px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
-
-  scrollbar-width: none;
-  cursor: grab;
+  display: flex;
 }
 .slider::-webkit-scrollbar {
   display: none;
@@ -253,7 +249,7 @@ header {
 /* スマホ */
 @media (max-width: 480px) {
   .slider {
-    max-width: 300px;
+    width: 300px;
   }
 }
   .slide {
