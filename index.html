@@ -169,22 +169,18 @@ header {
   
 /* --------------- スライダー画像 --------------- */
 .slider-section {
-         max-width: 760px;   /* スライターの背景の四角 */
-        margin: 0 auto;
-        margin-top: 1px;
-        margin-bottom: 8px;
-        background: rgba(255,255,255,0.9);
-        border-radius: 10px;
-        padding: 4px 0;
-        position: relative;
-        transition: background 0.4s ease;
-      }
+  width: fit-content;     /* 中身ぴったり */
+  margin: 0 auto;
+  background: rgba(255,255,255,0.9);
+  border-radius: 10px;
+  padding: 0;             /* ← 余白を消す */
+}
 .slider-section.bg1 { background: #f7f5f0; }
 .slider-section.bg2 { background: #eef4f7; }
 .slider-section.bg3 { background: #f9f0f3; }
 .slider-section.bg4 { background: #f2f6ef; }
      /* 矢印ボタン */
-      .slide-arrow {
+.slide-arrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
