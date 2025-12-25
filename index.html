@@ -254,7 +254,33 @@ header {
     margin: 0;
   }
 } 
-  
+
+  /* 1枚分のスライド */
+.slide {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+}
+
+/* 背景（画像ごと） */
+.bg1 { background: none; }   
+.bg2 { background: none; }   
+.bg3 { background: #ffffff; } 
+.bg4 { background: #ffffff; } 
+
+/* 中の画像 */
+.slide img {
+  width: 90%;
+  height: auto;
+  object-fit: contain;
+}
 /* ---------- ボックス ---------- */
 .box-container {
   display: grid;
@@ -633,13 +659,21 @@ footer {
 
   
   <button class="slide-arrow left">‹</button>
-
-  <div class="slider">
+  
+<div class="slider">
+  <div class="slide bg1">
     <img src="支援の説明.png" alt="">
+  </div>
+  <div class="slide bg2">
     <img src="ノワールの得意なこと.png" alt="">
+  </div>
+  <div class="slide bg3">
     <img src="多様な専門職が在籍.png" alt="">
+  </div>
+  <div class="slide bg4">
     <img src="生活面での不安や.png" alt="">
   </div>
+</div>
 
   <button class="slide-arrow right">›</button>
 </div>
