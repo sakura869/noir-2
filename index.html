@@ -173,7 +173,7 @@ header {
   margin: 0 auto;
   background: rgba(255,255,255,0.9);
   padding: 6px;
-  border-radius: 14px;
+  border-radius: 16px;
 
   position: relative;
   overflow: visible;   /* ← ★これ超重要（矢印用） */
@@ -213,18 +213,22 @@ header {
   opacity: 1;
 }
 
-/* ホバーでちょい動く */
-.slide-arrow:hover {
-  transform: translateY(-50%) scale(1.2);
-  color: #7E7761;
+/* 初期は非表示 */
+.slide-arrow {
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* スマホでは非表示 */
-@media (max-width: 480px) {
-  .slider-section {
-    border-radius: 0px; /* 小さくすると見た目も締まる */
-    margin-bottom: 20px;
+/* PCでホバーした時だけ */
+@media (hover: hover) and (pointer: fine) {
+  .slider-section:hover .slide-arrow {
+    opacity: 1;
+    pointer-events: auto;
   }
+}
+
+/* スマホは完全非表示（今まで通り） */
+@media (max-width: 480px) {
   .slide-arrow {
     display: none;
   }
@@ -267,6 +271,27 @@ header {
   object-fit: cover;
 }
 
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.slider-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: #d6d2c4;
+  cursor: pointer;
+  padding: 0;
+}
+
+.slider-dots button.active {
+  background: #9F987D;
+}
+  
 /* ---------- 丸 ---------- */
 .circle-container {
   display: flex;
@@ -609,6 +634,8 @@ footer {
 
   <button class="slide-arrow right">›</button>
 </div>
+
+<div class="slider-dots"></div>
   
 <div class="circle-container">
   <div class="circle">保育士</div>
@@ -722,30 +749,59 @@ document.addEventListener('DOMContentLoaded', () => {
    スライダー（自動＋操作OK）
 ===================== */
 const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slide');
 const prev = document.querySelector('.slide-arrow.left');
 const next = document.querySelector('.slide-arrow.right');
+const dotsContainer = document.querySelector('.slider-dots');
 
 let autoScroll;
-let isDown = false;
-let startX;
-let scrollLeft;
+let currentIndex = 0;
 
-/* --- スライド幅 --- */
+/* ===== スライド幅 ===== */
 function slideWidth() {
   return slider.clientWidth;
 }
 
-/* --- 自動スクロール --- */
+/* ===== ドット生成 ===== */
+slides.forEach((_, i) => {
+  const dot = document.createElement('button');
+  if (i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => {
+    stopAutoScroll();
+    goToSlide(i);
+    startAutoScroll();
+  });
+  dotsContainer.appendChild(dot);
+});
+
+/* ===== 状態更新 ===== */
+function updateUI() {
+  const dots = dotsContainer.querySelectorAll('button');
+  dots.forEach(d => d.classList.remove('active'));
+  dots[currentIndex]?.classList.add('active');
+
+  // 矢印制御
+  if (prev) prev.style.display = currentIndex === 0 ? 'none' : 'block';
+  if (next) next.style.display = currentIndex === slides.length - 1 ? 'none' : 'block';
+}
+
+/* ===== 移動 ===== */
+function goToSlide(index) {
+  currentIndex = index;
+  slider.scrollTo({
+    left: slideWidth() * index,
+    behavior: 'smooth'
+  });
+  updateUI();
+}
+
+/* ===== 自動スライド ===== */
 function startAutoScroll() {
   stopAutoScroll();
   autoScroll = setInterval(() => {
-    const maxScroll = slider.scrollWidth - slider.clientWidth;
-
-    if (slider.scrollLeft >= maxScroll - 5) {
-      slider.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      slider.scrollBy({ left: slideWidth(), behavior: 'smooth' });
-    }
+    currentIndex =
+      currentIndex >= slides.length - 1 ? 0 : currentIndex + 1;
+    goToSlide(currentIndex);
   }, 3500);
 }
 
@@ -753,54 +809,34 @@ function stopAutoScroll() {
   if (autoScroll) clearInterval(autoScroll);
 }
 
-/* --- 矢印操作 --- */
+/* ===== 矢印操作 ===== */
 prev?.addEventListener('click', () => {
   stopAutoScroll();
-  slider.scrollBy({ left: -slideWidth(), behavior: 'smooth' });
+  if (currentIndex > 0) goToSlide(currentIndex - 1);
   startAutoScroll();
 });
 
 next?.addEventListener('click', () => {
   stopAutoScroll();
-  slider.scrollBy({ left: slideWidth(), behavior: 'smooth' });
+  if (currentIndex < slides.length - 1) goToSlide(currentIndex + 1);
   startAutoScroll();
 });
 
-/* --- マウスドラッグ（PC） --- */
-slider.addEventListener('mousedown', e => {
-  isDown = true;
-  slider.classList.add('dragging');
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-  stopAutoScroll();
+/* ===== スクロール検知（ドラッグ・スワイプ） ===== */
+slider.addEventListener('scroll', () => {
+  currentIndex = Math.round(slider.scrollLeft / slideWidth());
+  updateUI();
 });
 
-slider.addEventListener('mouseleave', () => {
-  isDown = false;
-  slider.classList.remove('dragging');
+/* ===== 起動 ===== */
+window.addEventListener('load', () => {
+  updateUI();
   startAutoScroll();
 });
 
-slider.addEventListener('mouseup', () => {
-  isDown = false;
-  slider.classList.remove('dragging');
-  startAutoScroll();
-});
-
-slider.addEventListener('mousemove', e => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 1.4;
-  slider.scrollLeft = scrollLeft - walk;
-});
-
-/* --- タッチ操作（スマホ） --- */
+/* タッチ操作中は自動停止 */
 slider.addEventListener('touchstart', stopAutoScroll, { passive: true });
 slider.addEventListener('touchend', startAutoScroll);
-
-/* --- 初期起動 --- */
-window.addEventListener('load', startAutoScroll);
   
   /* ======================
      お問い合わせフォーム
