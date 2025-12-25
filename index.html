@@ -895,7 +895,19 @@ slider.addEventListener('touchend', startAutoScroll);
       }, 100);
     });
   }
+if (contactBtn && contactForm) {
+  contactBtn.addEventListener('click', e => {
+    e.preventDefault();
+    contactForm.classList.add('show');
 
+    setTimeout(() => {
+      contactForm.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 100);
+  });
+}
 });
 
 /* ======================
