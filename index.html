@@ -141,7 +141,7 @@ header {
 /* --------------- お困りごとありませんか --------------- */
 .overlay-image {
   max-width: 500px;
-  margin: 5px auto -10;
+  margin: 5px auto -10px;
   text-align: center;
 }
 
@@ -157,7 +157,7 @@ header {
 
 .nigate-image {
   max-width: 500px;
-  margin: -10 auto　-10px; /* 上下の余白はここで調整 */
+  margin: -10px auto -10px;
   text-align: center;
 }
 
@@ -241,6 +241,7 @@ header {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   display: flex;
+  margin: 0 auto;
 }
 .slider::-webkit-scrollbar {
   display: none;
@@ -254,6 +255,7 @@ header {
 @media (max-width: 480px) {
   .slider {
     width: 350px;
+    margin: 0 auto;
   }
 }
   .slide {
