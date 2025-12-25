@@ -232,9 +232,14 @@ header {
   margin: 0 auto;
 
   scrollbar-width: none;
+  cursor: grab;
 }
 .slider::-webkit-scrollbar {
   display: none;
+}
+  
+.slider.dragging {
+  cursor: grabbing;
 }
 
 /* スマホ */
@@ -255,7 +260,7 @@ header {
   height: auto;
   display: block;
 }
-  
+
 /* ---------- ボックス ---------- */
 .box-container {
   display: grid;
@@ -771,49 +776,90 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ======================
-     スライダー
-  ====================== */
-  const slider = document.querySelector('.slider');
-  const sliderSection = document.querySelector('.slider-section');
-  const prev = document.querySelector('.slide-arrow.left');
-  const next = document.querySelector('.slide-arrow.right');
+ /* =====================
+   スライダー（自動＋操作OK）
+===================== */
+const slider = document.querySelector('.slider');
+const prev = document.querySelector('.slide-arrow.left');
+const next = document.querySelector('.slide-arrow.right');
 
-  function getSlideWidth() {
-    return slider.clientWidth;
-  }
+let autoScroll;
+let isDown = false;
+let startX;
+let scrollLeft;
 
-  function updateArrows() {
+/* --- スライド幅 --- */
+function slideWidth() {
+  return slider.clientWidth;
+}
+
+/* --- 自動スクロール --- */
+function startAutoScroll() {
+  stopAutoScroll();
+  autoScroll = setInterval(() => {
     const maxScroll = slider.scrollWidth - slider.clientWidth;
 
-    prev.style.opacity = slider.scrollLeft <= 5 ? 0 : 1;
-    prev.style.pointerEvents = slider.scrollLeft <= 5 ? 'none' : 'auto';
+    if (slider.scrollLeft >= maxScroll - 5) {
+      slider.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      slider.scrollBy({ left: slideWidth(), behavior: 'smooth' });
+    }
+  }, 3500);
+}
 
-    next.style.opacity = slider.scrollLeft >= maxScroll - 5 ? 0 : 1;
-    next.style.pointerEvents = slider.scrollLeft >= maxScroll - 5 ? 'none' : 'auto';
-  }
+function stopAutoScroll() {
+  if (autoScroll) clearInterval(autoScroll);
+}
 
-  function updateSliderBackground() {
-    const index = Math.round(slider.scrollLeft / slider.clientWidth);
-    sliderSection.className = 'slider-section bg' + (index + 1);
-  }
+/* --- 矢印操作 --- */
+prev?.addEventListener('click', () => {
+  stopAutoScroll();
+  slider.scrollBy({ left: -slideWidth(), behavior: 'smooth' });
+  startAutoScroll();
+});
 
-  prev.addEventListener('click', () => {
-    slider.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
-  });
+next?.addEventListener('click', () => {
+  stopAutoScroll();
+  slider.scrollBy({ left: slideWidth(), behavior: 'smooth' });
+  startAutoScroll();
+});
 
-  next.addEventListener('click', () => {
-    slider.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
-  });
+/* --- マウスドラッグ（PC） --- */
+slider.addEventListener('mousedown', e => {
+  isDown = true;
+  slider.classList.add('dragging');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+  stopAutoScroll();
+});
 
-  slider.addEventListener('scroll', () => {
-    updateArrows();
-    updateSliderBackground();
-  });
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+  slider.classList.remove('dragging');
+  startAutoScroll();
+});
 
-  updateArrows();
-  updateSliderBackground();
+slider.addEventListener('mouseup', () => {
+  isDown = false;
+  slider.classList.remove('dragging');
+  startAutoScroll();
+});
 
+slider.addEventListener('mousemove', e => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 1.4;
+  slider.scrollLeft = scrollLeft - walk;
+});
+
+/* --- タッチ操作（スマホ） --- */
+slider.addEventListener('touchstart', stopAutoScroll, { passive: true });
+slider.addEventListener('touchend', startAutoScroll);
+
+/* --- 初期起動 --- */
+window.addEventListener('load', startAutoScroll);
+  
   /* ======================
      お問い合わせフォーム
   ====================== */
