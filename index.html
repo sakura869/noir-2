@@ -124,31 +124,28 @@ h2 {
     grid-column: 2;
     justify-self: end;
   }
-
-  /* メニューは最初は隠す */
-.menu {
-  display: none !important;
-  grid-column: 2;          /* ← 右側に固定 */
-  justify-self: end;       /* ← 右寄せ */
-  text-align: left;
-  margin-top: 10px;
-  background: rgba(255,255,255,0.95);
-  padding: 10px 15px;
-  border-radius: 10px;
+  
+  .menu {
+    position: absolute;      /* ← これが核心 */
+    top: 100%;               /* ヘッダーの下端 */
+    right: 12px;             /* ☰の下に来る */
+    display: none !important;
+    grid-column: auto;
+    margin-top: 0;
+    background: none;        /* 白背景なし */
+    padding: 0;
   }
 
-  /* 開いた時だけ表示 */
   .menu.show {
     display: block !important;
   }
 
-.menu a {
-  display: block;
-  margin: 10px 0;
-  font-size: 1.05em;
+  .menu a {
+    display: block;
+    margin: 10px 0;
+    font-size: 1.05em;
+  }
 }
-}
-
 
 /* =================================================
    スライダー全体（外枠）
