@@ -140,15 +140,15 @@ header {
 
 
 /* --------------- スライダー画像 --------------- */
-.slider-section {
-  max-width: 900px;
+  .slider-section {
+  max-width: 520px;     /* ← 画像と同じ幅 */
   margin: 0 auto;
-  background: rgba(255,255,255,0.4);
-  padding: 25px;
+  padding: 0;           /* ← 重要：余白を消す */
   border-radius: 30px;
-  position: relative;
-  overflow: visible;   /* ← ★これ超重要（矢印用） */
-}
+  overflow: hidden;     /* ← 枠からはみ出さない */
+  background: rgba(255,255,255,0.4);
+　}
+
 .slider-section.bg1 { background: #f7f5f0; }
 .slider-section.bg2 { background: #eef4f7; }
 .slider-section.bg3 { background: #f9f0f3; }
@@ -208,12 +208,10 @@ header {
       /* スライダー本体 */
 /* 1枚ずつ表示（PC） */
 .slider {
-  width: 520px;
+  width: 100%;          /* ← 外枠に完全一致 */
+  display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  display: flex;
-  margin: 0 auto;
-  padding: 10px 0;
 }
   /* ===== PC用 スライド ===== */
 .slide {
@@ -222,8 +220,8 @@ header {
   display: flex;
   justify-content: center;
 }
-  .slide img {
-  max-width: 100%;
+ .slide img {
+  width: 100%;
   height: auto;
   display: block;
 }
