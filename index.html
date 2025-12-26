@@ -62,7 +62,7 @@ h2 {
 
 .header-center {
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.7em;
   font-weight: bold;
   color: #9F987D;
   letter-spacing: 0.15em;
@@ -207,13 +207,12 @@ h2 {
   }
 }
 
-      /* スライダー本体 */
-/* 1枚ずつ表示（PC） */
+/* スライダー本体 */
 .slider {
-  width: 100%;          /* ← 外枠に完全一致 */
+  width: 100%;
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  overflow: hidden;          /* ← auto をやめる */
+  transition: transform 0.4s ease; /* ← アニメーション追加 */
 }
   /* ===== PC用 スライド ===== */
 .slide {
