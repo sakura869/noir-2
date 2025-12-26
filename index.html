@@ -727,7 +727,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
   /* ======================
      スライダー
   ====================== */
@@ -736,18 +735,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.querySelector('.slide-arrow.left');
   const nextBtn = document.querySelector('.slide-arrow.right');
 
-  if (slider && slides.length > 0) {
+  if (!slider || slides.length === 0) return;
+
   let index = 0;
 
   function updateSlider() {
     slider.style.transform = `translateX(-${index * 100}%)`;
 
-    // 矢印の表示制御
     if (prevBtn) prevBtn.style.display = index === 0 ? 'none' : 'block';
     if (nextBtn) nextBtn.style.display = index === slides.length - 1 ? 'none' : 'block';
   }
 
-  updateSlider(); // ← 初期状態を反映
+  updateSlider();
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
@@ -766,7 +765,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-}
+
+}); // ← ★★★ これが抜けてた ★★★
+
+
 
 /* ======================
    トグル（ご利用の流れ）
@@ -778,20 +780,15 @@ function toggleContent流れ() {
   if (!content || !arrow) return;
 
   const opening = !content.classList.contains('show');
-
   content.classList.toggle('show');
   arrow.classList.toggle('rotate');
 
   if (opening) {
     setTimeout(() => {
-      content.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      });
+      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 200);
   }
 }
-
 
 /* ======================
    トグル（料金）
@@ -803,16 +800,12 @@ function toggleContent料金() {
   if (!content || !arrow) return;
 
   const opening = !content.classList.contains('show');
-
   content.classList.toggle('show');
   arrow.classList.toggle('rotate');
 
   if (opening) {
     setTimeout(() => {
-      content.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      });
+      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 200);
   }
 }
