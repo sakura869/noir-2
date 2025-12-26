@@ -36,9 +36,15 @@ body {
 header {
   background-color: rgba(169,169,169,0.5);
   padding: 32px 20px;
-  z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+h2 {
+  scroll-margin-top: 120px; /* ヘッダー高さ分 */
+}
+  
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -648,9 +654,8 @@ footer {
       </div>
     </div>
 
-<h2 class="pc-title access-title">アクセス</h2>
-
-<section class="access-section" id="access">
+<h2 class="pc-title access-title" id="access">アクセス</h2>
+<section class="access-section">
   <p class="access-text">
   <span class="zip">〒950-0861</span><br>
   <span class="address">
@@ -827,36 +832,37 @@ slider.addEventListener('touchend', startAutoScroll);
      お問い合わせフォーム
   ====================== */
   const contactLink = document.getElementById('contact-link');
-  const contactForm = document.getElementById('contact-section');
-  const contactBtn = document.getElementById('contact-cta-btn');
+const contactForm = document.getElementById('contact-section');
+const contactBtn = document.getElementById('contact-cta-btn');
+const contactTitle = document.getElementById('contact');
 
-  if (contactLink && contactForm) {
-    contactLink.addEventListener('click', e => {
-      e.preventDefault();
-      contactForm.classList.add('show');
-
-      setTimeout(() => {
-        contactForm.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }, 100);
-    });
-  }
-if (contactBtn && contactForm) {
-  contactBtn.addEventListener('click', e => {
+if (contactLink && contactForm && contactTitle) {
+  contactLink.addEventListener('click', e => {
     e.preventDefault();
     contactForm.classList.add('show');
 
     setTimeout(() => {
-      contactForm.scrollIntoView({
+      contactTitle.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
     }, 100);
   });
 }
-});
+
+if (contactBtn && contactForm && contactTitle) {
+  contactBtn.addEventListener('click', e => {
+    e.preventDefault();
+    contactForm.classList.add('show');
+
+    setTimeout(() => {
+      contactTitle.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 100);
+  });
+}
 
 /* ======================
    トグル（流れ）
