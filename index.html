@@ -179,7 +179,6 @@ h2 {
   cursor: pointer;
 
   opacity: 0;                       /* 初期は非表示 */
-  pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
@@ -715,37 +714,52 @@ document.addEventListener('DOMContentLoaded', () => {
   const slides = document.querySelectorAll('.slide');
   const prevBtn = document.querySelector('.slide-arrow.left');
   const nextBtn = document.querySelector('.slide-arrow.right');
-
-  if (!slider || slides.length === 0) return;
+  const dotsContainer = document.querySelector('.slider-dots');
 
   let index = 0;
 
+  if (!slider || slides.length === 0) return;
+
+  /* ===== ドット生成 ===== */
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => moveSlider(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('button');
+
+  /* ===== スライド移動 ===== */
   function moveSlider(i) {
-    const width = slider.clientWidth;
+    const slideWidth = slides[0].clientWidth;
+
     slider.scrollTo({
-      left: width * i,
+      left: slideWidth * i,
       behavior: 'smooth'
     });
+
+    index = i;
+
+    dots.forEach(d => d.classList.remove('active'));
+    dots[i].classList.add('active');
 
     prevBtn.style.display = i === 0 ? 'none' : 'block';
     nextBtn.style.display = i === slides.length - 1 ? 'none' : 'block';
   }
 
-  moveSlider(index);
+  /* 初期表示 */
+  moveSlider(0);
 
   nextBtn.addEventListener('click', () => {
-    if (index < slides.length - 1) {
-      index++;
-      moveSlider(index);
-    }
+    if (index < slides.length - 1) moveSlider(index + 1);
   });
 
   prevBtn.addEventListener('click', () => {
-    if (index > 0) {
-      index--;
-      moveSlider(index);
-    }
+    if (index > 0) moveSlider(index - 1);
   });
+
+});
 /* ======================
    トグル（ご利用の流れ）
 ====================== */
