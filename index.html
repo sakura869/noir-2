@@ -699,38 +699,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactBtn = document.getElementById('contact-cta-btn');
   const contactTitle = document.getElementById('contact');
 
-  if (contactLink && contactForm && contactTitle) {
-    contactLink.addEventListener('click', e => {
-      e.preventDefault();
-      contactForm.classList.add('show');
-
-      setTimeout(() => {
-        contactTitle.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }, 100);
-    });
+  function openContact() {
+    contactForm.classList.add('show');
+    setTimeout(() => {
+      contactTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   }
 
-  if (contactBtn && contactForm && contactTitle) {
-    contactBtn.addEventListener('click', e => {
-      e.preventDefault();
-      contactForm.classList.add('show');
+  contactLink?.addEventListener('click', e => {
+    e.preventDefault();
+    openContact();
+  });
 
-      setTimeout(() => {
-        contactTitle.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }, 100);
-    });
-  }
-
- document.addEventListener('DOMContentLoaded', () => {
+  contactBtn?.addEventListener('click', e => {
+    e.preventDefault();
+    openContact();
+  });
 
   /* ======================
-     スライダー
+     スライダー（transform方式）
   ====================== */
   const slider = document.querySelector('.slider');
   const slides = document.querySelectorAll('.slide');
@@ -742,26 +729,26 @@ document.addEventListener('DOMContentLoaded', () => {
   let index = 0;
   const total = slides.length;
 
-  // ★ ここが超重要
+  // 横幅をスライド数分にする（超重要）
   slider.style.width = `${total * 100}%`;
 
   function updateSlider() {
     slider.style.transform = `translateX(-${index * (100 / total)}%)`;
 
-    if (prevBtn) prevBtn.style.display = index === 0 ? 'none' : 'block';
-    if (nextBtn) nextBtn.style.display = index === total - 1 ? 'none' : 'block';
+    prevBtn.style.display = index === 0 ? 'none' : 'block';
+    nextBtn.style.display = index === total - 1 ? 'none' : 'block';
   }
 
   updateSlider();
 
-  nextBtn?.addEventListener('click', () => {
+  nextBtn.addEventListener('click', () => {
     if (index < total - 1) {
       index++;
       updateSlider();
     }
   });
 
-  prevBtn?.addEventListener('click', () => {
+  prevBtn.addEventListener('click', () => {
     if (index > 0) {
       index--;
       updateSlider();
@@ -788,7 +775,6 @@ function toggleContent流れ() {
     }, 200);
   }
 }
-
 /* ======================
    トグル（料金）
 ====================== */
