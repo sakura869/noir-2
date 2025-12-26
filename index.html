@@ -693,184 +693,84 @@ footer {
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ======================
-     ハンバーガーメニュー
-  ====================== */
-  const menu = document.getElementById('menu');
-  const menuToggle = document.getElementById('menu-toggle');
-  const menuLinks = document.querySelectorAll('.menu a');
-
-  menuToggle.addEventListener('click', () => {
-    menu.classList.toggle('show');
-  });
-
-  menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('show');
-    });
-  });
-
-  /* ======================
-     メニュー内アンカー移動
-  ====================== */
-  menuLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      const href = link.getAttribute('href');
-
-      if (!href || !href.startsWith('#')) return;
-
-      e.preventDefault();
-
-      const target = document.querySelector(href);
-      if (!target) return;
-
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-
-      // スマホならトグル自動オープン
-      if (window.innerWidth <= 480) {
-        if (href === '#flow') toggleContent流れ();
-        if (href === '#price') toggleContent料金();
-      }
-    });
-  });
-
- /* =====================
-   スライダー（自動＋操作OK）
-===================== */
-const slider = document.querySelector('.slider');
-const slides = document.querySelectorAll('.slide');
-const prev = document.querySelector('.slide-arrow.left');
-const next = document.querySelector('.slide-arrow.right');
-const dotsContainer = document.querySelector('.slider-dots');
-
-let autoScroll;
-let currentIndex = 0;
-
-/* ===== スライド幅 ===== */
-function slideWidth() {
-  return slider.clientWidth;
-}
-
-/* ===== ドット生成 ===== */
-slides.forEach((_, i) => {
-  const dot = document.createElement('button');
-  if (i === 0) dot.classList.add('active');
-  dot.addEventListener('click', () => {
-    stopAutoScroll();
-    goToSlide(i);
-    startAutoScroll();
-  });
-  dotsContainer.appendChild(dot);
-});
-
-/* ===== 状態更新 ===== */
-function updateUI() {
-  const dots = dotsContainer.querySelectorAll('button');
-  dots.forEach(d => d.classList.remove('active'));
-  dots[currentIndex]?.classList.add('active');
-
-  // 矢印制御
-  if (prev) prev.style.display = currentIndex === 0 ? 'none' : 'block';
-  if (next) next.style.display = currentIndex === slides.length - 1 ? 'none' : 'block';
-}
-
-/* ===== 移動 ===== */
-function goToSlide(index) {
-  currentIndex = index;
-  slider.scrollTo({
-    left: slideWidth() * index,
-    behavior: 'smooth'
-  });
-  updateUI();
-}
-
-/* ===== 自動スライド ===== */
-function startAutoScroll() {
-  stopAutoScroll();
-  autoScroll = setInterval(() => {
-    currentIndex =
-      currentIndex >= slides.length - 1 ? 0 : currentIndex + 1;
-    goToSlide(currentIndex);
-  }, 6500);
-}
-
-function stopAutoScroll() {
-  if (autoScroll) clearInterval(autoScroll);
-}
-
-/* ===== 矢印操作 ===== */
-prev?.addEventListener('click', () => {
-  stopAutoScroll();
-  if (currentIndex > 0) goToSlide(currentIndex - 1);
-  startAutoScroll();
-});
-
-next?.addEventListener('click', () => {
-  stopAutoScroll();
-  if (currentIndex < slides.length - 1) goToSlide(currentIndex + 1);
-  startAutoScroll();
-});
-
-/* ===== スクロール検知（ドラッグ・スワイプ） ===== */
-slider.addEventListener('scroll', () => {
-  currentIndex = Math.round(slider.scrollLeft / slideWidth());
-  updateUI();
-});
-
-/* ===== 起動 ===== */
-window.addEventListener('load', () => {
-  updateUI();
-  startAutoScroll();
-});
-
-/* タッチ操作中は自動停止 */
-slider.addEventListener('touchstart', stopAutoScroll, { passive: true });
-slider.addEventListener('touchend', startAutoScroll);
-  
-  /* ======================
-     お問い合わせフォーム
+     お問い合わせ表示＆スクロール
   ====================== */
   const contactLink = document.getElementById('contact-link');
-const contactForm = document.getElementById('contact-section');
-const contactBtn = document.getElementById('contact-cta-btn');
-const contactTitle = document.getElementById('contact');
+  const contactForm = document.getElementById('contact-section');
+  const contactBtn = document.getElementById('contact-cta-btn');
+  const contactTitle = document.getElementById('contact');
 
-if (contactLink && contactForm && contactTitle) {
-  contactLink.addEventListener('click', e => {
-    e.preventDefault();
-    contactForm.classList.add('show');
+  if (contactLink && contactForm && contactTitle) {
+    contactLink.addEventListener('click', e => {
+      e.preventDefault();
+      contactForm.classList.add('show');
 
-    setTimeout(() => {
-      contactTitle.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+      setTimeout(() => {
+        contactTitle.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
+    });
+  }
+
+  if (contactBtn && contactForm && contactTitle) {
+    contactBtn.addEventListener('click', e => {
+      e.preventDefault();
+      contactForm.classList.add('show');
+
+      setTimeout(() => {
+        contactTitle.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
+    });
+  }
+
+
+  /* ======================
+     スライダー
+  ====================== */
+  const slider = document.querySelector('.slider');
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.querySelector('.slide-arrow.left');
+  const nextBtn = document.querySelector('.slide-arrow.right');
+
+  if (slider && slides.length > 0) {
+    let index = 0;
+
+    function updateSlider() {
+      slider.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        index = (index + 1) % slides.length;
+        updateSlider();
       });
-    }, 100);
-  });
-}
+    }
 
-if (contactBtn && contactForm && contactTitle) {
-  contactBtn.addEventListener('click', e => {
-    e.preventDefault();
-    contactForm.classList.add('show');
-
-    setTimeout(() => {
-      contactTitle.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        index = (index - 1 + slides.length) % slides.length;
+        updateSlider();
       });
-    }, 100);
-  });
-}
+    }
+  }
+
+}); // ← DOMContentLoaded 終了（超重要）
+
+
 
 /* ======================
-   トグル（流れ）
+   トグル（ご利用の流れ）
 ====================== */
 function toggleContent流れ() {
   const content = document.getElementById('content流れ');
   const arrow = document.querySelector('.arrow流れ');
+
+  if (!content || !arrow) return;
 
   const opening = !content.classList.contains('show');
 
@@ -879,10 +779,14 @@ function toggleContent流れ() {
 
   if (opening) {
     setTimeout(() => {
-      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      content.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
     }, 200);
   }
 }
+
 
 /* ======================
    トグル（料金）
@@ -891,6 +795,8 @@ function toggleContent料金() {
   const content = document.getElementById('content料金');
   const arrow = document.querySelector('.arrow料金');
 
+  if (!content || !arrow) return;
+
   const opening = !content.classList.contains('show');
 
   content.classList.toggle('show');
@@ -898,7 +804,10 @@ function toggleContent料金() {
 
   if (opening) {
     setTimeout(() => {
-      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      content.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
     }, 200);
   }
 }
