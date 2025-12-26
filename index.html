@@ -127,15 +127,18 @@ h2 {
   
   .menu {
     position: absolute;
-    top: 100%;                 /* ヘッダーの真下 */
-    left: 0;
-    width: 100%;               /* 横いっぱい */
+    top: 100%;              /* ヘッダー直下 */
+    right: 10px;            /* ← 右に寄せる */
+    width: 70%;             /* ← 横幅を絞る */
+    max-width: 260px;       /* ← 大きくなりすぎ防止 */
+
     display: none !important;
 
-    background: rgba(169,169,169,0.9); /* ← 今の色合いに合わせる */
-    padding: 15px 20px;
+    background: rgba(169,169,169,0.9);
+    padding: 14px 16px;
+    border-radius: 12px;
 
-    text-align: center;
+    text-align: left;       /* ← 右寄せでも文字は左 */
   }
 
   .menu.show {
@@ -144,13 +147,13 @@ h2 {
 
   .menu a {
     display: block;
-    padding: 12px 0;
-    font-size: 1.1em;
+    padding: 10px 0;
+    font-size: 1.05em;
     color: #fff;
   }
 
   .menu a:not(:last-child) {
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.25);
   }
 }
 
