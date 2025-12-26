@@ -382,14 +382,14 @@ h2 {
     transform: scaleX(1.5);
   }
 
-  .arrow流れ,
-.arrow料金 {
+ .arrow流れ,
+ .arrow料金 {
   font-family: 'Arial', sans-serif;
 }
 
   /* 中身はトグル */
  .content流れ,
-.content料金 {
+ .content料金 {
   display: none;
   opacity: 0;
   transform: translateY(20px);
@@ -737,30 +737,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.querySelector('.slide-arrow.right');
 
   if (slider && slides.length > 0) {
-    let index = 0;
+  let index = 0;
 
-    function updateSlider() {
-      slider.style.transform = `translateX(-${index * 100}%)`;
-    }
+  function updateSlider() {
+    slider.style.transform = `translateX(-${index * 100}%)`;
 
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        index = (index + 1) % slides.length;
-        updateSlider();
-      });
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        index = (index - 1 + slides.length) % slides.length;
-        updateSlider();
-      });
-    }
+    // 矢印の表示制御
+    if (prevBtn) prevBtn.style.display = index === 0 ? 'none' : 'block';
+    if (nextBtn) nextBtn.style.display = index === slides.length - 1 ? 'none' : 'block';
   }
 
-}); // ← DOMContentLoaded 終了（超重要）
+  updateSlider(); // ← 初期状態を反映
 
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (index < slides.length - 1) {
+        index++;
+        updateSlider();
+      }
+    });
+  }
 
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (index > 0) {
+        index--;
+        updateSlider();
+      }
+    });
+  }
+}
 
 /* ======================
    トグル（ご利用の流れ）
