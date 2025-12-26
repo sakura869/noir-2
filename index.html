@@ -457,6 +457,11 @@ h2 {
   font-size: 1.3em;
 }
 
+@media (max-width: 480px) {
+.access-text {
+  font-size: 1em;
+}
+  
 .access-text::before {
   content: "📍";
   position: absolute;
@@ -468,7 +473,11 @@ h2 {
 .zip {
   font-size: 1em;   /* 郵便番号小さめ */
 }
-
+  
+@media (max-width: 480px) {
+  font-size: 0.8em;
+}
+  
 .address {
   line-height: 1.3;    /* 行間詰め */
 }
