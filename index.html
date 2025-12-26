@@ -211,16 +211,16 @@ h2 {
 .slider {
   width: 100%;
   display: flex;
-  overflow: hidden;          /* ← auto をやめる */
-  transition: transform 0.4s ease; /* ← アニメーション追加 */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
-  /* ===== PC用 スライド ===== */
+
 .slide {
   flex: 0 0 100%;
   scroll-snap-align: center;
-  display: flex;
-  justify-content: center;
 }
+
  .slide img {
   width: 100%;
   height: auto;
@@ -246,12 +246,9 @@ h2 {
 
   /* 外側ラッパー */
   .slider-wrapper {
-    max-width: none;
-    width: 100vw;          /* 画面幅いっぱい */
-    margin: 0;
-    border-radius: 0;      /* 角丸なし */
-    overflow: hidden;
-  }
+  width: 100%;
+  overflow: hidden;
+}
 
   /* スライダー本体 */
   .slider {
@@ -717,7 +714,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ======================
-     スライダー（transform方式）
+     スライダー（scroll方式）
   ====================== */
   const slider = document.querySelector('.slider');
   const slides = document.querySelectorAll('.slide');
@@ -727,35 +724,33 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!slider || slides.length === 0) return;
 
   let index = 0;
-  const total = slides.length;
 
-  // 横幅をスライド数分にする（超重要）
-  slider.style.width = `${total * 100}%`;
+  function moveSlider(i) {
+    const width = slider.clientWidth;
+    slider.scrollTo({
+      left: width * i,
+      behavior: 'smooth'
+    });
 
-  function updateSlider() {
-    slider.style.transform = `translateX(-${index * (100 / total)}%)`;
-
-    prevBtn.style.display = index === 0 ? 'none' : 'block';
-    nextBtn.style.display = index === total - 1 ? 'none' : 'block';
+    prevBtn.style.display = i === 0 ? 'none' : 'block';
+    nextBtn.style.display = i === slides.length - 1 ? 'none' : 'block';
   }
 
-  updateSlider();
+  moveSlider(index);
 
   nextBtn.addEventListener('click', () => {
-    if (index < total - 1) {
+    if (index < slides.length - 1) {
       index++;
-      updateSlider();
+      moveSlider(index);
     }
   });
 
   prevBtn.addEventListener('click', () => {
     if (index > 0) {
       index--;
-      updateSlider();
+      moveSlider(index);
     }
   });
-
-});
 /* ======================
    トグル（ご利用の流れ）
 ====================== */
