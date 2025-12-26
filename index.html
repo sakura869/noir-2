@@ -126,11 +126,15 @@ h2 {
   }
 
   /* メニューは最初は隠す */
-  .menu {
-    display: none !important;
-    grid-column: 1 / -1;
-    text-align: left;
-    margin-top: 10px;
+.menu {
+  display: none !important;
+  grid-column: 2;          /* ← 右側に固定 */
+  justify-self: end;       /* ← 右寄せ */
+  text-align: left;
+  margin-top: 10px;
+  background: rgba(255,255,255,0.95);
+  padding: 10px 15px;
+  border-radius: 10px;
   }
 
   /* 開いた時だけ表示 */
