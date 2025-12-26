@@ -727,6 +727,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+ document.addEventListener('DOMContentLoaded', () => {
+
   /* ======================
      スライダー
   ====================== */
@@ -738,38 +740,35 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!slider || slides.length === 0) return;
 
   let index = 0;
+  const total = slides.length;
+
+  // ★ ここが超重要
+  slider.style.width = `${total * 100}%`;
 
   function updateSlider() {
-    slider.style.transform = `translateX(-${index * 100}%)`;
+    slider.style.transform = `translateX(-${index * (100 / total)}%)`;
 
     if (prevBtn) prevBtn.style.display = index === 0 ? 'none' : 'block';
-    if (nextBtn) nextBtn.style.display = index === slides.length - 1 ? 'none' : 'block';
+    if (nextBtn) nextBtn.style.display = index === total - 1 ? 'none' : 'block';
   }
 
   updateSlider();
 
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      if (index < slides.length - 1) {
-        index++;
-        updateSlider();
-      }
-    });
-  }
+  nextBtn?.addEventListener('click', () => {
+    if (index < total - 1) {
+      index++;
+      updateSlider();
+    }
+  });
 
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      if (index > 0) {
-        index--;
-        updateSlider();
-      }
-    });
-  }
+  prevBtn?.addEventListener('click', () => {
+    if (index > 0) {
+      index--;
+      updateSlider();
+    }
+  });
 
-}); // ← ★★★ これが抜けてた ★★★
-
-
-
+});
 /* ======================
    トグル（ご利用の流れ）
 ====================== */
