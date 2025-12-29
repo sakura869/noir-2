@@ -785,34 +785,59 @@ menuToggle.addEventListener('click', () => {
 
   const dots = dotsContainer.querySelectorAll('button');
 
-  /* ===== スライド移動 ===== */
-  function moveSlider(i) {
-    const slideWidth = slides[0].clientWidth;
+/* ======================
+   スライダー（PCのみ）
+====================== */
+const pcSliderSection = document.querySelector('.slider-section.pc-only');
+if (!pcSliderSection) return;
 
-    slider.scrollTo({
-      left: slideWidth * i,
-      behavior: 'smooth'
-    });
+const slider = pcSliderSection.querySelector('.slider');
+const slides = pcSliderSection.querySelectorAll('.slide');
+const prevBtn = pcSliderSection.querySelector('.slide-arrow.left');
+const nextBtn = pcSliderSection.querySelector('.slide-arrow.right');
+const dotsContainer = document.querySelector('.slider-dots');
 
-    index = i;
+let index = 0;
 
-    dots.forEach(d => d.classList.remove('active'));
-    dots[i].classList.add('active');
+/* ドット初期化 */
+dotsContainer.innerHTML = '';
 
-    prevBtn.style.display = i === 0 ? 'none' : 'block';
-    nextBtn.style.display = i === slides.length - 1 ? 'none' : 'block';
-  }
+slides.forEach((_, i) => {
+  const dot = document.createElement('button');
+  if (i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => moveSlider(i));
+  dotsContainer.appendChild(dot);
+});
 
-  /* 初期表示 */
-  moveSlider(0);
+const dots = dotsContainer.querySelectorAll('button');
 
-  nextBtn.addEventListener('click', () => {
-    if (index < slides.length - 1) moveSlider(index + 1);
+function moveSlider(i) {
+  const slideWidth = slides[0].clientWidth;
+
+  slider.scrollTo({
+    left: slideWidth * i,
+    behavior: 'smooth'
   });
 
-  prevBtn.addEventListener('click', () => {
-    if (index > 0) moveSlider(index - 1);
-  });
+  index = i;
+
+  dots.forEach(d => d.classList.remove('active'));
+  dots[i].classList.add('active');
+
+  prevBtn.style.display = i === 0 ? 'none' : 'block';
+  nextBtn.style.display = i === slides.length - 1 ? 'none' : 'block';
+}
+
+/* 初期表示 */
+moveSlider(0);
+
+nextBtn.addEventListener('click', () => {
+  if (index < slides.length - 1) moveSlider(index + 1);
+});
+
+prevBtn.addEventListener('click', () => {
+  if (index > 0) moveSlider(index - 1);
+});
 
 });
 /* ======================
