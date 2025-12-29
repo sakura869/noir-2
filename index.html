@@ -648,6 +648,8 @@ footer {
       <div class="slide"><img src="生活面での不安や.png"></div>
     </div>
   </div>
+  
+  <div class="slider-dots"></div>
 
   <button class="slide-arrow right">〉</button>
 </div>
@@ -665,8 +667,10 @@ footer {
     </div>
   </div>
 </div>
-  
-<div class="slider-dots"></div>
+
+  <!-- ★スマホ用ドット -->
+  <div class="slider-dots sp-dots"></div>
+</div>
  
  <div class="toggle-container流れ" id="flow">
   <h2 class="pc-title">ご利用開始までの流れ</h2>
@@ -831,6 +835,52 @@ slider.addEventListener('scroll', () => {
     nextBtn.style.display = index === slides.length - 1 ? 'none' : 'block';
   }
 });
+
+/* ======================
+   スライダー（スマホ）
+====================== */
+const spSliderSection = document.querySelector('.slider-section.sp-only');
+if (spSliderSection) {
+
+  const slider = spSliderSection.querySelector('.slider');
+  const slides = spSliderSection.querySelectorAll('.slide');
+  const dotsContainer = spSliderSection.querySelector('.sp-dots');
+
+  let index = 0;
+  dotsContainer.innerHTML = '';
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => moveSlider(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('button');
+
+  function moveSlider(i) {
+    const slideWidth = slides[0].clientWidth;
+    slider.scrollTo({
+      left: slideWidth * i,
+      behavior: 'smooth'
+    });
+
+    index = i;
+    dots.forEach(d => d.classList.remove('active'));
+    if (dots[i]) dots[i].classList.add('active');
+  }
+
+  slider.addEventListener('scroll', () => {
+    const slideWidth = slides[0].clientWidth;
+    const newIndex = Math.round(slider.scrollLeft / slideWidth);
+
+    if (newIndex !== index) {
+      index = newIndex;
+      dots.forEach(d => d.classList.remove('active'));
+      if (dots[index]) dots[index].classList.add('active');
+    }
+  });
+}
 
 /* ======================
    トグル（流れ）
