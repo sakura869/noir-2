@@ -170,6 +170,14 @@ h2 {
   position: relative;
 }
 
+  /* 表示切り替え */
+.pc-only { display: block; }
+.sp-only { display: none; }
+
+@media (max-width: 480px) {
+  .pc-only { display: none; }
+  .sp-only { display: block; }
+}
 
 /* =================================================
    矢印ボタン（PCのみ表示）
@@ -627,20 +635,35 @@ footer {
   </div>
 </header>
   
-<div class="slider-section">
- <button class="slide-arrow left">〈</button>
+<!-- ===== PC用スライダー ===== -->
+<div class="slider-section pc-only">
+  <button class="slide-arrow left">〈</button>
 
   <div class="slider-wrapper">
     <div class="slider">
-      <div class="slide bg1"><img src="お困りごと.png"></div>
-      <div class="slide bg2"><img src="ノワールの得意なこと.png"></div>
-      <div class="slide bg3"><img src="多様な専門職が在籍.png"></div>
-      <div class="slide bg4"><img src="支援の内容.png"></div>
-      <div class="slide bg5"><img src="生活面での不安や.png"></div>
+      <div class="slide"><img src="pc_お困りごと.png"></div>
+      <div class="slide"><img src="pc_ノワールの得意なこと.png"></div>
+      <div class="slide"><img src="pc_多様な専門職が在籍.png"></div>
+      <div class="slide"><img src="pc_支援の内容.png"></div>
+      <div class="slide"><img src="pc_生活面での不安や.png"></div>
     </div>
   </div>
 
-<button class="slide-arrow right">〉</button>
+  <button class="slide-arrow right">〉</button>
+</div>
+
+<!-- ===== スマホ用スライダー ===== -->
+<div class="slider-section sp-only">
+  <div class="slider-wrapper">
+    <div class="slider">
+      <div class="slide"><img src="sp_お困りごとスマホ.png"></div>
+      <div class="slide"><img src="sp_ノワールの得意なことスマホ.png"></div>
+      <div class="slide"><img src="sp_支援の内容スマホ1.png"></div>
+      <div class="slide"><img src="sp_支援の内容スマホ2.png"></div>
+      <div class="slide"><img src="sp_多様な専門職が在籍スマホ.png"></div>
+      <div class="slide"><img src="sp_生活面での不安やスマホ.png"></div>
+    </div>
+  </div>
 </div>
   
 <div class="slider-dots"></div>
