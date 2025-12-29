@@ -737,45 +737,47 @@ menuToggle.addEventListener('click', () => {
   menu.classList.toggle('show');
 });
 
-  /* ======================
-     お問い合わせ表示＆スクロール
-  ====================== */
-  const contactLink = document.getElementById('contact-link');
-  const contactForm = document.getElementById('contact-section');
-  const contactBtn = document.getElementById('contact-cta-btn');
-  const contactTitle = document.getElementById('contact');
+/* ======================
+   お問い合わせ表示
+====================== */
+const contactLink = document.getElementById('contact-link');
+const contactForm = document.getElementById('contact-section');
+const contactBtn = document.getElementById('contact-cta-btn');
+const contactTitle = document.getElementById('contact');
 
-  function openContact() {
-    contactForm.classList.add('show');
-    setTimeout(() => {
-      contactTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  }
+function openContact() {
+  contactForm.classList.add('show');
+  setTimeout(() => {
+    contactTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
 
-  contactLink?.addEventListener('click', e => {
-    e.preventDefault();
-    openContact();
-  });
+contactLink?.addEventListener('click', e => {
+  e.preventDefault();
+  openContact();
+});
 
-  contactBtn?.addEventListener('click', e => {
-    e.preventDefault();
-    openContact();
-  });
+contactBtn?.addEventListener('click', e => {
+  e.preventDefault();
+  openContact();
+});
 
-  /* ======================
-     スライダー（scroll方式）
-  ====================== */
-  const slider = document.querySelector('.slider');
-  const slides = document.querySelectorAll('.slide');
-  const prevBtn = document.querySelector('.slide-arrow.left');
-  const nextBtn = document.querySelector('.slide-arrow.right');
+/* ======================
+   スライダー（PCのみ）
+====================== */
+const pcSliderSection = document.querySelector('.slider-section.pc-only');
+if (pcSliderSection) {
+
+  const slider = pcSliderSection.querySelector('.slider');
+  const slides = pcSliderSection.querySelectorAll('.slide');
+  const prevBtn = pcSliderSection.querySelector('.slide-arrow.left');
+  const nextBtn = pcSliderSection.querySelector('.slide-arrow.right');
   const dotsContainer = document.querySelector('.slider-dots');
 
   let index = 0;
 
-  if (!slider || slides.length === 0) return;
+  dotsContainer.innerHTML = '';
 
-  /* ===== ドット生成 ===== */
   slides.forEach((_, i) => {
     const dot = document.createElement('button');
     if (i === 0) dot.classList.add('active');
@@ -785,64 +787,36 @@ menuToggle.addEventListener('click', () => {
 
   const dots = dotsContainer.querySelectorAll('button');
 
-/* ======================
-   スライダー（PCのみ）
-====================== */
-const pcSliderSection = document.querySelector('.slider-section.pc-only');
-if (!pcSliderSection) return;
+  function moveSlider(i) {
+    const slideWidth = slides[0].clientWidth;
+    slider.scrollTo({
+      left: slideWidth * i,
+      behavior: 'smooth'
+    });
 
-const slider = pcSliderSection.querySelector('.slider');
-const slides = pcSliderSection.querySelectorAll('.slide');
-const prevBtn = pcSliderSection.querySelector('.slide-arrow.left');
-const nextBtn = pcSliderSection.querySelector('.slide-arrow.right');
-const dotsContainer = document.querySelector('.slider-dots');
+    index = i;
+    dots.forEach(d => d.classList.remove('active'));
+    dots[i].classList.add('active');
 
-let index = 0;
+    prevBtn.style.display = i === 0 ? 'none' : 'block';
+    nextBtn.style.display = i === slides.length - 1 ? 'none' : 'block';
+  }
 
-/* ドット初期化 */
-dotsContainer.innerHTML = '';
+  moveSlider(0);
 
-slides.forEach((_, i) => {
-  const dot = document.createElement('button');
-  if (i === 0) dot.classList.add('active');
-  dot.addEventListener('click', () => moveSlider(i));
-  dotsContainer.appendChild(dot);
-});
-
-const dots = dotsContainer.querySelectorAll('button');
-
-function moveSlider(i) {
-  const slideWidth = slides[0].clientWidth;
-
-  slider.scrollTo({
-    left: slideWidth * i,
-    behavior: 'smooth'
+  nextBtn.addEventListener('click', () => {
+    if (index < slides.length - 1) moveSlider(index + 1);
   });
 
-  index = i;
-
-  dots.forEach(d => d.classList.remove('active'));
-  dots[i].classList.add('active');
-
-  prevBtn.style.display = i === 0 ? 'none' : 'block';
-  nextBtn.style.display = i === slides.length - 1 ? 'none' : 'block';
+  prevBtn.addEventListener('click', () => {
+    if (index > 0) moveSlider(index - 1);
+  });
 }
 
-/* 初期表示 */
-moveSlider(0);
-
-nextBtn.addEventListener('click', () => {
-  if (index < slides.length - 1) moveSlider(index + 1);
-});
-
-prevBtn.addEventListener('click', () => {
-  if (index > 0) moveSlider(index - 1);
-});
-
 /* ======================
-   トグル（ご利用の流れ）
+   トグル（流れ）
 ====================== */
-function toggleContent流れ() {
+window.toggleContent流れ = function () {
   const content = document.getElementById('content流れ');
   const arrow = document.querySelector('.arrow流れ');
 
@@ -857,11 +831,12 @@ function toggleContent流れ() {
       content.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 200);
   }
-}
+};
+
 /* ======================
    トグル（料金）
 ====================== */
-function toggleContent料金() {
+window.toggleContent料金 = function () {
   const content = document.getElementById('content料金');
   const arrow = document.querySelector('.arrow料金');
 
@@ -876,7 +851,9 @@ function toggleContent料金() {
       content.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 200);
   }
-}
+};
+
+});
 </script>
 
 </body>
