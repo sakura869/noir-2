@@ -544,6 +544,27 @@ h2 {
 }
 
 /* ------------------ お問い合わせ ------------------ */
+.contact-title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.8em;
+  margin: 80px 0 20px;
+  position: relative;
+  display: block;
+}
+
+.contact-title::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  bottom: 6px;
+  width: 100%;
+  height: 0.6em;
+  background: rgba(169,169,169,0.25);
+  z-index: -1;
+  border-radius: 8px;
+}
+  
 .contact-cta {
   text-align: center;
   margin: 50px 0 70px;
@@ -704,7 +725,7 @@ footer {
       </div>
     </div>
 
-<h2 class="pc-title access-title" id="access">アクセス</h2>
+<h2 class="access-title" id="access">アクセス</h2>
 <section class="access-section">
   <p class="access-text">
   <span class="zip">〒950-0861</span><br>
@@ -721,7 +742,7 @@ footer {
   </div>
 </section>
 
-<h2 class="pc-title contact-title" id="contact">お問い合わせ</h2>
+<h2 class="contact-title" id="contact">お問い合わせ</h2>
 
   <div class="contact-cta">
   <a href="#" id="contact-cta-btn">お問い合わせはこちら</a>
