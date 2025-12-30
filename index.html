@@ -819,25 +819,6 @@ if (pcSliderSection) {
     if (index > 0) moveSlider(index - 1);
   });
 }
-/* ======================
-   スクロール時にドット連動
-====================== */
-slider.addEventListener('scroll', () => {
-  const slideWidth = slides[0].clientWidth;
-  const newIndex = Math.round(slider.scrollLeft / slideWidth);
-
-  if (newIndex !== index) {
-    index = newIndex;
-
-    dots.forEach(d => d.classList.remove('active'));
-    if (dots[index]) {
-      dots[index].classList.add('active');
-    }
-
-    prevBtn.style.display = index === 0 ? 'none' : 'block';
-    nextBtn.style.display = index === slides.length - 1 ? 'none' : 'block';
-  }
-});
 
 /* ======================
    スライダー（スマホ）
