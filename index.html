@@ -460,16 +460,17 @@ h2 {
 
 /* タイトル（ご利用料金と揃える） */
 .access-title {
-  width: 100%;
   text-align: center;
-  font-size: 1.8em;
   margin: 80px 0 10px;
-  position: relative;
-  display: inline-block;
 }
 
-/* タイトル用マーカー */
-.access-title::before {
+.access-title span {
+  position: relative;
+  display: inline-block;
+  font-size: 1.8em;
+}
+
+.access-title span::before {
   content: "";
   position: absolute;
   left: -25px;
@@ -725,7 +726,9 @@ footer {
       </div>
     </div>
 
-<h2 class="access-title" id="access">アクセス</h2>
+<h2 class="access-title" id="access">
+  <span>アクセス</span>
+</h2>
 <section class="access-section">
   <p class="access-text">
   <span class="zip">〒950-0861</span><br>
