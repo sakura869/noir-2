@@ -312,13 +312,13 @@ h2 {
    トグル（PC基準）
 =============================== */
 
-/* PC：ボタンは使わない */
-.toggle-container流れ,
-.toggle-container料金 {
-  display: block;
+/* PC：ボタンだけ消す */
+.toggle-button流れ,
+.toggle-button料金 {
+  display: none;
 }
 
-/* PC：中身は最初から表示 */
+/* PC：中身は常に表示 */
 .content流れ,
 .content料金 {
   display: block;
@@ -326,13 +326,6 @@ h2 {
   transform: none;
   filter: none;
   text-align: center;
-}
-
-/* 画像 */
-.content流れ img,
-.content料金 img {
-  width: 100%;
-  max-width: 100%;
 }
 
 /* ===============================
