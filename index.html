@@ -1,253 +1,147 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="新潟市にある発達支援ノワールは、放課後等デイサービス・児童発達支援を行っています。専門職が連携し、お子様に合わせた支援を提供します。">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="新潟市にある発達支援ノワールは、放課後等デイサービス・児童発達支援を行っています。">
 
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+<title>発達支援ノワール</title>
 
-  <title>発達支援ノワール - 新潟市の放課後等デイサービス・児童発達支援</title>
+<!-- フォント -->
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Kiwi+Maru&display=swap" rel="stylesheet">
 
 <style>
-/* ------------------ 共通 ------------------ */
+/* =================================================
+   共通
+================================================= */
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-  background-color: #fff;
-  color: #9F987D;
   margin: 0;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color: #9F987D;
+  background: #fff;
 }
-   .background-image {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("がぞー.png");
-        background-size: cover;
-        background-position: center;
-        z-index: -1; opacity: 0.5;
-      }
 
-/* ------------------ ヘッダー ------------------ */
+.background-image {
+  position: fixed;
+  inset: 0;
+  background: url("がぞー.png") center / cover no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* =================================================
+   ヘッダー
+================================================= */
 header {
-  background-color: rgba(169,169,169,0.5);
-  padding: 32px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: rgba(169,169,169,0.5);
+  padding: 20px;
 }
 
-h2 {
-  scroll-margin-top: 120px; /* ヘッダー高さ分 */
-}
-  
 .header-inner {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: auto;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
 }
 
-/* ロゴ・メニュー文字 */
-.logo,
-.menu a {
-  color: #fff;
+.logo {
   font-family: 'Kiwi Maru', cursive;
+  color: #fff;
 }
 
 .header-center {
-  font-family: 'Kiwi Maru', cursive;
   text-align: center;
+  font-family: 'Kiwi Maru', cursive;
   font-size: 1.7em;
-  font-weight: bold;
   color: #675340;
-  letter-spacing: 0.15em;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  
+  letter-spacing: .15em;
+  text-shadow: 0 2px 6px rgba(0,0,0,.15);
 }
 
-/* ===== メニュー ===== */
+/* メニュー */
 .menu {
-  display: flex;               /* ← PCでは横並び */
-  justify-content: flex-end;
+  display: flex;
 }
 
 .menu a {
   margin-left: 20px;
+  color: #fff;
   text-decoration: none;
-  font-size: 0.95em;
 }
 
-.menu a:hover {
-  opacity: 0.7;
-}
-
-/* ===== ハンバーガー ===== */
 .menu-toggle {
-  display: none;               /* PCでは非表示 */
+  display: none;
   font-size: 26px;
   background: none;
   border: none;
   color: #fff;
-  cursor: pointer;
 }
 
-/* ================= スマホ ================= */
-@media (max-width: 480px) {
-
-  header {
-    padding: 12px;
-  }
+/* スマホ */
+@media (max-width:480px) {
+  header { padding: 12px; }
 
   .header-inner {
     grid-template-columns: 1fr auto;
-    align-items: center;
   }
 
-  /* 会社名・サービス名は左揃え */
-  .logo,
-  .header-center {
-    grid-column: 1;
-    text-align: left;
-  }
+  .header-center { text-align: left; font-size: 1.2em; }
 
-  .header-center {
-    font-size: 1.2em;
-    line-height: 1.3;
-  }
+  .menu-toggle { display: block; }
 
-  /* ☰ は常に右 */
-  .menu-toggle {
-    display: block;
-    grid-column: 2;
-    justify-self: end;
-  }
-  
   .menu {
     position: absolute;
     top: 100%;
-    right: 0;               /* ← さらに右にピタッ */
-      width: 40%;             /* ←少し細め */
+    right: 0;
+    width: 40%;
     max-width: 240px;
-
-    display: none !important;
-
-    background: rgba(169,169,169,0.9);
-    padding: 14px 16px;
-
-    border-radius: 0;       /* ← 角丸なし */
-    text-align: left;
+    display: none;
+    flex-direction: column;
+    background: rgba(169,169,169,.9);
+    padding: 14px;
   }
 
-  .menu.show {
-    display: block !important;
-  }
+  .menu.show { display: block; }
 
   .menu a {
-    display: block;
     padding: 10px 0;
-    font-size: 1.05em;
-    color: #fff;
-  }
-
-  .menu a:not(:last-child) {
-    border-bottom: 1px solid rgba(255,255,255,0.25);
+    border-bottom: 1px solid rgba(255,255,255,.25);
   }
 }
 
 /* =================================================
-   スライダー全体（外枠）
+   スライダー共通
 ================================================= */
+.pc-only { display:block; }
+.sp-only { display:none; }
+
+@media (max-width:480px){
+  .pc-only { display:none; }
+  .sp-only { display:block; }
+}
+
 .slider-section {
-  max-width: 920px;                 /* 画像幅に合わせる */
-  margin: 15px auto 0;
-  padding-bottom: 26px;
-  overflow: hidden;                 /* はみ出し防止 */
-  background: rgba(255,255,255,0);
+  max-width: 920px;
+  margin: 20px auto;
   position: relative;
-}
-
-  /* 表示切り替え */
-.pc-only { display: block; }
-.sp-only { display: none; }
-
-@media (max-width: 480px) {
-  .pc-only { display: none; }
-  .sp-only { display: block; }
-}
-
-/* =================================================
-   矢印ボタン（PCのみ表示）
-================================================= */
-.slide-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  line-height: 1;
-
-  font-size: 35px;
-  color: #9F987D;
-  cursor: pointer;
-
-  opacity: 0;                       /* 初期は非表示 */
-  transition: opacity 0.3s ease;
-}
-
-/* 左右位置 */
-.slide-arrow.left  { left: 8px; }
-.slide-arrow.right { right: 8px; }
-
-/* PC：ホバー時だけ表示 */
-@media (hover: hover) and (pointer: fine) {
-  .slider-section:hover .slide-arrow {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
-/* スマホ：完全非表示 */
-@media (max-width: 480px) {
-  .slide-arrow {
-    display: none;
-  }
-}
-
-
-/* =================================================
-   スライダー本体（横スクロール）
-================================================= */
-.slider-wrapper {
-  width: 100%;
   overflow: hidden;
 }
 
 .slider {
   display: flex;
-  width: 100%;
-  overflow-x: auto;                 /* 横スクロール */
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
-/* スクロールバー非表示 */
-.slider::-webkit-scrollbar {
-  display: none;
-}
+.slider::-webkit-scrollbar { display:none; }
 
-/* =================================================
-   各スライド
-================================================= */
 .slide {
   flex: 0 0 100%;
   scroll-snap-align: center;
@@ -255,47 +149,32 @@ h2 {
 
 .slide img {
   width: 100%;
-  height: auto;
   display: block;
 }
 
-/* =================================================
-   スマホ調整
-================================================= */
-@media (max-width: 480px) {
-
-  .slider-section {
-    background: none;
-    margin: 0;
-  }
-
-  .slider {
-    width: 100vw;
-  }
-
-  .slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .slide img {
-    border-radius: 0;
-    object-fit: cover;
-  }
+/* 矢印（PC） */
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 36px;
+  color: #9F987D;
+  opacity: 0;
 }
 
-/* =================================================
-   ドットナビ
-================================================= */
+.slider-section:hover .slide-arrow { opacity: 1; }
+
+.slide-arrow.left { left: 8px; }
+.slide-arrow.right { right: 8px; }
+
+/* ドット */
 .slider-dots {
-  position: absolute;
-  left: 50%;
-  bottom: 6px;           /* ← 画像の外側 */
-  transform: translateX(-50%);
-  margin-top: 0;
   display: flex;
+  justify-content: center;
   gap: 10px;
+  margin-top: 6px;
 }
 
 .slider-dots button {
@@ -303,310 +182,125 @@ h2 {
   height: 8px;
   border-radius: 50%;
   border: none;
-  padding: 0;
-  cursor: pointer;
   background: #d6d2c4;
 }
 
 .slider-dots button.active {
   background: #9F987D;
 }
-/* ------------------ トグル ------------------ */
-/* PC用タイトル */
+
+/* =================================================
+   タイトル（PC）
+================================================= */
 .pc-title {
-  width: 100%;
   text-align: center;
   font-size: 1.8em;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-  color: #9F987D;
+  margin: 80px 0 20px;
   position: relative;
-  display: inline-block;
-  margin-top: 70px;
-  margin-bottom: 15px;
 }
 
-  .pc-title::before {
- content: "";
-  position: absolute;
-  left: -25px;
-  bottom: 6px;
-  width: 100%;
-  height: 0.6em;
-  background: rgba(159,152,125,0.25);
-  z-index: -1;
-  border-radius: 8px;
+.pc-title::before {
+  content:"";
+  position:absolute;
+  left:-25px;
+  bottom:6px;
+  width:100%;
+  height:.6em;
+  background:rgba(159,152,125,.25);
+  z-index:-1;
+  border-radius:8px;
 }
 
-/* PCではボタン不要 */
-.toggle-button流れ,
-.toggle-button料金 {
-  display: none;
+/* =================================================
+   トグル（スマホ）
+================================================= */
+.toggle-button {
+  display:none;
 }
 
-/* PCでは常に表示＆中央 */
-.content流れ,
-.content料金 {
-  display: flex;
-  justify-content: center;
-}
+@media (max-width:480px){
+  .pc-title { display:none; }
 
-.content流れ img,
-.content料金 img {
-  width: 70%;
-  max-width: 600px;
-}
-@media (max-width: 480px) {
-
-  /* PC用タイトルは消す */
-  .pc-title {
-    display: none;
+  .toggle-button {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    background:rgba(255,255,255,.6);
+    color:#9F987D;
   }
 
-  /* トグルコンテナを中央寄せ */
-  .toggle-container流れ,
-  .toggle-container料金 {
-    text-align: center;
-    margin: 40px 0;
-  }
-    
-  /* ボタン：元デザインを活かす */
-  .toggle-button流れ,
-  .toggle-button料金 {
-    display: inline-flex;          /* ← 中央＆中身揃う */
-    align-items: center;
-    justify-content: center;
-    gap: 8px;                      /* 文字と矢印の間 */
-    font-size: 18px;
-    padding: 10px 18px;
-    border-radius: 10px;           /* ← 元の雰囲気 */
-    border: 1px solid #ccc;
-    background: rgba(255,255,255,0.6);
-    color: #9F987D;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    cursor: pointer;
-    margin: 0 auto 10px;           /* ← 真ん中 */
+  .toggle-content {
+    display:none;
+    margin-top:10px;
   }
 
-  /* 矢印は必ず見えるように */
-  .toggle-button流れ span,
-  .toggle-button料金 span {
-    display: inline-block;
-    font-size: 0.9em;
-    transform: scaleX(1.5);
-  }
-
- .arrow流れ,
- .arrow料金 {
-  font-family: 'Arial', sans-serif;
+  .toggle-content.show { display:block; }
 }
 
-  /* 中身はトグル */
- .content流れ,
- .content料金 {
-  display: none;
-  opacity: 0;
-  transform: translateY(20px);
-  filter: blur(6px);
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease,
-    filter 0.5s ease;
-  text-align: center;
-}
-
-.content流れ.show,
-.content料金.show {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-
-  /* スマホ画像 */
-  .content流れ img,
-  .content料金 img {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-/* ------------------ アクセス ------------------ */
+/* =================================================
+   アクセス
+================================================= */
 .access-section {
   max-width: 900px;
-  margin: 30px auto 50px;
+  margin: 50px auto;
   padding: 25px;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,.85);
   border-radius: 20px;
-  text-align: left;
-  color: #9F987D;
 }
 
-/* タイトル（ご利用料金と揃える） */
-.access-title {
-  width: 100%;
-  text-align: center;
-  font-size: 1.8em;
-  margin: 80px 0 10px;
-  position: relative;
-  display: inline-block;
-}
-
-/* タイトル用マーカー */
-.access-title::before {
-  content: "";
-  position: absolute;
-  left: -25px;
-  bottom: 6px;
-  width: 100%;
-  height: 0.6em;
-  background: rgba(169,169,169,0.5);
-  z-index: -1;
-  border-radius: 8px;
-}
-
-  @media (max-width: 480px) {
-  .access-title {
-    display: block;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-}
-
-.access-text {
-  position: relative;   /* ← ★ここだけ */
-  max-width: 550px;
-  margin: 0 auto 20px;
-  padding-left: 1.8em;
-  font-size: 1.3em;
-}
-
-@media (max-width: 480px) {
-.access-text {
-  font-size: 1em;
-}
-}
-  
-.access-text::before {
-  content: "📍";
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-size: 1.3em;
-}
-
-.zip {
-  font-size: 1em;   /* 郵便番号小さめ */
-}
-  
-@media (max-width: 480px) {
-  font-size: 0.8em;
-}
-  
-.address {
-  line-height: 1.3;    /* 行間詰め */
-}
-
-/* マップ */
 .map-wrapper {
   position: relative;
   padding-top: 56%;
-  border-radius: 15px;
   overflow: hidden;
+  border-radius: 15px;
 }
 
 .map-wrapper iframe {
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  width: calc(100% + 2px);
-  height: calc(100% + 2px);
-  border: 0;
-  display: block;
+  position:absolute;
+  top:-1px;
+  left:-1px;
+  width:calc(100% + 2px);
+  height:calc(100% + 2px);
+  border:0;
 }
 
-/* ------------------ お問い合わせ ------------------ */
+/* =================================================
+   お問い合わせ
+================================================= */
 .contact-cta {
-  text-align: center;
-  margin: 50px 0 70px;
-  display: block;
-  position: relative;
-  z-index: 1;
+  text-align:center;
+  margin:60px 0;
 }
 
 .contact-cta a {
-  display: inline-block;
-  padding: 14px 36px;
-  font-size: 1.1em;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-  color: #9F987D;
-  background: rgba(255,255,255,0.85);
-  border: 2px solid #9F987D;
-  border-radius: 999px;   /* ← やさしい丸 */
-  text-decoration: none;
-  transition: all 0.3s ease;
+  padding:14px 36px;
+  border:2px solid #9F987D;
+  border-radius:999px;
+  text-decoration:none;
+  color:#9F987D;
+  background:rgba(255,255,255,.85);
 }
 
-.contact-cta a:hover {
-  background: #9F987D;
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-/* スマホ */
-@media (max-width: 480px) {
-  .contact-cta a {
-    width: 80%;
-    padding: 14px 0;
-    font-size: 1.05em;
-  }
-}
-  
 .contact-form {
-  display: none;
-  max-width: 900px;
-  margin: 0 auto 80px;
-  padding: 0 20px;
-  background: rgba(255,255,255,0.75);
-  border-radius: 15px;
-}
-  /* iframeは常に親にフィット */
-.contact-form iframe {
-  width: 100%;
-  border: none;
+  display:none;
+  max-width:900px;
+  margin:auto;
 }
 
-.contact-form.show { display: block; }
+.contact-form.show { display:block; }
 
-  @media (max-width: 480px) {
-  .contact-title {
-    display: block;
-    text-align: center;
-    margin-top: 70px;
-    margin-bottom: 20px;
-  }
-}
-
-/* ------------------ フッター ------------------ */
+/* =================================================
+   フッター
+================================================= */
 footer {
-  background: rgba(255,255,255,0.5);
-  text-align: center;
-  padding: 20px;
-  font-family: 'Kiwi Maru', cursive;
-}
-  
-  /* ===== 矢印 回転用 ===== */
-.arrow流れ,
-.arrow料金 {
-  display: inline-block;
-  margin-left: 8px;
-  font-size: 0.8em;
-  transform: scaleX(1.4);
-  transition: transform 0.3s ease;
-}
-
-/* 開いたとき */
-.arrow流れ.rotate,
-.arrow料金.rotate {
-  transform: scaleX(1.4) rotate(180deg);
+  text-align:center;
+  padding:20px;
+  background:rgba(255,255,255,.5);
+  font-family:'Kiwi Maru', cursive;
 }
 </style>
 </head>
@@ -615,302 +309,59 @@ footer {
 <div class="background-image"></div>
 
 <header>
- <div class="header-inner">
-
-    <div class="logo">
-      放課後等デイサービス・児童発達支援
-    </div>
-
-    <div class="header-center">
-      発達支援ノワール
-    </div>
-
-    <!-- スマホ用メニューボタン -->
+  <div class="header-inner">
+    <div class="logo">放課後等デイサービス・児童発達支援</div>
+    <div class="header-center">発達支援ノワール</div>
     <button class="menu-toggle" id="menu-toggle">☰</button>
-
-    <!-- メニューは1つだけ！ -->
     <nav class="menu" id="menu">
-  <a href="#flow">ご利用の流れ</a>
-  <a href="#price">ご利用料金</a>
-  <a href="#access">アクセス</a>
-  <a href="#" id="contact-link">お問い合わせ</a>
-  <a href="https://www.instagram.com/noir_niigata/" target="_blank" class="insta-link">
-    Instagram
-  </a>
+      <a href="#flow">ご利用の流れ</a>
+      <a href="#price">ご利用料金</a>
+      <a href="#access">アクセス</a>
+      <a href="#contact">お問い合わせ</a>
     </nav>
-
   </div>
 </header>
-  
-<!-- ===== PC用スライダー ===== -->
+
+<!-- スライダー -->
 <div class="slider-section pc-only">
   <button class="slide-arrow left">〈</button>
-
-  <div class="slider-wrapper">
-    <div class="slider">
-      <div class="slide"><img src="お困りごと.png"></div>
-      <div class="slide"><img src="ノワールの得意なこと.png"></div>
-      <div class="slide"><img src="多様な専門職が在籍.png"></div>
-      <div class="slide"><img src="支援の内容.png"></div>
-      <div class="slide"><img src="生活面での不安や.png"></div>
-    </div>
+  <div class="slider">
+    <div class="slide"><img src="お困りごと.png"></div>
+    <div class="slide"><img src="ノワールの得意なこと.png"></div>
   </div>
-  
-  <div class="slider-dots"></div>
-
   <button class="slide-arrow right">〉</button>
+  <div class="slider-dots"></div>
 </div>
 
-<!-- ===== スマホ用スライダー ===== -->
-<div class="slider-section sp-only">
-  <div class="slider-wrapper">
-    <div class="slider">
-      <div class="slide"><img src="お困りごとスマホ.png"></div>
-      <div class="slide"><img src="ノワールの得意なことスマホ.png"></div>
-      <div class="slide"><img src="支援の内容スマホ1.png"></div>
-      <div class="slide"><img src="支援の内容スマホ2.png"></div>
-      <div class="slide"><img src="多様な専門職が在籍スマホ.png"></div>
-      <div class="slide"><img src="生活面での不安やスマホ.png"></div>
-    </div>
-  </div>
-    <!-- ★スマホ用ドット -->
-  <div class="slider-dots sp-dots"></div>
-</div>
- 
- <div class="toggle-container流れ" id="flow">
-  <h2 class="pc-title">ご利用開始までの流れ</h2>
-      <button class="toggle-button流れ" onclick="toggleContent流れ()">
-  ご利用開始までの流れ
-  <span class="arrow流れ">∨</span>
-</button>
-      <div id="content流れ" class="content流れ">
-        <img src="ご利用の流れ.png" alt="ご利用開始までの流れ">
-      </div>
-    </div>
-    
-   <div class="toggle-container料金" id="price">
-  <h2 class="pc-title">ご利用料金について</h2>
-     <button class="toggle-button料金" onclick="toggleContent料金()">
-  ご利用料金
-  <span class="arrow料金">∨</span>
-</button>
-      <div id="content料金" class="content料金">
-        <img src="料金.png" alt="ご利用料金">
-      </div>
-    </div>
-
-<h2 class="pc-title access-title" id="access">アクセス</h2>
+<h2 class="pc-title" id="access">アクセス</h2>
 <section class="access-section">
-  <p class="access-text">
-  <span class="zip">〒950-0861</span><br>
-  <span class="address">
-    新潟県新潟市東区中山6-19-5　ウェル新潟ビル206
-  </span>
-</p>
-
+  <p>〒950-0861 新潟県新潟市東区中山6-19-5</p>
   <div class="map-wrapper">
-    <iframe
-     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.6605220127058!2d139.08114867535681!3d37.91499690407121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff4ca2b14fe7561%3A0x41f87e9442edc71f!2z44CSOTUwLTA4NjEg5paw5r2f55yM5paw5r2f5biC5p2x5Yy65Lit5bGx77yW5LiB55uu77yR77yZ4oiS77yVIOOCpuOCp-ODq-aWsOa9nw!5e0!3m2!1sja!2sjp!4v1766382089719!5m2!1sja!2sjp"
-     loading="lazy">
-    </iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=..." loading="lazy"></iframe>
   </div>
 </section>
 
-<h2 class="pc-title contact-title" id="contact">お問い合わせ</h2>
-
-  <div class="contact-cta">
-  <a href="#" id="contact-cta-btn">お問い合わせはこちら</a>
+<h2 class="pc-title" id="contact">お問い合わせ</h2>
+<div class="contact-cta">
+  <a href="#" id="contact-btn">お問い合わせはこちら</a>
 </div>
 
-<section id="contact-section" class="contact-form">
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSci9ClyPaBeHyqKnsIpgh6nGqeLRpV-x8E1sJ7C8qhSyth11Q/viewform?embedded=true" width="100%" height="700">
-  </iframe>
+<section class="contact-form" id="contact-form">
+  <iframe src="GoogleフォームURL" width="100%" height="700"></iframe>
 </section>
 
-<footer>
-  <p class="small-text">
-    © 合同会社ノワール
-  </p>
-</footer>
+<footer>© 合同会社ノワール</footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+/* メニュー */
+menu-toggle.onclick = () => menu.classList.toggle('show');
 
-/* ======================
-   ハンバーガーメニュー
-====================== */
-const menuToggle = document.getElementById('menu-toggle');
-const menu = document.getElementById('menu');
-
-menuToggle.addEventListener('click', () => {
-  menu.classList.toggle('show');
-});
-
-/* ======================
-   お問い合わせ表示
-====================== */
-const contactLink = document.getElementById('contact-link');
-const contactForm = document.getElementById('contact-section');
-const contactBtn = document.getElementById('contact-cta-btn');
-const contactTitle = document.getElementById('contact');
-
-function openContact() {
-  contactForm.classList.add('show');
-  setTimeout(() => {
-    contactTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 100);
-}
-
-contactLink?.addEventListener('click', e => {
+/* お問い合わせ */
+contact-btn.onclick = e => {
   e.preventDefault();
-  openContact();
-});
-
-contactBtn?.addEventListener('click', e => {
-  e.preventDefault();
-  openContact();
-});
-
-/* ======================
-   スライダー（PCのみ）
-====================== */
-const pcSliderSection = document.querySelector('.slider-section.pc-only');
-if (pcSliderSection) {
-
-  const slider = pcSliderSection.querySelector('.slider');
-  const slides = pcSliderSection.querySelectorAll('.slide');
-  const prevBtn = pcSliderSection.querySelector('.slide-arrow.left');
-  const nextBtn = pcSliderSection.querySelector('.slide-arrow.right');
-  const dotsContainer = pcSliderSection.querySelector('.slider-dots');
- 
-  let index = 0;
-
-  dotsContainer.innerHTML = '';
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => moveSlider(i));
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = dotsContainer.querySelectorAll('button');
-
-  function moveSlider(i) {
-    const slideWidth = slides[0].clientWidth;
-    slider.scrollTo({
-      left: slideWidth * i,
-      behavior: 'smooth'
-    });
-
-    index = i;
-    dots.forEach(d => d.classList.remove('active'));
-    dots[i].classList.add('active');
-
-    prevBtn.style.display = i === 0 ? 'none' : 'block';
-    nextBtn.style.display = i === slides.length - 1 ? 'none' : 'block';
-  }
-
-  moveSlider(0);
-
-  nextBtn.addEventListener('click', () => {
-    if (index < slides.length - 1) moveSlider(index + 1);
-  });
-
-  prevBtn.addEventListener('click', () => {
-    if (index > 0) moveSlider(index - 1);
-  });
-}
-
-/* ======================
-   スライダー（スマホ）
-====================== */
-const spSliderSection = document.querySelector('.slider-section.sp-only');
-if (spSliderSection) {
-
-  const slider = spSliderSection.querySelector('.slider');
-  const slides = spSliderSection.querySelectorAll('.slide');
-  const dotsContainer = spSliderSection.querySelector('.sp-dots');
-
-  let index = 0;
-  dotsContainer.innerHTML = '';
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => moveSlider(i));
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = dotsContainer.querySelectorAll('button');
-
-  function moveSlider(i) {
-    const slideWidth = slides[0].clientWidth;
-    slider.scrollTo({
-      left: slideWidth * i,
-      behavior: 'smooth'
-    });
-
-    index = i;
-    dots.forEach(d => d.classList.remove('active'));
-    if (dots[i]) dots[i].classList.add('active');
-  }
-
-  slider.addEventListener('scroll', () => {
-    const slideWidth = slides[0].clientWidth;
-    const newIndex = Math.round(slider.scrollLeft / slideWidth);
-
-    if (newIndex !== index) {
-      index = newIndex;
-      dots.forEach(d => d.classList.remove('active'));
-      if (dots[index]) dots[index].classList.add('active');
-    }
-  });
-}
-
-/* ======================
-   トグル（流れ）
-====================== */
-window.toggleContent流れ = function () {
-  const content = document.getElementById('content流れ');
-  const arrow = document.querySelector('.arrow流れ');
-
-  if (!content || !arrow) return;
-
-  const opening = !content.classList.contains('show');
-  content.classList.toggle('show');
-  arrow.classList.toggle('rotate');
-
-  if (opening) {
-    setTimeout(() => {
-      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 200);
-  }
+  document.getElementById('contact-form').classList.add('show');
 };
-
-/* ======================
-   トグル（料金）
-====================== */
-window.toggleContent料金 = function () {
-  const content = document.getElementById('content料金');
-  const arrow = document.querySelector('.arrow料金');
-
-  if (!content || !arrow) return;
-
-  const opening = !content.classList.contains('show');
-  content.classList.toggle('show');
-  arrow.classList.toggle('rotate');
-
-  if (opening) {
-    setTimeout(() => {
-      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 200);
-  }
-};
-
-});
 </script>
-
 </body>
 </html>
         
