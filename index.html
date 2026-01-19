@@ -409,23 +409,42 @@ h2 {
   max-width: 100%;
   height: auto;
 }
-  /* ===== PC表示の最終調整 ===== */
+/* ===============================
+   PC用 応急処置（タイトル背景＋画像サイズ）
+=============================== */
 @media (min-width: 768px) {
 
-  .toggle-container流れ,
-  .toggle-container料金 {
-    margin: 60px auto;
-    text-align: center;
-  }
-
+  /* ▼ タイトル（ご利用の流れ／料金） */
   .pc-title {
-    margin-bottom: 30px;
+    display: inline-block;
+    position: relative;
     font-size: 1.6em;
+    font-family: 'Kiwi Maru', cursive;
+    color: #8b8484;
+    margin-bottom: 30px;
+    padding: 0 10px;
   }
 
-  .content流れ,
-  .content料金 {
-    margin-top: 0;
+  .pc-title::before {
+    content: "";
+    position: absolute;
+    left: -35px;
+    bottom: 6px;
+    width: 100%;
+    height: 0.6em;
+    background: rgba(169,169,169,0.25);
+    z-index: -1;
+    border-radius: 8px;
+  }
+
+  /* ▼ 画像がデカすぎるのを防ぐ */
+  .content流れ img,
+  .content料金 img {
+    max-width: 720px;   /* ← PCではこの幅まで */
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
   }
 }
 /* ------------------ アクセス ------------------ */
