@@ -354,6 +354,7 @@ h2 {
   display: block;
   margin-bottom: 30px;
   font-weight: 300;
+  transform: translateX(-10px);
 }
 
 .pc-title::before {
@@ -413,6 +414,13 @@ h2 {
     filter: blur(0);
   }
 }
+  /* スマホでは流れ・料金のPC用タイトルを非表示 */
+@media (max-width: 767px) {
+  #flow > .pc-title,
+  #price > .pc-title {
+    display: none;
+  }
+}
 /* =================================================
    アクセス
 ================================================= */
@@ -437,6 +445,7 @@ h2 {
   margin-top: 70px;
   margin-bottom: 15px;
   font-weight: 300;
+  transform: translateX(-10px);
 }
 
 .access-title::before {
@@ -526,6 +535,7 @@ h2 {
   font-family: 'Kiwi Maru', cursive;
   color: #8b8484;
   font-weight: 300;
+  transform: translateX(-10px);
 }
 
 .contact-title::before {
@@ -610,16 +620,17 @@ h2 {
 }
 
   .pdf-title {
-  width: 100%;
-  text-align: center;
-  font-size: 1.6em;
-  font-family: 'Kiwi Maru', cursive;
-  color: #8b8484;
-  position: relative;
-  display: block;
-  margin-top: 70px;
-  margin-bottom: 15px;
-  font-weight: 300;
+    width: 100%;
+    text-align: center;
+    font-size: 1.6em;
+    font-family: 'Kiwi Maru', cursive;
+    color: #8b8484;
+    position: relative;
+    display: block;
+    margin-top: 70px;
+    margin-bottom: 15px;
+    font-weight: 300;
+    transform: translateX(-10px);
 }
 
 .pdf-title::before {
