@@ -343,6 +343,31 @@ h2 {
   display: block;
   margin: 0 auto;
 }
+  /* ===============================
+   PC用：タイトル背景を他と統一
+=============================== */
+.pc-title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.6em;
+  font-family: 'Kiwi Maru', cursive;
+  color: #8b8484;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.pc-title::before {
+  content: "";
+  position: absolute;
+  left: -35px;
+  bottom: 6px;
+  width: 100%;
+  height: 0.6em;
+  background: rgba(169,169,169,0.25);
+  z-index: -1;
+  border-radius: 8px;
+}
 
 /* ===============================
    スマホだけトグル化
