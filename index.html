@@ -677,65 +677,51 @@ h2 {
 ================================================= */
 footer {
   background: rgba(255,255,255,0.5);
-  text-align: center;
-  padding: 20px;
-  font-family: 'Kiwi Maru', cursive;
   padding: 30px 15px;
   text-align: center;
+  font-family: 'Kiwi Maru', cursive;
   font-size: 1em;
   color: #9F987D;
 }
 
-.footer-name {
-  font-weight: 400;
-  margin-bottom: 10px;
-}
-
-.footer-info {
+/* 住所まわり */
+.footer-address {
   line-height: 1.6;
   margin-bottom: 15px;
 }
 
-.footer-links a {
-  color: #9F987D;
-  text-decoration: none;
-  font-size: 0.9em;
+.footer-address span {
+  display: inline-block;
 }
 
-.footer-links a:hover {
-  text-decoration: underline;
+/* 電話とメールの間隔 */
+.footer-tel {
+  margin-right: 12px;
 }
 
-  .footer-privacy {
-  color: #9F987D;   /* 好きな色に */
-  text-decoration: none;
-}
-
-/* 押したあと・見たあとも青くしない */
-.footer-privacy:visited {
-  color: #9F987D;
-}
-
-/* ホバー時（任意） */
-.footer-privacy:hover {
-  color: #9F987D;
-  text-decoration: underline;
-}
-
+/* 下段（コピーライト・リンク） */
 .footer-copy {
   margin-top: 15px;
   font-size: 0.9em;
   color: #aaa;
 }
 
-.footer-tel {
-  margin-right: 12px; /* ← ここで空ける */
+/* プライバシーポリシーリンク */
+.footer-privacy {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.8em;
 }
 
-.footer-address span {
-  display: inline-block;
+.footer-privacy:visited {
+  color: #9F987D;
 }
-  
+
+.footer-privacy:hover {
+  color: #9F987D;
+  text-decoration: underline;
+}
+
 </style>
 </head>
 
