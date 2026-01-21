@@ -430,13 +430,14 @@ h2 {
 .access-section {
   max-width: 900px;
   margin: 30px auto 50px;
-  padding: 25px 0 50px;
+  padding: 25px;
   background: rgba(255,255,255,0.75);
   border-radius: 20px;
   text-align: left;
   color: #635656;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
+  
 .access-title {
  width: 100%;
   text-align: center;
@@ -453,14 +454,14 @@ h2 {
 .access-title::before {
  content: "";
   position: absolute;
-  right: 10px;
   bottom: -1px;
   width: 1100px;
   height: 0.8em;
   background: rgba(169,169,169,0.25);
   z-index: -1;
   border-radius: 15px;
-  transform: translateX(-50%);
+  left: -10%;
+  transform: none;
 }
 
   @media (max-width: 480px) {
@@ -472,7 +473,7 @@ h2 {
 }
 
 .access-text {
-  position: relative;   /* ← ★ここだけ */
+  position: relative;
   max-width: 550px;
   margin: 0 auto 20px;
   padding-left: 1.8em;
@@ -489,12 +490,12 @@ h2 {
   content: "📍";
   position: absolute;
   left: 0;
-  top: 0;
+  top: 5px;
   font-size: 1.3em;
 }
 
 .zip {
-  font-size: 1.1em;
+  font-size: 0.9em;
 }
 
 @media (max-width: 480px) {
@@ -513,6 +514,8 @@ h2 {
   padding-top: 56%;
   border-radius: 15px;
   overflow: hidden;
+  max-width: 650px;
+  margin: 0 auto;  
 }
 
 .map-wrapper iframe {
@@ -544,14 +547,14 @@ h2 {
 .contact-title::before {
   content: "";
   position: absolute;
-  right: 10px;
   bottom: -1px;
   width: 1100px;
   height: 0.8em;
   background: rgba(169,169,169,0.25);
   z-index: -1;
   border-radius: 15px;
-  transform: translateX(-50%);
+  left: -10%;
+  transform: none;
 }
   
 .contact-cta {
