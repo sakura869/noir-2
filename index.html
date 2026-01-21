@@ -680,10 +680,9 @@ footer {
   text-align: center;
   padding: 20px;
   font-family: 'Kiwi Maru', cursive;
-  background: #f7f5f2;
   padding: 30px 15px;
   text-align: center;
-  font-size: 0.8em;
+  font-size: 1em;
   color: #8b8484;
 }
 
@@ -700,27 +699,33 @@ footer {
 .footer-links a {
   color: #9F987D;
   text-decoration: none;
-  font-size: 0.85em;
+  font-size: 0.9em;
 }
 
 .footer-links a:hover {
+  text-decoration: underline;
+}
+
+  .footer-privacy {
+  color: #8b8484;   /* 好きな色に */
+  text-decoration: none;
+}
+
+/* 押したあと・見たあとも青くしない */
+.footer-privacy:visited {
+  color: #8b8484;
+}
+
+/* ホバー時（任意） */
+.footer-privacy:hover {
+  color: #9F987D;
   text-decoration: underline;
 }
 
 .footer-copy {
   margin-top: 15px;
-  font-size: 0.75em;
+  font-size: 0.9em;
   color: #aaa;
-}
-
-  .footer-links a {
-  font-size: 0.8em;
-  color: #9F987D;
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
 }
   
 </style>
