@@ -11,9 +11,13 @@
     body {
       margin: 0;
       font-family: 'Kiwi Maru', cursive;
-      background: #fff;
       color: #9F987D;
       text-align: center;
+      background-image: url("外部ページ背景.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll; /* ← 一緒に動く */
     }
 
     header {
@@ -51,6 +55,9 @@
       list-style: none;
       padding: 0;
       margin: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
 
     .pdf-list li {
@@ -97,8 +104,13 @@
 
     @media (max-width: 480px) {
       h1::before {
-        width: 80px;
+        width: 60px;
       }
+
+      .pdf-list {
+        grid-template-columns: 1fr;
+      }
+    }
     }
   </style>
 </head>
@@ -111,78 +123,16 @@
 <main>
   <ul class="pdf-list">
     <li>
-      <a href="PDFのURLをここに" target="_blank">自己評価資料（PDF）</a>
+      <a href="PDF1のURL" target="_blank">自己評価資料（令和6年度）</a>
     </li>
-  </ul>
-
-  <div class="back-home">
-    <a href="index.html">トップページに戻る</a>
-  </div>
-</main>
-
-<footer>
-  © 合同会社ノワール
-</footer>
-
-</body>
-</html>
-    }
-
-    .pdf-list a {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      background: rgba(255,255,255,0.6);
-      color: #9F987D;
-      text-decoration: none;
-      font-size: 1em;
-      transition: all 0.3s ease;
-    }
-
-    .pdf-list a:hover {
-      background: #b5a695;
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    .back-home {
-      margin-top: 40px;
-    }
-
-    .back-home a {
-      font-size: 0.9em;
-      color: #9F987D;
-      text-decoration: underline;
-    }
-
-    .back-home a:hover {
-      opacity: 0.7;
-    }
-
-    footer {
-      font-size: 0.85em;
-      color: #aaa;
-      padding-bottom: 30px;
-    }
-
-    @media (max-width: 480px) {
-      h1::before {
-        width: 80px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>自己評価一覧</h1>
-</header>
-
-<main>
-  <ul class="pdf-list">
     <li>
-      <a href="PDFのURLをここに" target="_blank">自己評価資料（PDF）</a>
+      <a href="PDF2のURL" target="_blank">自己評価資料（令和5年度）</a>
+    </li>
+    <li>
+      <a href="PDF3のURL" target="_blank">自己評価資料（令和4年度）</a>
+    </li>
+    <li>
+      <a href="PDF4のURL" target="_blank">自己評価資料（令和3年度）</a>
     </li>
   </ul>
 
