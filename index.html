@@ -692,6 +692,34 @@ h2 {
   opacity: 0.8;
 }
 
+  .self-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+  .self-buttons .pdf-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 1 / 1;   /* ← 正方形の決め手 */
+  width: 100%;
+
+  background: #ffffff;
+  border-radius: 16px;
+
+  font-size: 0.9em;
+  color: #9F987D;
+  text-decoration: none;
+  text-align: center;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+  .self-buttons .pdf-link:active {
+  transform: scale(0.96);
+}
 /* =================================================
    フッター
 ================================================= */
