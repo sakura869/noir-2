@@ -888,16 +888,19 @@ footer {
   </iframe>
 </section>
 
-  <h2 class="pc-title" id="pdf">自己評価</h2>
-  
-<div class="pdf-section">
-  <a
-    href="自己評価.html"
-    target="_blank"
-    class="pdf-link"
-  >
-    自己評価一覧(PDF)
-  </a>
+<h2 class="pc-title pc-only" id="pdf">自己評価</h2>
+
+<button class="toggle-button料金 sp-only" onclick="toggleContentSelf()">
+  自己評価
+  <span class="arrow料金">∨</span>
+</button>
+
+<div id="self-content" class="content料金">
+  <div class="pdf-section">
+    <a href="自己評価.html" target="_blank" class="pdf-link">
+      自己評価一覧（PDF）
+    </a>
+  </div>
 </div>
 
 <footer>
@@ -1107,6 +1110,28 @@ window.toggleContentContact = function () {
     }, 200);
   }
 };
+/* ======================
+/* ======================
+   トグル（自己評価）
+====================== */
+window.toggleContentSelf = function () {
+  const content = document.getElementById('self-content');
+  const arrow = document.querySelectorAll('.toggle-button料金.sp-only .arrow料金')[1];
+
+  if (!content || !arrow) return;
+
+  const opening = !content.classList.contains('show');
+  content.classList.toggle('show');
+  arrow.classList.toggle('rotate');
+
+  if (opening) {
+    setTimeout(() => {
+      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
+  }
+};
+
+  
 });
 </script>
 
