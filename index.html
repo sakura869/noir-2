@@ -372,15 +372,6 @@ h2 {
   transform: none;
 }
 
-  @media (max-width: 480px) {
-  .pc-title::before,
-  .access-title::before,
-  .contact-title::before,
-  .pdf-title::before {
-    width: 40px;   /* ← PCより短く */
-  }
-}
-
 /* ===============================
    スマホだけトグル化
 =============================== */
@@ -740,6 +731,15 @@ footer {
 @media (max-width: 768px) {
   body {
     background-attachment: scroll;
+  }
+}
+
+  @media (max-width: 480px) {
+  .pc-title::before,
+  .access-title::before,
+  .contact-title::before,
+  .pdf-title::before {
+    width: 40px;   /* ← PCより短く */
   }
 }
   
