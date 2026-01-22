@@ -691,6 +691,36 @@ h2 {
   font-size: 0.75em;
   opacity: 0.8;
 }
+
+  @media (max-width: 767px) {
+
+  /* 共通設定（流れ・料金と揃える） */
+  .contact-title,
+  .self-title {
+    position: relative;
+    padding-right: 30px;
+    cursor: pointer;
+  }
+
+  /* 矢印（閉じている時） */
+  .contact-title::after,
+  .self-title::after {
+    content: "∨";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9em;
+    color: #9F987D;
+    transition: transform 0.3s ease;
+  }
+
+  /* 開いている時 */
+  .contact-title.active::after,
+  .self-title.active::after {
+    content: "∧";
+  }
+}
 /* =================================================
    フッター
 ================================================= */
@@ -873,7 +903,9 @@ footer {
   </div>
 </section>
 
-<h2 class="contact-title" id="contact">お問い合わせ</h2>
+<h2 class="contact-title toggle-title" id="contact">
+  お問い合わせ
+</h2>
 
   <div class="contact-cta">
   <a href="#" id="contact-cta-btn">お問い合わせはこちら</a>
@@ -1084,7 +1116,44 @@ window.toggleContent料金 = function () {
     }, 200);
   }
 };
+/* ======================
+   トグル（お問い合わせ）
+====================== */
+window.toggleContentContact = function () {
+  const content = document.getElementById('contact-section');
+  const arrow = document.querySelector('.arrow-contact');
 
+  if (!content || !arrow) return;
+
+  const opening = !content.classList.contains('show');
+  content.classList.toggle('show');
+  arrow.classList.toggle('rotate');
+
+  if (opening) {
+    setTimeout(() => {
+      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
+  }
+};
+  /* ======================
+   トグル（自己評価）
+====================== */
+window.toggleContentSelf = function () {
+  const content = document.getElementById('self-content');
+  const arrow = document.querySelector('.arrow-self');
+
+  if (!content || !arrow) return;
+
+  const opening = !content.classList.contains('show');
+  content.classList.toggle('show');
+  arrow.classList.toggle('rotate');
+
+  if (opening) {
+    setTimeout(() => {
+      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
+  }
+};
 });
 </script>
 
