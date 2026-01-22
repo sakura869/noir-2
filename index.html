@@ -417,6 +417,25 @@ h2 {
     filter: blur(0);
   }
 }
+
+  /* トグル矢印（流れ・料金 共通） */
+#arrow流れ,
+#arrow料金 {
+  font-family: 'Kiwi Maru', cursive;
+  font-size: 0.7em;
+  display: inline-block;
+  margin-left: 6px;
+
+  transform: scaleX(2);
+  transition: transform 0.4s ease;
+}
+
+/* 開いたとき */
+#arrow流れ.rotate,
+#arrow料金.rotate {
+  transform: scaleX(2) rotate(180deg);
+}
+  
   /* スマホでは流れ・料金のPC用タイトルを非表示 */
 @media (max-width: 767px) {
   .pc-title#flow,
