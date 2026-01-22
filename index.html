@@ -1,383 +1,194 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="新潟市にある発達支援ノワールは、放課後等デイサービス・児童発達支援を行っています。専門職が連携し、お子様に合わせた支援を提供します。">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>発達支援ノワール</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
-
-  <title>発達支援ノワール - 新潟市の放課後等デイサービス・児童発達支援</title>
+<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 
 <style>
-/* ------------------ 共通 ------------------ */
-html { scroll-behavior: smooth; }
 
+/* =====================================
+   共通
+===================================== */
 body {
   font-family: 'Kiwi Maru', cursive;
-  background-color: #fff;
-  color: #9F987D;
+  color: #635656;
   margin: 0;
+  padding: 0;
 }
-   .background-image {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("がぞー.png");
-        background-size: cover;
-        background-position: center;
-        z-index: -1; opacity: 0.5;
-      }
 
-/* ------------------ ヘッダー ------------------ */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =====================================
+   ヘッダー
+===================================== */
 header {
-  background-color: rgba(169,169,169,0.5);
-  padding: 32px 8px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  background: rgba(255,255,255,0.7);
 }
 
-h2 {
-  scroll-margin-top: 120px; /* ヘッダー高さ分 */
-}
-  
 .header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
-  column-gap: 40px;
+  justify-content: space-between;
+  padding: 10px 15px;
 }
 
-/* ロゴ・メニュー文字 */
-.logo,
-.menu a {
-  color: #fff;
-  font-family: 'Kiwi Maru', cursive;
-  white-space: nowrap;
+.logo {
+  font-size: 12px;
 }
 
 .header-center {
-  text-align: center;
-  font-size: 1.8em;
-  font-weight: bold;
-  color: #675340;
-  letter-spacing: 0.15em;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.35);
-  white-space: nowrap;   /* ← 改行させない */
+  font-size: 20px;
 }
 
-/* ===== メニュー ===== */
-.menu {
-  display: flex;               /* ← PCでは横並び */
-  justify-content: flex-end;
-}
-
-.menu a {
-  margin-left: 20px;
-  text-decoration: none;
-  font-size: 1.1em;
-}
-
-.menu a:hover {
-  opacity: 0.7;
-}
-
-/* ===== ハンバーガー ===== */
 .menu-toggle {
-  display: none;               /* PCでは非表示 */
-  font-size: 26px;
+  font-size: 24px;
   background: none;
   border: none;
-  color: #fff;
   cursor: pointer;
 }
 
-/* ================= スマホ ================= */
-@media (max-width: 480px) {
-
-  header {
-    padding: 12px;
-  }
-
-  .header-inner {
-    grid-template-columns: 1fr auto;
-    align-items: center;
-  }
-
-  /* 会社名・サービス名は左揃え */
-  .logo,
-  .header-center {
-    grid-column: 1;
-    text-align: left;
-  }
-
-  .header-center {
-    font-size: 1.2em;
-    line-height: 1.3;
-  }
-
-  /* ☰ は常に右 */
-  .menu-toggle {
-    display: block;
-    grid-column: 2;
-    justify-self: end;
-  }
-  
-  .menu {
-    position: absolute;
-    top: 100%;
-    right: 0;               /* ← さらに右にピタッ */
-      width: 40%;             /* ←少し細め */
-    max-width: 240px;
-
-    display: none !important;
-
-    background: rgba(169,169,169,0.9);
-    padding: 14px 16px;
-
-    border-radius: 0;       /* ← 角丸なし */
-    text-align: left;
-  }
-
-  .menu.show {
-    display: block !important;
-  }
-
-  .menu a {
-    display: block;
-    padding: 10px 0;
-    font-size: 1.05em;
-    color: #fff;
-  }
-
-  .menu a:not(:last-child) {
-    border-bottom: 1px solid rgba(255,255,255,0.25);
-  }
+.menu {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* =================================================
-   スライダー全体（外枠）
-================================================= */
+/* =====================================
+   スライダー
+===================================== */
 .slider-section {
-  max-width: 920px;                 /* 画像幅に合わせる */
-  margin: 15px auto 0;
-  padding-bottom: 26px;
-  overflow: hidden;                 /* はみ出し防止 */
-  background: rgba(255,255,255,0);
   position: relative;
 }
 
-  /* 表示切り替え */
 .pc-only { display: block; }
 .sp-only { display: none; }
 
-@media (max-width: 480px) {
-  .pc-only { display: none; }
-  .sp-only { display: block; }
-}
-
-/* =================================================
-   矢印ボタン（PCのみ表示）
-================================================= */
-.slide-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  line-height: 1;
-
-  font-size: 35px;
-  color: #9F987D;
-  cursor: pointer;
-
-  opacity: 0;                       /* 初期は非表示 */
-  transition: opacity 0.3s ease;
-}
-
-/* 左右位置 */
-.slide-arrow.left  { left: 8px; }
-.slide-arrow.right { right: 8px; }
-
-/* PC：ホバー時だけ表示 */
-@media (hover: hover) and (pointer: fine) {
-  .slider-section:hover .slide-arrow {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
-/* スマホ：完全非表示 */
-@media (max-width: 480px) {
-  .slide-arrow {
-    display: none;
-  }
-}
-
-/* =================================================
-   スライダー本体（横スクロール）
-================================================= */
 .slider-wrapper {
-  width: 100%;
   overflow: hidden;
 }
 
 .slider {
   display: flex;
-  width: 100%;
-  overflow-x: auto;                 /* 横スクロール */
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-}
-
-/* スクロールバー非表示 */
-.slider::-webkit-scrollbar {
-  display: none;
-}
-
-/* =================================================
-   各スライド
-================================================= */
-.slide {
-  flex: 0 0 100%;
-  scroll-snap-align: center;
 }
 
 .slide img {
   width: 100%;
-  height: auto;
-  display: block;
 }
 
-/* =================================================
-   スマホ調整
-================================================= */
-@media (max-width: 480px) {
-
-  .slider-section {
-    background: none;
-    margin: 0;
-  }
-
-  .slider {
-    width: 100vw;
-  }
-
-  .slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .slide img {
-    border-radius: 0;
-    object-fit: cover;
-  }
+/* =====================================
+   タイトル
+===================================== */
+.pc-title,
+.access-title,
+.contact-title {
+  text-align: center;
+  margin: 40px 0 20px;
+  position: relative;
 }
 
-/* =================================================
-   ドットナビ
-================================================= */
-.slider-dots {
-  position: absolute;
-  left: 50%;
-  bottom: 6px;           /* ← 画像の外側 */
-  transform: translateX(-50%);
-  margin-top: 0;
-  display: flex;
-  gap: 10px;
-}
-
-.slider-dots button {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  background: #d6d2c4;
-}
-
-.slider-dots button.active {
+.pc-title::before,
+.access-title::before,
+.contact-title::before {
+  content: "";
+  width: 80px;
+  height: 2px;
   background: #9F987D;
+  display: block;
+  margin: 0 auto 10px;
 }
-/* ===============================
-   トグル：PC基準
-=============================== */
 
+/* =====================================
+   トグル共通
+===================================== */
 .toggle-container流れ,
 .toggle-container料金 {
   text-align: center;
-  margin: 60px auto;
+  margin-bottom: 30px;
 }
 
-/* PCではボタン不要 */
 .toggle-button流れ,
 .toggle-button料金 {
   display: none;
 }
 
-/* PCでは常に表示 */
 .content流れ,
 .content料金 {
-  display: block;
-  opacity: 1;
-  transform: none;
-  filter: none;
+  background: rgba(255,255,255,0.85);
+  padding: 20px 15px;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+/* =====================================
+   アクセス
+===================================== */
+.access-section {
   text-align: center;
 }
 
-/* PC用 画像サイズ */
-.content流れ img,
-.content料金 img {
-  max-width: 720px;
+.map-wrapper iframe {
   width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
+  height: 300px;
+  border: none;
 }
-  
-.pc-title {
-  width: 100%;
+
+/* =====================================
+   お問い合わせ
+===================================== */
+.contact-cta {
   text-align: center;
-  font-size: 1.6em;
-  font-family: 'Kiwi Maru', cursive;
-  color: #8b8484;
-  position: relative;
-  display: block;
-  margin-bottom: 30px;
-  font-weight: 300;
+  margin-bottom: 20px;
 }
 
-.pc-title::before {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  width: 1100px;
-  height: 0.8em;
-  background: rgba(169,169,169,0.25);
-  z-index: -1;
-  border-radius: 15px;
-  left: -10%;
-  transform: none;
+.contact-cta a {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #ccc;
 }
 
-/* ===============================
-   スマホだけトグル化
-=============================== */
+/* =====================================
+   PDF
+===================================== */
+.pdf-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* =====================================
+   フッター
+===================================== */
+footer {
+  background: rgba(255,255,255,0.5);
+  padding: 30px 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  margin-top: 15px;
+}
+
+/* =====================================
+   スマホ専用
+===================================== */
 @media (max-width: 767px) {
 
-  /* ボタンを出す */
+  .pc-only { display: none; }
+  .sp-only { display: block; }
+
+  .pc-title {
+    display: none;
+  }
+
+  /* トグルボタン */
   .toggle-button流れ,
   .toggle-button料金 {
     display: inline-flex;
@@ -395,7 +206,7 @@ h2 {
     margin: 0 auto 10px;
   }
 
-  /* スマホでは最初閉じる */
+  /* 閉じてる */
   .content流れ,
   .content料金 {
     display: none;
@@ -408,7 +219,7 @@ h2 {
       filter 0.5s ease;
   }
 
-  /* 開いたら表示 */
+  /* 開いた */
   .content流れ.show,
   .content料金.show {
     display: block;
@@ -416,761 +227,70 @@ h2 {
     transform: translateY(0);
     filter: blur(0);
   }
-}
 
-/* トグル矢印（流れ・料金 共通） */
-.arrow流れ,
-.arrow料金 {
-  font-family: 'Kiwi Maru', cursive;
-  font-size: 0.7em;
-  display: inline-block;
-  margin-left: 6px;
-
-  transform: scaleX(2);
-  transition: transform 0.4s ease;
-}
-
-/* 開いたとき */
-.arrow流れ.rotate,
-.arrow料金.rotate {
-  transform: scaleX(2) rotate(180deg);
-}
-  
-  /* スマホでは流れ・料金のPC用タイトルを非表示 */
-@media (max-width: 767px) {
-  .pc-title#flow,
-  .pc-title#price {
-    display: none;
-  }
-}
-/* =================================================
-   アクセス
-================================================= */
-.access-section {
-  max-width: 900px;
-  margin: 30px auto 50px;
-  padding: 25px;
-  background: rgba(255,255,255,0.75);
-  border-radius: 20px;
-  text-align: left;
-  color: #635656;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-}
-  
-.access-title {
-  width: 100%;
-  text-align: center;
-  font-size: 1.6em;
-  font-family: 'Kiwi Maru', cursive;
-  color: #8b8484;
-  position: relative;
-  display: block;
-  margin-bottom: 30px;
-  font-weight: 300;
-}
-
-.access-title::before {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  width: 1100px;
-  height: 0.8em;
-  background: rgba(169,169,169,0.25);
-  z-index: -1;
-  border-radius: 15px;
-  left: -10%;
-  transform: none;
-}
-
-  @media (max-width: 480px) {
-  .access-title {
-    display: block;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-}
-
-.access-text {
-  position: relative;
-  max-width: 550px;
-  margin: 0 auto 20px;
-  padding-left: 1.8em;
-  font-size: 1.3em;
-}
-
-@media (max-width: 480px) {
-.access-text {
-  font-size: 1em;
-}
-}
-  
-.access-text::before {
-  content: "📍";
-  position: absolute;
-  left: 0;
-  top: 5px;
-  font-size: 1.5em;
-}
-
-.zip {
-  font-size: 0.9em;
-}
-
-@media (max-width: 480px) {
-  .zip {
-    font-size: 0.9em;
-  }
-}
-  
-.address {
-  line-height: 1.3;    /* 行間詰め */
-}
-
-/* マップ */
-.map-wrapper {
-  position: relative;
-  padding-top: 56%;
-  border-radius: 15px;
-  overflow: hidden;
-  max-width: 680px;
-  margin: 0 auto;  
-}
-
-.map-wrapper iframe {
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  width: calc(100% + 2px);
-  height: calc(100% + 2px);
-  border: 0;
-  display: block;
-}
-
-/* =================================================
-   お問い合わせ
-================================================= */
-.contact-title {
-  width: 100%;
-  text-align: center;
-  font-size: 1.6em;
-  font-family: 'Kiwi Maru', cursive;
-  color: #8b8484;
-  position: relative;
-  display: block;
-  margin-bottom: 30px;
-  font-weight: 300;
-}
-
-.contact-title::before {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  width: 1100px;
-  height: 0.8em;
-  background: rgba(169,169,169,0.25);
-  z-index: -1;
-  border-radius: 15px;
-  left: -10%;
-  transform: none;
-}
-  
-.contact-cta {
-  text-align: center;
-  margin: 50px 0 40px;
-  display: block;
-  position: relative;
-  z-index: 1;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-}
-
-.contact-cta a {
-  display: inline-block;
-  padding: 10px 18px;
-  font-size: 18px;
-  color: #9F987D;
-  background: rgba(255,255,255,0.6);
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.contact-cta a:hover {
-  background: #b5a695;
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-/* スマホ */
-@media (max-width: 480px) {
-  .contact-cta a {
-    width: 65%;
-    padding: 10px 5px;
-    font-size: 18px;
-  }
-}
-  
-.contact-form {
-  display: none;
-  max-width: 900px;
-  margin: 0 auto 80px;
-  padding: 0 20px;
-  background: rgba(255,255,255,0.75);
-  border-radius: 15px;
-}
-  /* iframeは常に親にフィット */
-.contact-form iframe {
-  width: 100%;
-  border: none;
-}
-
-.contact-form.show { display: block; }
-
-  @media (max-width: 480px) {
-  .contact-title {
-    display: block;
-    text-align: center;
-    margin-top: 70px;
-    margin-bottom: 20px;
-  }
-}
-/* =================================================
-   自己評価
-================================================= */
-.pdf-section {
-  text-align: center;
-  margin: 40px 0 80px;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-  line-height: 1;
-}
-
-  .pdf-title {
-    width: 100%;
-    text-align: center;
-    font-size: 1.6em;
-    font-family: 'Kiwi Maru', cursive;
-    color: #8b8484;
-    position: relative;
-    display: block;
-    margin-top: 70px;
-    margin-bottom: 15px;
-    font-weight: 300;
-    transform: translateX(-10px);
-}
-
-.pdf-title::before {
-  content: "";
-  position: absolute;
-  left: -35px;
-  bottom: 6px;
-  width: 100%;
-  height: 0.6em;
-  background: rgba(169,169,169,0.25);
-  z-index: -1;
-  border-radius: 8px;
-}
-
-.pdf-link {
-  display: inline-block;
-  padding: 12px 20px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  background: rgba(255,255,255,0.6);
-  color: #9F987D;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 18px;
-}
-
-.pdf-link:hover {
-  background: #b5a695;
-  color: #fff;
-  transform: translateY(-2px);
-}
-  .pdf-note {
-  font-size: 0.75em;
-  opacity: 0.8;
-}
-
-  .self-buttons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-}
-
-  .self-buttons .pdf-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  aspect-ratio: 1 / 1;   /* ← 正方形の決め手 */
-  width: 100%;
-
-  background: #ffffff;
-  border-radius: 16px;
-
-  font-size: 0.9em;
-  color: #9F987D;
-  text-decoration: none;
-  text-align: center;
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-  .self-buttons .pdf-link:active {
-  transform: scale(0.96);
-}
-/* =================================================
-   フッター
-================================================= */
-footer {
-  background: rgba(255,255,255,0.5);
-  padding: 30px 15px;
-  text-align: center;
-  font-family: 'Kiwi Maru', cursive;
-  font-size: 1em;
-  color: #aaa;
-}
-
-/* 住所まわり */
-.footer-address {
-  line-height: 1.6;
-  margin-bottom: 15px;
-  font-size: 0.9em;
-}
-
-.footer-address span {
-  display: inline-block;
-}
-
-/* 電話とメールの間隔 */
-.footer-tel {
-  margin-right: 18px;
-  font-size: 0.9em;
-}
-
-.footer-mail {
-  font-size: 0.9em;
-}
-
-/* 下段（コピーライト・リンク） */
-.footer-copy {
-  margin-top: 15px;
-  font-size: 0.9em;
-  color: #aaa;
-}
-
-/* プライバシーポリシーリンク */
-.footer-privacy {
-  color: #aaa;
-  text-decoration: none;
-  font-size: 0.9em;
-}
-
-.footer-privacy:visited {
-  color: #9F987D;
-}
-
-.footer-privacy:hover {
-  color: #9F987D;
-  text-decoration: underline;
-}
-  
-@media (max-width: 768px) {
-  body {
-    background-attachment: scroll;
-  }
-}
-
-  @media (max-width: 480px) {
-  #pdf::before,
+  /* タイトル線短く */
   .access-title::before,
-  .contact-title::before,
-  .pdf-title::before {
-    width: 350px;   /* ← PCより短く */
+  .contact-title::before {
+    width: 40px;
   }
 }
-  
 </style>
 </head>
 
 <body>
-<div class="background-image"></div>
 
 <header>
- <div class="header-inner">
-
-    <div class="logo">
-      放課後等デイサービス・児童発達支援
-    </div>
-
-    <div class="header-center">
-      発達支援ノワール
-    </div>
-
-    <!-- スマホ用メニューボタン -->
-    <button class="menu-toggle" id="menu-toggle">☰</button>
-
-    <!-- メニューは1つだけ！ -->
-    <nav class="menu" id="menu">
-  <a href="#flow">ご利用の流れ</a>
-  <a href="#price">ご利用料金</a>
-  <a href="#access">アクセス</a>
-  <a href="#" id="contact-link">お問い合わせ</a>
-  <a href="#pdf">自己評価</a>
-  <a href="https://www.instagram.com/noir_niigata/" target="_blank" class="insta-link">
-    Instagram
-  </a>
-    </nav>
-
+  <div class="header-inner">
+    <div class="logo">放課後等デイサービス・児童発達支援</div>
+    <div class="header-center">発達支援ノワール</div>
+    <button class="menu-toggle">☰</button>
   </div>
 </header>
-  
-<!-- ===== PC用スライダー ===== -->
-<div class="slider-section pc-only">
-  <button class="slide-arrow left">〈</button>
 
-  <div class="slider-wrapper">
-    <div class="slider">
-      <div class="slide"><img src="お困りごと.png"></div>
-      <div class="slide"><img src="ノワールの得意なこと.png"></div>
-      <div class="slide"><img src="多様な専門職が在籍.png"></div>
-      <div class="slide"><img src="支援の内容.png"></div>
-      <div class="slide"><img src="生活面での不安や.png"></div>
-    </div>
-  </div>
-  
-  <div class="slider-dots"></div>
-
-  <button class="slide-arrow right">〉</button>
-</div>
-
-<!-- ===== スマホ用スライダー ===== -->
-<div class="slider-section sp-only">
-  <div class="slider-wrapper">
-    <div class="slider">
-      <div class="slide"><img src="お困りごとスマホ.png"></div>
-      <div class="slide"><img src="ノワールの得意なことスマホ.png"></div>
-      <div class="slide"><img src="支援の内容スマホ1.png"></div>
-      <div class="slide"><img src="支援の内容スマホ2.png"></div>
-      <div class="slide"><img src="多様な専門職が在籍スマホ.png"></div>
-      <div class="slide"><img src="生活面での不安やスマホ.png"></div>
-    </div>
-  </div>
-    <!-- ★スマホ用ドット -->
-  <div class="slider-dots sp-dots"></div>
-</div>
- 
- <div class="toggle-container流れ">
+<!-- 流れ -->
+<div class="toggle-container流れ">
   <h2 class="pc-title" id="flow">ご利用開始までの流れ</h2>
-      <button class="toggle-button流れ" onclick="toggleContent流れ()">
-  ご利用開始までの流れ
-  <span class="arrow流れ">∨</span>
-</button>
-      <div id="content流れ" class="content流れ">
-        <div class="access-section">
-        <img src="ご利用の流れ.png" alt="ご利用開始までの流れ">
-      </div>
-    </div>
-    
-   <div class="toggle-container料金">
-  <h2 class="pc-title" id="price">ご利用料金について</h2>
-     <button class="toggle-button料金" onclick="toggleContent料金()">
-  ご利用料金
-  <span class="arrow料金">∨</span>
-</button>
-      <div id="content料金" class="content料金">
-        <div class="access-section">
-        <img src="料金.png" alt="ご利用料金">
-      </div>
-    </div>
-
-<h2 class="access-title" id="access">アクセス</h2>
-<section class="access-section">
-  <p class="access-text">
-  <span class="zip">〒950-0861</span><br>
-  <span class="address">
-    新潟県新潟市東区中山6-19-5　ウェル新潟ビル206
-  </span>
-</p>
-
-  <div class="map-wrapper">
-    <iframe
-     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.6605220127058!2d139.08114867535681!3d37.91499690407121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff4ca2b14fe7561%3A0x41f87e9442edc71f!2z44CSOTUwLTA4NjEg5paw5r2f55yM5paw5r2f5biC5p2x5Yy65Lit5bGx77yW5LiB55uu77yR77yZ4oiS77yVIOOCpuOCp-ODq-aWsOa9nw!5e0!3m2!1sja!2sjp!4v1766382089719!5m2!1sja!2sjp"
-     loading="lazy">
-    </iframe>
+  <button class="toggle-button流れ" onclick="toggleFlow()">ご利用開始までの流れ <span>∨</span></button>
+  <div id="content流れ" class="content流れ">
+    <img src="ご利用の流れ.png">
   </div>
-</section>
+</div>
 
-<h2 class="contact-title toggle-title" id="contact">
-  お問い合わせ
-</h2>
+<!-- 料金 -->
+<div class="toggle-container料金">
+  <h2 class="pc-title" id="price">ご利用料金について</h2>
+  <button class="toggle-button料金" onclick="togglePrice()">ご利用料金 <span>∨</span></button>
+  <div id="content料金" class="content料金">
+    <img src="料金.png">
+  </div>
+</div>
 
-<button class="toggle-button料金 sp-only" onclick="toggleContentContact()">
-  お問い合わせ
-  <span class="arrow料金">∨</span>
-</button>
-
-<section id="contact-section" class="contact-form">
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSci9ClyPaBeHyqKnsIpgh6nGqeLRpV-x8E1sJ7C8qhSyth11Q/viewform?embedded=true" width="100%" height="700">
-  </iframe>
-</section>
-
-<h2 class="pc-title pc-only" id="pdf">自己評価</h2>
-
-<button class="toggle-button料金 sp-only" onclick="toggleContentSelf()">
-  自己評価
-  <span class="arrow料金">∨</span>
-</button>
-
-<div id="self-content" class="content料金">
-  <div class="pdf-section self-buttons">
-
-    <a href="自己評価_2023.pdf" target="_blank" class="pdf-link">
-      2023年度 自己評価
-    </a>
-
-    <a href="自己評価_2024.pdf" target="_blank" class="pdf-link">
-      2024年度 自己評価
-    </a>
-
-    <a href="自己評価_2025.pdf" target="_blank" class="pdf-link">
-      2025年度 自己評価
-    </a>
-
+<!-- 自己評価 -->
+<div class="toggle-container料金">
+  <h2 class="pc-title" id="pdf">自己評価</h2>
+  <button class="toggle-button料金" onclick="toggleSelf()">自己評価 <span>∨</span></button>
+  <div id="self-content" class="content料金">
+    <div class="pdf-section">
+      <a href="自己評価.html">自己評価一覧（PDF）</a>
+    </div>
   </div>
 </div>
 
 <footer>
-   <p class="footer-info">
-    〒950-0861    新潟県新潟市東区中山6-19-5  ウェル新潟ビル206<br>
-  <span class="footer-tel">TEL：025-290-7625</span>
-  <span class="footer-mail">MAIL：noir.niigata@gmail.com</span>
-  </p>
-  
- <div class="footer-bottom">
-    <span class="footer-copy">© 2026 合同会社ノワール</span>
-    <span class="footer-sep">｜</span>
-    <a href="privacy.html" class="footer-privacy">プライバシーポリシー</a>
-  </div>
+  <div>© 2026 合同会社ノワール</div>
+  <a href="privacy.html">プライバシーポリシー</a>
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-
-/* ======================
-   ハンバーガーメニュー
-====================== */
-const menuToggle = document.getElementById('menu-toggle');
-const menu = document.getElementById('menu');
-
-menuToggle.addEventListener('click', () => {
-  menu.classList.toggle('show');
-});
-
-/* ======================
-   お問い合わせ表示
-====================== */
-const contactLink = document.getElementById('contact-link');
-const contactForm = document.getElementById('contact-section');
-const contactBtn = document.getElementById('contact-cta-btn');
-const contactTitle = document.getElementById('contact');
-
-function openContact() {
-  contactForm.classList.add('show');
-  setTimeout(() => {
-    contactTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 100);
+function toggleFlow() {
+  document.getElementById("content流れ").classList.toggle("show");
 }
-
-contactLink?.addEventListener('click', e => {
-  e.preventDefault();
-  openContact();
-});
-
-contactBtn?.addEventListener('click', e => {
-  e.preventDefault();
-  openContact();
-});
-
-/* ======================
-   スライダー（PCのみ）
-====================== */
-const pcSliderSection = document.querySelector('.slider-section.pc-only');
-if (pcSliderSection) {
-
-  const slider = pcSliderSection.querySelector('.slider');
-  const slides = pcSliderSection.querySelectorAll('.slide');
-  const prevBtn = pcSliderSection.querySelector('.slide-arrow.left');
-  const nextBtn = pcSliderSection.querySelector('.slide-arrow.right');
-  const dotsContainer = pcSliderSection.querySelector('.slider-dots');
- 
-  let index = 0;
-
-  dotsContainer.innerHTML = '';
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => moveSlider(i));
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = dotsContainer.querySelectorAll('button');
-
-  function moveSlider(i) {
-    const slideWidth = slides[0].clientWidth;
-    slider.scrollTo({
-      left: slideWidth * i,
-      behavior: 'smooth'
-    });
-
-    index = i;
-    dots.forEach(d => d.classList.remove('active'));
-    dots[i].classList.add('active');
-
-    prevBtn.style.display = i === 0 ? 'none' : 'block';
-    nextBtn.style.display = i === slides.length - 1 ? 'none' : 'block';
-  }
-
-  moveSlider(0);
-
-  nextBtn.addEventListener('click', () => {
-    if (index < slides.length - 1) moveSlider(index + 1);
-  });
-
-  prevBtn.addEventListener('click', () => {
-    if (index > 0) moveSlider(index - 1);
-  });
+function togglePrice() {
+  document.getElementById("content料金").classList.toggle("show");
 }
-
-/* ======================
-   スライダー（スマホ）
-====================== */
-const spSliderSection = document.querySelector('.slider-section.sp-only');
-if (spSliderSection) {
-
-  const slider = spSliderSection.querySelector('.slider');
-  const slides = spSliderSection.querySelectorAll('.slide');
-  const dotsContainer = spSliderSection.querySelector('.sp-dots');
-
-  let index = 0;
-  dotsContainer.innerHTML = '';
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => moveSlider(i));
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = dotsContainer.querySelectorAll('button');
-
-  function moveSlider(i) {
-    const slideWidth = slides[0].clientWidth;
-    slider.scrollTo({
-      left: slideWidth * i,
-      behavior: 'smooth'
-    });
-
-    index = i;
-    dots.forEach(d => d.classList.remove('active'));
-    if (dots[i]) dots[i].classList.add('active');
-  }
-
-  slider.addEventListener('scroll', () => {
-    const slideWidth = slides[0].clientWidth;
-    const newIndex = Math.round(slider.scrollLeft / slideWidth);
-
-    if (newIndex !== index) {
-      index = newIndex;
-      dots.forEach(d => d.classList.remove('active'));
-      if (dots[index]) dots[index].classList.add('active');
-    }
-  });
+function toggleSelf() {
+  document.getElementById("self-content").classList.toggle("show");
 }
-
-/* ======================
-   トグル（流れ）
-====================== */
-window.toggleContent流れ = function () {
-  const content = document.getElementById('content流れ');
-  const arrow = document.querySelector('.arrow流れ');
-
-  if (!content || !arrow) return;
-
-  const opening = !content.classList.contains('show');
-  content.classList.toggle('show');
-  arrow.classList.toggle('rotate');
-
-  if (opening) {
-    setTimeout(() => {
-      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 200);
-  }
-};
-
-/* ======================
-   トグル（料金）
-====================== */
-window.toggleContent料金 = function () {
-  const content = document.getElementById('content料金');
-  const arrow = document.querySelector('.arrow料金');
-
-  if (!content || !arrow) return;
-
-  const opening = !content.classList.contains('show');
-  content.classList.toggle('show');
-  arrow.classList.toggle('rotate');
-
-  if (opening) {
-    setTimeout(() => {
-      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 200);
-  }
-};
-/* ======================
-   トグル（問い合わせ）
-====================== */
-window.toggleContentContact = function () {
-  const content = document.getElementById('contact-section');
-  const arrow = document.querySelector('.toggle-button料金.sp-only .arrow料金');
-
-  if (!content || !arrow) return;
-
-  const opening = !content.classList.contains('show');
-  content.classList.toggle('show');
-  arrow.classList.toggle('rotate');
-
-  if (opening) {
-    setTimeout(() => {
-      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 200);
-  }
-};
-/* ======================
-/* ======================
-   トグル（自己評価）
-====================== */
-window.toggleContentSelf = function () {
-  const content = document.getElementById('self-content');
-  const arrow = document.querySelectorAll('.toggle-button料金.sp-only .arrow料金')[1];
-
-  if (!content || !arrow) return;
-
-  const opening = !content.classList.contains('show');
-  content.classList.toggle('show');
-  arrow.classList.toggle('rotate');
-
-  if (opening) {
-    setTimeout(() => {
-      content.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 200);
-  }
-};
-
-  
-});
 </script>
 
 </body>
