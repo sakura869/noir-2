@@ -3,295 +3,280 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="新潟市にある発達支援ノワールは、放課後等デイサービス・児童発達支援を行っています。専門職が連携し、お子様に合わせた支援を提供します。">
+
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap" rel="stylesheet">
+
 <title>発達支援ノワール</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-
 <style>
-
-/* =====================================
-   共通
-===================================== */
+/* ================= 共通 ================= */
+html { scroll-behavior: smooth; }
 body {
   font-family: 'Kiwi Maru', cursive;
-  color: #635656;
+  color: #9F987D;
   margin: 0;
-  padding: 0;
+}
+.background-image{
+  position: fixed;
+  inset: 0;
+  background: url("がぞー.png") center / cover no-repeat;
+  opacity: .5;
+  z-index: -1;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+/* ================= ヘッダー ================= */
+header{
+  background: rgba(169,169,169,.5);
+  padding: 32px 8px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+h2{ scroll-margin-top:120px; }
+
+.header-inner{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  column-gap:40px;
+}
+.logo,.menu a{ color:#fff; white-space:nowrap; }
+.header-center{
+  text-align:center;
+  font-size:1.8em;
+  font-weight:bold;
+  letter-spacing:.15em;
+  color:#675340;
+  text-shadow:0 2px 6px rgba(0,0,0,.35);
+}
+.menu{ display:flex; justify-content:flex-end; }
+.menu a{ margin-left:20px; text-decoration:none; }
+.menu-toggle{ display:none; background:none; border:none; color:#fff; font-size:26px; }
+
+/* ===== スマホ ===== */
+@media(max-width:480px){
+  header{ padding:12px; }
+  .header-inner{ grid-template-columns:1fr auto; }
+  .header-center,.logo{ text-align:left; }
+  .header-center{ font-size:1.2em; }
+  .menu-toggle{ display:block; }
+  .menu{
+    position:absolute;
+    top:100%; right:0;
+    width:40%;
+    max-width:240px;
+    display:none;
+    background:rgba(169,169,169,.9);
+    padding:14px 16px;
+  }
+  .menu.show{ display:block; }
+  .menu a{ display:block; padding:10px 0; }
 }
 
-/* =====================================
-   ヘッダー
-===================================== */
-header {
-  background: rgba(255,255,255,0.7);
+/* ================= スライダー ================= */
+.slider-section{ max-width:920px; margin:15px auto; position:relative; }
+.pc-only{ display:block; }
+.sp-only{ display:none; }
+@media(max-width:480px){
+  .pc-only{ display:none; }
+  .sp-only{ display:block; }
 }
 
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
+.slider{ display:flex; overflow-x:auto; scroll-snap-type:x mandatory; }
+.slider::-webkit-scrollbar{ display:none; }
+.slide{ flex:0 0 100%; scroll-snap-align:center; }
+.slide img{ width:100%; display:block; }
+
+.slide-arrow{
+  position:absolute; top:50%;
+  transform:translateY(-50%);
+  font-size:35px;
+  background:none;
+  border:none;
+  color:#9F987D;
+  cursor:pointer;
 }
+.slide-arrow.left{ left:8px; }
+.slide-arrow.right{ right:8px; }
+@media(max-width:480px){ .slide-arrow{ display:none; } }
 
-.logo {
-  font-size: 12px;
+.slider-dots{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:6px;
 }
-
-.header-center {
-  font-size: 20px;
+.slider-dots button{
+  width:8px;height:8px;border-radius:50%;
+  border:none;background:#d6d2c4;
 }
+.slider-dots button.active{ background:#9F987D; }
 
-.menu-toggle {
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.menu {
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* =====================================
-   スライダー
-===================================== */
-.slider-section {
-  position: relative;
-}
-
-.pc-only { display: block; }
-.sp-only { display: none; }
-
-.slider-wrapper {
-  overflow: hidden;
-}
-
-.slider {
-  display: flex;
-}
-
-.slide img {
-  width: 100%;
-}
-
-/* =====================================
-   タイトル
-===================================== */
-.pc-title,
-.access-title,
-.contact-title {
-  text-align: center;
-  margin: 40px 0 20px;
-  position: relative;
-}
-
-.pc-title::before,
-.access-title::before,
-.contact-title::before {
-  content: "";
-  width: 80px;
-  height: 2px;
-  background: #9F987D;
-  display: block;
-  margin: 0 auto 10px;
-}
-
-/* =====================================
-   トグル共通
-===================================== */
+/* ================= トグル ================= */
 .toggle-container流れ,
-.toggle-container料金 {
-  text-align: center;
-  margin-bottom: 30px;
-}
+.toggle-container料金{ text-align:center; margin:60px auto; }
 
 .toggle-button流れ,
-.toggle-button料金 {
-  display: none;
+.toggle-button料金{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 18px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  background:rgba(255,255,255,.6);
+  color:#9F987D;
+  font-size:18px;
 }
 
-.content流れ,
-.content料金 {
-  background: rgba(255,255,255,0.85);
-  padding: 20px 15px;
-  border-radius: 20px;
-  margin-top: 15px;
-}
-
-/* =====================================
-   アクセス
-===================================== */
-.access-section {
-  text-align: center;
-}
-
-.map-wrapper iframe {
-  width: 100%;
-  height: 300px;
-  border: none;
-}
-
-/* =====================================
-   お問い合わせ
-===================================== */
-.contact-cta {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.contact-cta a {
-  display: inline-block;
-  padding: 12px 25px;
-  border-radius: 25px;
-  background: rgba(255,255,255,0.8);
-  border: 1px solid #ccc;
-}
-
-/* =====================================
-   PDF
-===================================== */
-.pdf-section {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-/* =====================================
-   フッター
-===================================== */
-footer {
-  background: rgba(255,255,255,0.5);
-  padding: 30px 15px;
-  text-align: center;
-  font-size: 14px;
-}
-
-.footer-bottom {
-  margin-top: 15px;
-}
-
-/* =====================================
-   スマホ専用
-===================================== */
-@media (max-width: 767px) {
-
-  .pc-only { display: none; }
-  .sp-only { display: block; }
-
-  .pc-title {
-    display: none;
-  }
-
-  /* トグルボタン */
+.content流れ,.content料金{ display:block; }
+@media(max-width:767px){
   .toggle-button流れ,
-  .toggle-button料金 {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 18px;
-    padding: 10px 18px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    background: rgba(255,255,255,0.6);
-    color: #9F987D;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    cursor: pointer;
-    margin: 0 auto 10px;
-  }
+  .toggle-button料金{ display:inline-flex; }
+  .content流れ,.content料金{ display:none; }
+  .content流れ.show,.content料金.show{ display:block; }
+}
 
-  /* 閉じてる */
-  .content流れ,
-  .content料金 {
-    display: none;
-    opacity: 0;
-    transform: translateY(20px);
-    filter: blur(6px);
-    transition:
-      opacity 0.5s ease,
-      transform 0.5s ease,
-      filter 0.5s ease;
-  }
+.arrow流れ,.arrow料金{
+  transform:scaleX(2);
+  transition:.3s;
+}
+.rotate{ transform:scaleX(2) rotate(180deg); }
 
-  /* 開いた */
-  .content流れ.show,
-  .content料金.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
+/* ================= 共通白BOX ================= */
+.access-section{
+  max-width:900px;
+  margin:30px auto;
+  padding:25px;
+  background:rgba(255,255,255,.75);
+  border-radius:20px;
+}
 
-  /* タイトル線短く */
-  .access-title::before,
-  .contact-title::before {
-    width: 40px;
-  }
+/* ================= 自己評価 ================= */
+.self-buttons{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+.pdf-link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  aspect-ratio:1/1;
+  background:#fff;
+  border-radius:16px;
+  text-decoration:none;
+  color:#9F987D;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+/* ================= フッター ================= */
+footer{
+  background:rgba(255,255,255,.5);
+  padding:30px 15px;
+  text-align:center;
+  color:#aaa;
 }
 </style>
 </head>
 
 <body>
+<div class="background-image"></div>
 
 <header>
   <div class="header-inner">
     <div class="logo">放課後等デイサービス・児童発達支援</div>
     <div class="header-center">発達支援ノワール</div>
-    <button class="menu-toggle">☰</button>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <nav class="menu" id="menu">
+      <a href="#flow">ご利用の流れ</a>
+      <a href="#price">ご利用料金</a>
+      <a href="#access">アクセス</a>
+      <a href="#pdf">自己評価</a>
+    </nav>
   </div>
 </header>
 
-<!-- 流れ -->
+<!-- ===== スライダー ===== -->
+<div class="slider-section pc-only">
+  <button class="slide-arrow left">〈</button>
+  <div class="slider">
+    <div class="slide"><img src="お困りごと.png"></div>
+    <div class="slide"><img src="ノワールの得意なこと.png"></div>
+  </div>
+  <div class="slider-dots"></div>
+  <button class="slide-arrow right">〉</button>
+</div>
+
+<!-- ===== 流れ ===== -->
 <div class="toggle-container流れ">
-  <h2 class="pc-title" id="flow">ご利用開始までの流れ</h2>
-  <button class="toggle-button流れ" onclick="toggleFlow()">ご利用開始までの流れ <span>∨</span></button>
+  <h2 id="flow">ご利用開始までの流れ</h2>
+  <button class="toggle-button流れ">ご利用開始までの流れ <span class="arrow流れ">∨</span></button>
   <div id="content流れ" class="content流れ">
-    <img src="ご利用の流れ.png">
-  </div>
-</div>
-
-<!-- 料金 -->
-<div class="toggle-container料金">
-  <h2 class="pc-title" id="price">ご利用料金について</h2>
-  <button class="toggle-button料金" onclick="togglePrice()">ご利用料金 <span>∨</span></button>
-  <div id="content料金" class="content料金">
-    <img src="料金.png">
-  </div>
-</div>
-
-<!-- 自己評価 -->
-<div class="toggle-container料金">
-  <h2 class="pc-title" id="pdf">自己評価</h2>
-  <button class="toggle-button料金" onclick="toggleSelf()">自己評価 <span>∨</span></button>
-  <div id="self-content" class="content料金">
-    <div class="pdf-section">
-      <a href="自己評価.html">自己評価一覧（PDF）</a>
+    <div class="access-section">
+      <img src="ご利用の流れ.png" style="width:100%;">
     </div>
   </div>
 </div>
 
+<!-- ===== 料金 ===== -->
+<div class="toggle-container料金">
+  <h2 id="price">ご利用料金</h2>
+  <button class="toggle-button料金">ご利用料金 <span class="arrow料金">∨</span></button>
+  <div id="content料金" class="content料金">
+    <div class="access-section">
+      <img src="料金.png" style="width:100%;">
+    </div>
+  </div>
+</div>
+
+<!-- ===== 自己評価 ===== -->
+<h2 id="pdf" style="text-align:center;">自己評価</h2>
+<button class="toggle-button料金 sp-only">自己評価 <span class="arrow料金">∨</span></button>
+<div id="self-content" class="content料金">
+  <div class="access-section self-buttons">
+    <a href="自己評価_2023.pdf" class="pdf-link">2023年度</a>
+    <a href="自己評価_2024.pdf" class="pdf-link">2024年度</a>
+  </div>
+</div>
+
 <footer>
-  <div>© 2026 合同会社ノワール</div>
-  <a href="privacy.html">プライバシーポリシー</a>
+  © 2026 合同会社ノワール
 </footer>
 
 <script>
-function toggleFlow() {
-  document.getElementById("content流れ").classList.toggle("show");
-}
-function togglePrice() {
-  document.getElementById("content料金").classList.toggle("show");
-}
-function toggleSelf() {
-  document.getElementById("self-content").classList.toggle("show");
-}
-</script>
+document.addEventListener('DOMContentLoaded',()=>{
 
+  document.getElementById('menu-toggle')?.addEventListener('click',()=>{
+    document.getElementById('menu').classList.toggle('show');
+  });
+
+  function toggle(btn,content){
+    btn.addEventListener('click',()=>{
+      content.classList.toggle('show');
+      btn.querySelector('span')?.classList.toggle('rotate');
+    });
+  }
+
+  toggle(
+    document.querySelector('.toggle-button流れ'),
+    document.getElementById('content流れ')
+  );
+  toggle(
+    document.querySelector('.toggle-button料金'),
+    document.getElementById('content料金')
+  );
+  toggle(
+    document.querySelectorAll('.toggle-button料金.sp-only')[0],
+    document.getElementById('self-content')
+  );
+
+});
+</script>
 </body>
 </html>
