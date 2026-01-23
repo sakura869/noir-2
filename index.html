@@ -49,7 +49,7 @@ h2 {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   column-gap: clamp(12px, 4vw, 40px);
 }
@@ -60,7 +60,8 @@ h2 {
   color: #fff;
   font-family: 'Kiwi Maru', cursive;
   white-space: nowrap;
-    font-size: clamp(0.7rem, 2vw, 1rem);
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  max-width: 0;
 }
 
 .header-center {
@@ -69,7 +70,9 @@ h2 {
   color: #675340;
   letter-spacing: 0.15em;
   text-shadow: 0 2px 6px rgba(0,0,0,0.35);
-  white-space: nowrap;   /* ← 改行させない */
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   
   font-size: clamp(1.1rem, 3vw, 1.8rem);
 }
@@ -644,7 +647,10 @@ h2 {
   .self-buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
+  gap: clamp(6px, 1.5vw, 10px);
+  justify-content: center;   /* ← 追加 */
+  margin: 0 auto;            /* ← 追加 */
+  max-width: 320px;   
 }
 
   .self-buttons .pdf-link {
