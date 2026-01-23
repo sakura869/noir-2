@@ -60,16 +60,18 @@ h2 {
   color: #fff;
   font-family: 'Kiwi Maru', cursive;
   white-space: nowrap;
+    font-size: clamp(0.7rem, 2vw, 1rem);
 }
 
 .header-center {
   text-align: center;
-  font-size: 1.8em;
   font-weight: bold;
   color: #675340;
   letter-spacing: 0.15em;
   text-shadow: 0 2px 6px rgba(0,0,0,0.35);
   white-space: nowrap;   /* ← 改行させない */
+  
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
 }
 
 /* ===== メニュー ===== */
@@ -81,7 +83,7 @@ h2 {
 .menu a {
   margin-left: 20px;
   text-decoration: none;
-  font-size: 1.1em;
+    font-size: clamp(0.7rem, 2vw, 1rem);
 }
 
 .menu a:hover {
@@ -96,18 +98,6 @@ h2 {
   border: none;
   color: #fff;
   cursor: pointer;
-}
-/* ================= 小さめPC ================= */
-@media (max-width: 1024px) {
-  .header-center {
-    font-size: 1.4em;
-    white-space: normal; /* 改行OKに */
-    text-align: center;
-  }
-
-  .header-inner {
-    column-gap: 20px;
-  }
 }
 /* ================= スマホ ================= */
 @media (max-width: 480px) {
