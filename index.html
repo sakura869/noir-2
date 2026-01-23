@@ -35,7 +35,7 @@ body {
 /* ------------------ ヘッダー ------------------ */
 header {
   background-color: rgba(169,169,169,0.5);
-  padding: 32px 8px;
+  padding: clamp(12px, 3vw, 32px) clamp(8px, 4vw, 24px);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -73,7 +73,13 @@ h2 {
   
   font-size: clamp(1.1rem, 3vw, 1.8rem);
 }
-
+  
+@media (max-width: 1024px) {
+  .header-inner {
+    column-gap: 20px;
+  }
+}
+  
 /* ===== メニュー ===== */
 .menu {
   display: flex;               /* ← PCでは横並び */
