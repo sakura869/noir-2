@@ -61,7 +61,13 @@ h2 {
   font-family: 'Kiwi Maru', cursive;
   white-space: nowrap;
   font-size: clamp(0.7rem, 2vw, 1rem);
-  max-width: 0;
+}
+
+  @media (max-width: 480px) {
+  .logo,
+  .menu a {
+    max-width: 100%;
+  }
 }
 
 .header-center {
