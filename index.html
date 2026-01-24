@@ -349,6 +349,13 @@ h2 {
   display: none;
 }
 
+  @media (max-width: 767px) {
+  .toggle-button流れ,
+  .toggle-button料金 {
+    display: inline-flex;
+  }
+}
+
 /* PCでは常に表示 */
 .content流れ,
 .content料金 {
@@ -598,7 +605,7 @@ h2 {
 }
   
 .contact-form {
-  display: block;
+  display: none;
   max-width: 900px;
   margin: 0 auto 80px;
   padding: 0 20px;
@@ -621,6 +628,36 @@ h2 {
     margin-bottom: 20px;
   }
 }
+
+  /* お問い合わせボタン：PC・スマホ共通 */
+.toggle-button-contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 18px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: rgba(255,255,255,0.6);
+  color: #9F987D;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  cursor: pointer;
+  margin: 0 auto 15px;
+}
+
+/* 矢印 */
+.arrow-contact {
+  font-family: 'Kiwi Maru', cursive;
+  font-size: 0.7em;
+  transform: scaleX(2);
+  transition: transform 0.4s ease;
+}
+
+.arrow-contact.rotate {
+  transform: scaleX(2) rotate(180deg);
+}
+  
 /* =================================================
    自己評価
 ================================================= */
@@ -870,11 +907,11 @@ footer {
   お問い合わせ
 </h2>
 
-<button class="toggle-button料金 sp-only" onclick="toggleContentContact()">
+<button class="toggle-button-contact" onclick="toggleContentContact()">
   お問い合わせ
-  <span class="arrow料金">∨</span>
+  <span class="arrow-contact">∨</span>
 </button>
-
+     
 <section id="contact-section" class="contact-form">
   <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSci9ClyPaBeHyqKnsIpgh6nGqeLRpV-x8E1sJ7C8qhSyth11Q/viewform?embedded=true" width="100%" height="700">
   </iframe>
@@ -1103,7 +1140,7 @@ window.toggleContent料金 = function () {
 ====================== */
 window.toggleContentContact = function () {
   const content = document.getElementById('contact-section');
-  const arrow = document.querySelector('.toggle-button料金.sp-only .arrow料金');
+  const arrow = document.querySelector('.arrow-contact');
 
   if (!content || !arrow) return;
 
