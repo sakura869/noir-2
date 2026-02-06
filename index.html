@@ -698,10 +698,9 @@ h2 {
 .self-buttons {
   display: grid;
   grid-template-columns: repeat(5, 110px);
-  gap: 10px;
-  justify-content: center;
+  gap: 14px;
+  justify-content: center;   /* ← 左ズレ防止 */
   margin: 0 auto;
-  max-width: none;  
 }
   
   .self-buttons .pdf-link {
@@ -723,6 +722,7 @@ h2 {
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     margin: 0 auto;
     font-size:14px;
+  box-sizing: border-box;  
 }
 
   .self-buttons .pdf-link:active {
