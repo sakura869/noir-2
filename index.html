@@ -694,15 +694,14 @@ h2 {
   font-size: 0.75em;
   opacity: 0.8;
 }
-
-  .self-buttons {
+  
+.self-buttons {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: clamp(6px, 1.5vw, 10px);
-  justify-content: center;   /* ← 追加 */
-  margin: 0 auto;            /* ← 追加 */
-  max-width: 320px;   
-}
+  grid-template-columns: repeat(5, 110px);
+  gap: 10px;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: none;  
 
   .self-buttons .pdf-link {
   display: flex;
@@ -942,7 +941,7 @@ footer {
     </a>
 
 　　<a href="保護者(放デイ).pdf" target="_blank" class="pdf-link">
-  　　事業所における<br>自己評価結果
+  　  事業所における<br>自己評価結果
  　　 <span class="pdf-small">(放課後等デイサービス)</span>
 　　</a>
 
