@@ -732,18 +732,20 @@ h2 {
     font-size: 14px;
   }
     
-    @media screen and (max-width: 768px) {
-  .pdf-link {
-    padding: 8px 4px;
-    font-size: 0.5em;
-    min-width: unset;
-     grid-template-columns: 1fr; 
+/* ===== スマホ：自己評価ボタンを縦1列 ===== */
+@media (max-width: 767px) {
+  .self-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
-        .self-buttons .pdf-link {
+
+  .self-buttons .pdf-link {
     width: 100%;
+    aspect-ratio: auto;   /* 正方形解除 */
     padding: 14px 10px;
     font-size: 0.85em;
-}
+  }
 }
 /* =================================================
    フッター
