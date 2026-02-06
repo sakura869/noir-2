@@ -704,19 +704,20 @@ h2 {
   
   .self-buttons .pdf-link {
    display: flex;
-   align-items: center;
-   justify-content: center;
-   aspect-ratio: 1 / 1;
-   width: 110px;
-   background: #ffffff;
-   border-radius: 16px;
-   font-size: 14px;
-   color: #9F987D;
-   text-decoration: none;
-   text-align: center;
-   flex-direction: column;
-   line-height: 1.2;
-   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  width: 110px;
+  box-sizing: border-box; /* ← これが神 */
+  background: #ffffff;
+  border-radius: 16px;
+  font-size: 14px;
+  color: #9F987D;
+  text-decoration: none;
+  text-align: center;
+  flex-direction: column;
+  line-height: 1.2;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
   .self-buttons .pdf-link:active {
