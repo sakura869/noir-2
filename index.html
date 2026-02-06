@@ -665,63 +665,72 @@ h2 {
   text-align: center;
   margin: 40px 0 80px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
-  line-height: 1.5;
 }
 
-  .pdf-link .pdf-small {
-  font-size: 0.7em;   /* ← ここで調整 */
-  opacity: 0.85;      /* 少し控えめに（お好み） */
+.self-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 130px);
+  gap: 18px;
+  justify-content: center;
 }
-  
-.pdf-link {
-  display: inline-block;
-  padding: 12px 20px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  background: rgba(255,255,255,0.6);
+
+.self-buttons .pdf-link {
+  width: 130px;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 16px;
+  font-size: 15px;
   color: #9F987D;
   text-decoration: none;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  line-height: 1.2;
+
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
-  font-size: 17px;
 }
 
-.pdf-link:hover {
+.self-buttons .pdf-link:hover {
   background: #b5a695;
   color: #fff;
   transform: translateY(-2px);
 }
-  .pdf-note {
-  font-size: 0.75em;
-  opacity: 0.8;
-}
-  
-.self-buttons {
-  display: grid;
-  grid-template-columns: repeat(5, 110px); /* ← PCは5個固定 */
-  gap: 45px;
-  justify-content: center;
-}
-  
-  .self-buttons .pdf-link {
-   display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1 / 1;
-  width: 140px;
-  box-sizing: border-box; /* ← これが神 */
-  background: #ffffff;
-  border-radius: 16px;
-  font-size: 14px;
-  color: #9F987D;
-  text-decoration: none;
-  text-align: center;
-  flex-direction: column;
-  line-height: 1.2;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
+.self-buttons .pdf-link:active {
+  transform: scale(0.96);
 }
 
-  .self-buttons .pdf-link:active {
-  transform: scale(0.96);
+.pdf-small {
+  font-size: 0.7em;
+  opacity: 0.85;
+}
+
+  @media (max-width: 767px) {
+
+  /* 自己評価は常に表示 */
+  #self-content {
+    display: block;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  /* スマホは2列表示で見やすく */
+  .self-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .self-buttons .pdf-link {
+    width: 100%;
+    font-size: 14px;
+  }
 }
 /* =================================================
    フッター
@@ -921,37 +930,29 @@ footer {
 
 <h2 class="pc-title" id="pdf">サービス自己評価表</h2>
 
-<button class="toggle-button料金 sp-only" onclick="toggleContentSelf()">
-  自己評価一覧
-  <span class="arrow料金">∨</span>
-</button>
-
 <div id="self-content" class="content料金">
   <div class="pdf-section self-buttons">
 
     <a href="事業所(放デイ).pdf" target="_blank" class="pdf-link">
-  事業所における<br>自己評価結果<br>
-      <span class="pdf-small">(児童発達支援)</span>
-</a>
+      事業所における<br>自己評価結果<br>(児童発達支援)
+    </a>
 
-<a href="事業所(児発).pdf" target="_blank" class="pdf-link">
-  保護者等からの<br>事業所評価の<br>集計結果<br>
-  <span class="pdf-small">(児童発達支援)</span>
-</a>
+    <a href="事業所(児発).pdf" target="_blank" class="pdf-link">
+      保護者等からの<br>事業所評価の<br>集計結果<br>(児童発達支援)
+    </a>
 
-<a href="保護者(放デイ).pdf" target="_blank" class="pdf-link">
-  事業所における<br>自己評価結果
-  <span class="pdf-small">(放課後等デイ<br>サービス)</span>
-</a>
+    <a href="保護者(放デイ).pdf" target="_blank" class="pdf-link">
+      事業所における<br>自己評価結果
+      <span class="pdf-small">(放課後等デイサービス)</span>
+    </a>
 
-<a href="保護者(児発).pdf" target="_blank" class="pdf-link">
-  保護者等からの<br>事業所評価の<br>集計結果<br>
-  <span class="pdf-small">(放課後等デイ<br>サービス)</span>
-</a>
+    <a href="保護者(児発).pdf" target="_blank" class="pdf-link">
+      保護者等からの<br>事業所評価の<br>集計結果<br>(放課後等デイサービス)
+    </a>
 
-<a href="支援プログラム.pdf" target="_blank" class="pdf-link">
-  支援プログラム
-</a>
+    <a href="支援プログラム.pdf" target="_blank" class="pdf-link">
+      支援プログラム
+    </a>
     
   </div>
 </div>
