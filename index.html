@@ -681,6 +681,7 @@ h2 {
   background: #ffffff;
   border-radius: 16px;
   font-size: 16px;
+  padding: 22px 14px;
   color: #9F987D;
   text-decoration: none;
   text-align: center;
@@ -707,44 +708,23 @@ h2 {
 }
 
 .pdf-small {
-  font-size: 0.7em;
+  font-size: 0.8em;
   opacity: 0.85;
 }
 
-  @media (max-width: 767px) {
-  /* 自己評価は常に表示 */
-  #self-content {
-    display: block;
-    opacity: 1;
-    transform: none;
-    filter: none;
-  }
-
-  /* スマホは2列表示で見やすく */
-  .self-buttons {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .self-buttons .pdf-link {
-    width: 100%;
-    font-size: 14px;
-  }
-｝
-    
 /* ===== スマホ：自己評価ボタンを縦1列 ===== */
 @media (max-width: 767px) {
   .self-buttons {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
   }
 
   .self-buttons .pdf-link {
     width: 100%;
-    aspect-ratio: auto;   /* 正方形解除 */
-    padding: 14px 10px;
+    aspect-ratio: auto;
+    padding: 18px 8px;
     font-size: 0.85em;
   }
 }
