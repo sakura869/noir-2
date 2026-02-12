@@ -780,6 +780,15 @@ footer {
 .footer-privacy:hover {
   text-decoration: underline;
 }
+
+  .footer-info a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.footer-info a:hover {
+  text-decoration: underline;
+}
     
 @media (max-width: 768px) {
   body {
@@ -954,11 +963,31 @@ footer {
 </div>
 
 <footer>
-   <p class="footer-info">
-    〒950-0861    新潟県新潟市東区中山6-19-5  ウェル新潟ビル206<br>
-  <span class="footer-tel">TEL：025-290-7625</span>
-  <span class="footer-mail">MAIL：noir.niigata@gmail.com</span>
+  <p class="footer-info">
+    <a
+      href="https://www.google.com/maps?q=新潟県新潟市東区中山6-19-5+ウェル新潟ビル206"
+      target="_blank"
+    >
+      〒950-0861 新潟県新潟市東区中山6-19-5 ウェル新潟ビル206
+    </a><br>
+
+    <span class="footer-tel">
+      <a href="tel:0252907625">TEL：025-290-7625</a>
+    </span>
+
+    <span class="footer-mail">
+      <a href="mailto:noir.niigata@gmail.com">
+        MAIL：noir.niigata@gmail.com
+      </a>
+    </span>
   </p>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 合同会社ノワール</span>
+    <span class="footer-sep">｜</span>
+    <a href="privacy.html" class="footer-privacy">プライバシーポリシー</a>
+  </div>
+</footer>
   
  <div class="footer-bottom">
     <span class="footer-copy">© 2026 合同会社ノワール</span>
