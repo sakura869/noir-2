@@ -675,12 +675,12 @@ h2 {
 }
 
 .self-buttons {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 200px);
-  gap: 50px;
+  display: flex;
   justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
 }
-
+  
 .self-buttons .pdf-link {
   width: 180px;
   aspect-ratio: auto;
@@ -740,6 +740,10 @@ h2 {
     margin-bottom: 0;
   }
 }
+
+.program {
+  margin-top: 40px;
+}
   
 /* ===== スマホ：自己評価ボタンを縦1列 ===== */
 @media (max-width: 767px) {
@@ -751,7 +755,7 @@ h2 {
   }
 
   .self-buttons .pdf-link {
-    width: 100%;
+    width: 70%;
     aspect-ratio: auto;
     padding: 18px 8px;
     font-size: 0.85em;
@@ -1000,12 +1004,7 @@ footer {
   </a>
 </div>
 
-<!-- ③ 支援プログラム（単独） -->
-<div class="pdf-section self-buttons">
-  <a href="支援プログラム.pdf" target="_blank" class="pdf-link">
-    支援プログラム
-  </a>
-</div>
+<div class="pdf-section self-buttons program">
 </div>
 
 <footer>
