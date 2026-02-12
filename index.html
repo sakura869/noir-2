@@ -772,12 +772,10 @@ h2 {
    フッター
 ================================================= */
 footer {
-  margin-top: auto;              /* ← 下に押し付ける要 */
+  margin-top: auto;
   padding: 30px 15px;
-
   background-color: rgba(255,255,255,0.5);
   text-align: center;
-
   font-family: 'Kiwi Maru', cursive;
   font-size: 1em;
   color: #aaa;
@@ -860,6 +858,11 @@ body {
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
   
 </style>
@@ -897,6 +900,7 @@ body {
   </div>
  </header>
 <main>
+
 <!-- ===== PC用スライダー ===== -->
 <div class="slider-section pc-only">
   <button class="slide-arrow left">〈</button>
@@ -1023,8 +1027,9 @@ body {
 
 <div class="pdf-section self-buttons program">
 </div>
+  
 </main>
-     
+
 <footer>
   <p class="footer-info">
     <a
