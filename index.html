@@ -15,6 +15,11 @@
 html { scroll-behavior: smooth; }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body {
   font-family: 'Kiwi Maru', cursive;
   background-color: #fff;
   color: #9F987D;
@@ -36,6 +41,11 @@ body {
         z-index: -1; opacity: 0.5;
       }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+  
 /* ------------------ ヘッダー ------------------ */
 header {
   background-color: rgba(169,169,169,0.5);
@@ -747,6 +757,12 @@ h2 {
   margin-bottom: 0;
  }
 }
+
+  main {
+  flex: 1;        /* 余った高さを全部使う */
+  width: 100%;
+}
+
 /* =================================================
    フッター
 ================================================= */
@@ -757,7 +773,8 @@ footer {
   font-family: 'Kiwi Maru', cursive;
   font-size: 1em;
   color: #aaa;
-  margin-top: auto;   /* ← これが超重要 */
+  margin-top: auto;
+  width: 100%;
 }
 
 /* 住所まわり */
@@ -859,7 +876,8 @@ footer {
 
   </div>
 </header>
-  
+
+</main>
 <!-- ===== PC用スライダー ===== -->
 <div class="slider-section pc-only">
   <button class="slide-arrow left">〈</button>
@@ -981,7 +999,8 @@ footer {
     
   </div>
 </div>
-
+</main>
+     
 <footer>
   <p class="footer-info">
     <a
