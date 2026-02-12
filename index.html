@@ -663,14 +663,15 @@ h2 {
 
 /* セクション間の余白 */
 .pdf-section:last-of-type {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 /* ================= PDFボタン並び（PC） ================= */
 .self-buttons {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  align-items: center;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
@@ -711,9 +712,8 @@ h2 {
 
 /* ================= 説明文 ================= */
 .pdf-text {
-  margin: 0 0 30px;
+  margin: 0 0 20px;
   text-align: center;
-
   font-size: 16px;
   line-height: 1.8;
   color: #6f6a55;
@@ -753,10 +753,13 @@ h2 {
   }
 
   .self-buttons .pdf-link {
-    width: 70%;
+    width: 100%;
+    max-width: 320px;   /* ← 見た目を揃える魔法 */
+    margin: 0 auto;     /* ← これが決定打 */
     padding: 18px 8px;
     font-size: 0.85em;
   }
+}
 
   /* 下余白リセット */
   .contact-form,
