@@ -711,7 +711,16 @@ h2 {
   font-size: 0.8em;
   opacity: 0.85;
 }
-
+  
+@media (max-width: 767px) {
+  #self-content {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+  
 /* ===== スマホ：自己評価ボタンを縦1列 ===== */
 @media (max-width: 767px) {
   .self-buttons {
@@ -932,7 +941,7 @@ footer {
 
 <h2 class="pc-title" id="pdf">サービス自己評価表</h2>
 
-<div id="self-content" class="content料金">
+<div id="self-content">
   <div class="pdf-section self-buttons">
 
     <a href="事業所(放デイ).pdf" target="_blank" class="pdf-link">
