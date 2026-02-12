@@ -11,7 +11,6 @@
   <title>発達支援ノワール - 新潟市の放課後等デイサービス・児童発達支援</title>
 
 <style>
-/* ------------------ 共通 ------------------ */
 /* ================= 基本設定 ================= */
 html {
   scroll-behavior: smooth;
@@ -169,22 +168,19 @@ h2 {
     border-bottom: 1px solid rgba(255,255,255,0.25);
   }
 }
-/* =================================================
-   スライダー全体（外枠）
-================================================= */
+/* ================= スライダー外枠 ================= */
 .slider-section {
-  max-width: 920px;                 /* 画像幅に合わせる */
-  margin: 15px auto 0;
-  padding-bottom: 26px;
-  overflow: hidden;                 /* はみ出し防止 */
-  background: rgba(255,255,255,0);
-  position: relative;
+  max-width: 920px;
   width: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
+  margin: 15px auto 0;
+  padding: 0 10px 26px;
+  position: relative;
+
+  overflow: hidden;
+  background: rgba(255,255,255,0);
 }
 
-  /* 表示切り替え */
+/* 表示切り替え */
 .pc-only { display: block; }
 .sp-only { display: none; }
 
@@ -193,9 +189,7 @@ h2 {
   .sp-only { display: block; }
 }
 
-/* =================================================
-   矢印ボタン（PCのみ表示）
-================================================= */
+/* ================= 矢印（PCのみ） ================= */
 .slide-arrow {
   position: absolute;
   top: 50%;
@@ -204,49 +198,43 @@ h2 {
 
   background: none;
   border: none;
-  box-shadow: none;
   padding: 0;
-  line-height: 1;
 
   font-size: 35px;
+  line-height: 1;
   color: #9F987D;
   cursor: pointer;
 
-  opacity: 0;                       /* 初期は非表示 */
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-/* 左右位置 */
 .slide-arrow.left  { left: 8px; }
 .slide-arrow.right { right: 8px; }
 
-/* PC：ホバー時だけ表示 */
+/* ホバーできる端末のみ表示 */
 @media (hover: hover) and (pointer: fine) {
   .slider-section:hover .slide-arrow {
     opacity: 1;
-    pointer-events: auto;
   }
 }
 
-/* スマホ：完全非表示 */
+/* スマホは非表示 */
 @media (max-width: 480px) {
   .slide-arrow {
     display: none;
   }
 }
 
-/* =================================================
-   スライダー本体（横スクロール）
-================================================= */
+/* ================= スライダー本体 ================= */
 .slider-wrapper {
-  width: 100%;
   overflow: hidden;
 }
 
 .slider {
   display: flex;
-  width: 100%;
-  overflow-x: auto;                 /* 横スクロール */
+  overflow-x: auto;
+
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 }
@@ -256,9 +244,7 @@ h2 {
   display: none;
 }
 
-/* =================================================
-   各スライド
-================================================= */
+/* ================= 各スライド ================= */
 .slide {
   flex: 0 0 100%;
   scroll-snap-align: center;
@@ -266,18 +252,15 @@ h2 {
 
 .slide img {
   width: 100%;
-  height: auto;
   display: block;
 }
 
-/* =================================================
-   スマホ調整
-================================================= */
+/* ================= スマホ調整 ================= */
 @media (max-width: 480px) {
 
   .slider-section {
-    background: none;
     margin: 0;
+    background: none;
   }
 
   .slider {
@@ -291,20 +274,17 @@ h2 {
   }
 
   .slide img {
-    border-radius: 0;
     object-fit: cover;
   }
 }
 
-/* =================================================
-   ドットナビ
-================================================= */
+/* ================= ドットナビ ================= */
 .slider-dots {
   position: absolute;
   left: 50%;
-  bottom: 6px;           /* ← 画像の外側 */
+  bottom: 6px;
   transform: translateX(-50%);
-  margin-top: 0;
+
   display: flex;
   gap: 10px;
 }
@@ -312,10 +292,11 @@ h2 {
 .slider-dots button {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
-  border: none;
   padding: 0;
+  border: none;
+  border-radius: 50%;
   cursor: pointer;
+
   background: #d6d2c4;
 }
 
