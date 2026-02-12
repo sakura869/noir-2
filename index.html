@@ -36,7 +36,9 @@ body {
   opacity: 0.5;
 }
 
-/* ================= ヘッダー ================= */
+/* =================================================
+   ヘッダー
+================================================= */
 header {
   background-color: rgba(169,169,169,0.5);
   padding: clamp(12px, 3vw, 32px) clamp(8px, 4vw, 24px);
@@ -168,6 +170,55 @@ h2 {
     border-bottom: 1px solid rgba(255,255,255,0.25);
   }
 }
+
+/* ===============================
+   PC用タイトル
+=============================== */
+.pc-title {
+  width: 100%;
+  margin-bottom: 30px;
+
+  text-align: center;
+  font-size: 1.6em;
+  font-weight: 300;
+  font-family: 'Kiwi Maru', cursive;
+  color: #8b8484;
+
+  position: relative;
+  display: block;
+}
+
+.pc-title::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: -30%;
+
+  width: 100%;
+  max-width: 1300px;
+  height: 0.8em;
+
+  background: rgba(169,169,169,0.25);
+  border-radius: 15px;
+  z-index: -1;
+}
+
+@media (max-width: 1100px) {
+  .pc-title {
+    font-size: 1.4em;
+  }
+
+  .pc-title::before,
+  .access-title::before,
+  .contact-title::before {
+    width: 90%;
+  }
+}
+  
+/* =================================================
+   スライダー
+================================================= */
+  
 /* ================= スライダー外枠 ================= */
 .slider-section {
   max-width: 920px;
@@ -303,30 +354,25 @@ h2 {
 .slider-dots button.active {
   background: #9F987D;
 }
-/* ===============================
-   トグル：PC基準
-=============================== */
 
+/* =================================================
+   トグル
+================================================= */
+  
+/* ================= トグル共通（PC基準） ================= */
 .toggle-container流れ,
 .toggle-container料金 {
   text-align: center;
   margin: 60px auto;
 }
 
-/* PCではボタン不要 */
+/* PC：ボタン非表示 */
 .toggle-button流れ,
 .toggle-button料金 {
   display: none;
 }
 
-  @media (max-width: 767px) {
-  .toggle-button流れ,
-  .toggle-button料金 {
-    display: inline-flex;
-  }
-}
-
-/* PCでは常に表示 */
+/* PC：コンテンツ常時表示 */
 .content流れ,
 .content料金 {
   display: block;
@@ -336,7 +382,7 @@ h2 {
   text-align: center;
 }
 
-/* PC用 画像サイズ */
+/* PC：画像サイズ */
 .content流れ img,
 .content料金 img {
   max-width: 720px;
@@ -345,83 +391,46 @@ h2 {
   display: block;
   margin: 0 auto;
 }
-  
-.pc-title {
-  width: 100%;
-  text-align: center;
-  font-size: 1.6em;
-  font-family: 'Kiwi Maru', cursive;
-  color: #8b8484;
-  position: relative;
-  display: block;
-  margin-bottom: 30px;
-  font-weight: 300;
-}
 
-.pc-title::before {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  width: 100%;
-  max-width: 1300px;
-  height: 0.8em;
-  background: rgba(169,169,169,0.25);
-  z-index: -1;
-  border-radius: 15px;
-  left: -30%;
-  transform: none;
-}
-
-@media (max-width: 1100px) {
-
-  .pc-title::before,
-  .access-title::before,
-  .contact-title::before {
-    width: 90%;
-  }
-
-  .pc-title {
-    font-size: 1.4em;
-  }
-}
-
-/* ===============================
-   スマホだけトグル化
-=============================== */
+/* ================= スマホだけトグル化 ================= */
 @media (max-width: 767px) {
 
-  /* ボタンを出す */
+  /* ボタン表示 */
   .toggle-button流れ,
   .toggle-button料金 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+
     font-size: 18px;
     padding: 10px 18px;
+    margin: 0 auto 10px;
+
     border-radius: 10px;
     border: 1px solid #ccc;
     background: rgba(255,255,255,0.6);
     color: #9F987D;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
     cursor: pointer;
-    margin: 0 auto 10px;
+
+    font-family: 'M PLUS Rounded 1c', sans-serif;
   }
 
-  /* スマホでは最初閉じる */
+  /* 初期は閉じる */
   .content流れ,
   .content料金 {
     display: none;
     opacity: 0;
     transform: translateY(20px);
     filter: blur(6px);
+
     transition:
       opacity 0.5s ease,
       transform 0.5s ease,
       filter 0.5s ease;
   }
 
-  /* 開いたら表示 */
+  /* 開いた状態 */
   .content流れ.show,
   .content料金.show {
     display: block;
@@ -429,16 +438,24 @@ h2 {
     transform: translateY(0);
     filter: blur(0);
   }
+
+  /* PC用タイトルは非表示 */
+  .pc-title#flow,
+  .pc-title#price {
+    display: none;
+  }
 }
 
-/* トグル矢印（流れ・料金 共通） */
+/* ===============================
+   トグル矢印（共通）
+=============================== */
 .arrow流れ,
 .arrow料金 {
   font-family: 'Kiwi Maru', cursive;
   font-size: 0.7em;
-  display: inline-block;
   margin-left: 6px;
 
+  display: inline-block;
   transform: scaleX(2);
   transition: transform 0.4s ease;
 }
@@ -447,14 +464,6 @@ h2 {
 .arrow流れ.rotate,
 .arrow料金.rotate {
   transform: scaleX(2) rotate(180deg);
-}
-  
-  /* スマホでは流れ・料金のPC用タイトルを非表示 */
-@media (max-width: 767px) {
-  .pc-title#flow,
-  .pc-title#price {
-    display: none;
-  }
 }
 /* =================================================
    アクセス
