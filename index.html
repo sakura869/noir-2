@@ -710,9 +710,21 @@ h2 {
   transform: scale(0.96);
 }
 
-.pdf-small {
-  font-size: 0.8em;
-  opacity: 0.85;
+.pdf-text {
+  text-align: center;
+  margin: 0 0 30px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #6f6a55;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+@media (max-width: 767px) {
+  .pdf-text {
+    font-size: 14px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
 }
   
 @media (max-width: 767px) {
@@ -952,27 +964,31 @@ footer {
 
 <h2 class="pc-title" id="pdf">サービス自己評価表</h2>
 
+<p class="pdf-text">
+  ・事業所における自己評価結果
+</p>
+     
 <div id="self-content">
   <div class="pdf-section self-buttons">
 
     <a href="事業所(放デイ).pdf" target="_blank" class="pdf-link">
-      事業所における<br>自己評価結果<br>
-      <span class="pdf-small">(放課後等デイサービス)</span>
+      <span>放課後等デイサービス</span>
     </a>
 
     <a href="事業所(児発).pdf" target="_blank" class="pdf-link">
-      事業所における<br>自己評価結果
-      <span class="pdf-small">(児童発達支援)</span>
+      <span>児童発達支援</span>
     </a>
 
+<p class="pdf-text">
+  ・保護者等からの事業所評価の集計結果
+</p>
+    
     <a href="保護者(放デイ).pdf" target="_blank" class="pdf-link">
-      保護者等からの<br>事業所評価の<br>集計結果<br>
-      <span class="pdf-small">(放課後等デイサービス)</span>
+      <span>放課後等デイサービス</span>
     </a>
 
     <a href="保護者(児発).pdf" target="_blank" class="pdf-link">
-      保護者等からの<br>事業所評価の<br>集計結果<br>
-      <span class="pdf-small">(児童発達支援)</span>
+      <span>児童発達支援</span>
     </a>
 
     <a href="支援プログラム.pdf" target="_blank" class="pdf-link">
