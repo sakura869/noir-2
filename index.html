@@ -841,6 +841,26 @@ footer {
 
 /* ================= スマホ対応 ================= */
 @media (max-width: 768px) {
+  /* 郵便番号で改行 */
+.footer-address .zip {
+  display: block;
+}
+
+/* TEL・MAIL を縦並び */
+.footer-tel,
+.footer-mail {
+  display: block;
+  margin-top: 6px;
+}
+
+/* 会社名とプライバシーポリシーは横並び */
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+  
   body {
     background-attachment: scroll;
     overflow-x: hidden;
@@ -1031,12 +1051,11 @@ main {
 
 <footer>
   <p class="footer-address">
-    <a
-      href="https://www.google.com/maps?q=新潟県新潟市東区中山6-19-5+ウェル新潟ビル206"
-      target="_blank"
-    >
-      〒950-0861 新潟県新潟市東区中山6-19-5 ウェル新潟ビル206
-    </a><br>
+    
+<a href="https://www.google.com/maps?q=新潟県新潟市東区中山6-19-5+ウェル新潟ビル206" target="_blank">
+  <span class="zip">〒950-0861</span>
+  新潟県新潟市東区中山6-19-5 ウェル新潟ビル206
+</a>
 
     <span class="footer-tel">
       <a href="tel:0252907625">TEL：025-290-7625</a>
