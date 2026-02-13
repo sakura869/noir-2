@@ -805,6 +805,7 @@ footer {
   margin-top: 0;
 }
 
+/* 下段コピーライトや住所リンクのコンテナ */
 .footer-bottom {
   display: flex;
   justify-content: center;
@@ -845,25 +846,24 @@ footer {
 /* ================= フッターリンク ================= */
 .footer-links {
   display: grid;
-  grid-template-columns: 1fr auto 1fr; /* 左右リンク伸ばして｜中央 */
+  grid-template-columns: 1fr auto 1fr; /* 左右リンク同じ幅、中央にセパレーター */
   align-items: center;
-  justify-items: center;               /* 左右リンクも中央寄せ */
-  font-size: 12px;
   width: 100%;
 }
 
 .footer-contact {
-  justify-self: center;
+  justify-self: end;   /* 左側リンクを右寄せ */
+  text-align: right;
+}
+
+.footer-sep {
+  justify-self: center; /* | を中央に */
   text-align: center;
 }
 
 .footer-privacy {
-  justify-self: center;
-  text-align: center;
-}
-
-.footer-sep {
-  justify-self: center;
+  justify-self: start;  /* 右側リンクを左寄せ */
+  text-align: left;
 }
 
 /* リンク色統一 */
@@ -901,9 +901,20 @@ footer {
     margin: 2px 0;
   }
 
+  /* フッターリンクを縦並びにして中央寄せ */
   .footer-links {
-    font-size: 12px;
-    grid-template-columns: 1fr auto 1fr; /* 中央｜固定 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .footer-contact,
+  .footer-sep,
+  .footer-privacy {
+    justify-self: unset; /* grid指定を解除 */
+    text-align: center;
+    margin: 0;
   }
 
   .footer-copy {
@@ -911,7 +922,6 @@ footer {
     margin-top: 2px;
   }
 }
-
 
   
   body {
