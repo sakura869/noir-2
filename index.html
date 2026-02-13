@@ -524,17 +524,25 @@ h2 {
   margin: 0;
 }
 
-/* ピンアイコン */
+/* アイコン＋テキストラッパー */
 .access-text .icon-wrapper {
   display: flex;
-  align-items: center;      /* テキストとアイコンを縦中央揃え */
+  align-items: center;      /* アイコンと文字を縦中央揃え */
   gap: 0.5em;               /* アイコンと文字の間隔 */
 }
 
-/* スマホ文字サイズ */
+/* スマホ用改行 */
+.sp-br {
+  display: none;            /* デフォルトは非表示 */
+}
+
 @media (max-width: 480px) {
   .access-text {
-    font-size: 1em;
+    font-size: 1em;         /* スマホ文字サイズ */
+  }
+
+  .sp-br {
+    display: block;          /* スマホだけ改行 */
   }
 }
 
@@ -1002,9 +1010,9 @@ main {
 <h2 class="pc-title" id="access">アクセス</h2>
 <section class="access-section">
   <p class="access-text">
-    <span class="zip">〒950-0861</span><br>
+    📍<span class="zip">〒950-0861</span><br>
     <span class="address">
-      新潟県新潟市東区中山6-19-5　ウェル新潟ビル206
+      新潟県新潟市東区中山6-19-5　ウェル新潟ビル206<br class="sp-br">
     </span>
   </p>
 
