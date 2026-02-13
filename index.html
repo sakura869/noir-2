@@ -845,6 +845,35 @@ footer {
   font-size: 1em;
   color: #aaa;
 }
+
+/* フッターリンク全体をグリッドで3列に */
+.footer-links {
+  display: grid;
+  grid-template-columns: auto 1ch auto; /* 左リンク｜中央区切り｜右リンク */
+  justify-content: center;               /* 全体を中央に */
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 2px;
+  gap: 6px;                              /* 左右リンクと区切りの隙間 */
+}
+
+/* 区切り */
+.footer-sep {
+  display: block;
+  text-align: center;
+}
+
+/* リンク色統一 */
+.footer-links a,
+.footer-links a:visited {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #9F987D;
+  text-decoration: underline;
+
   
 .footer-copy,
 .footer-privacy,
@@ -905,6 +934,8 @@ footer {
   gap: 6px;                    /* リンク間の隙間 */
   font-size: 12px;
   margin-bottom: 2px;
+  grid-template-columns: 1fr 1ch 1fr; /* 左右リンクを両端に広げて｜中央固定 */
+  gap: 4px;        
 }
 
 /* 区切りを正確に中央配置 */
@@ -919,6 +950,7 @@ footer {
 .footer-links a:visited {
   color: #aaa;
   text-decoration: none;
+  text-align: center;
 }
 
 .footer-links a:hover {
