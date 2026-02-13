@@ -217,7 +217,6 @@ h2 {
 /* =================================================
    スライダー
 ================================================= */
-  
 /* ================= スライダー外枠 ================= */
 .slider-section {
   max-width: 920px;
@@ -284,7 +283,7 @@ h2 {
 .slider {
   display: flex;
   overflow-x: auto;
-
+  justify-content: center;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 }
@@ -772,48 +771,48 @@ h2 {
    フッター
 ================================================= */
 footer {
+  background: rgba(255,255,255,0.5);
   padding: 30px 15px;
-  background-color: rgba(255,255,255,0.5);
   text-align: center;
   font-family: 'Kiwi Maru', cursive;
   font-size: 1em;
   color: #aaa;
-  flex: 0 0 auto;
 }
 
 /* フッター住所・連絡先 */
 .footer-address {
-  margin-bottom: 15px;
   line-height: 1.6;
+  margin-bottom: 15px;
+  font-size: 0.9em;
 }
 
+.footer-address span {
+  display: inline-block;
+}
+  
 .footer-address a {
   color: #aaa;
   text-decoration: none;
   font-size: 0.9em;
 }
 
-.footer-info a:hover {
+.footer-address a:hover {
   text-decoration: underline;
 }
 
-.footer-tel,
+/* 電話とメールの間隔 */
+.footer-tel {
+  margin-right: 18px;
+  font-size: 0.9em;
+}
+
 .footer-mail {
-  display: inline-block;
-  margin: 0 8px;
-  vertical-align: middle;
+  font-size: 0.9em;
 }
 
 /* 下段コピーライト・プライバシーリンク */
-.footer-bottom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 15px;
-}
-
 .footer-copy {
+  margin-top: 15px;
   font-size: 0.9em;
   color: #aaa;
 }
@@ -821,12 +820,13 @@ footer {
 .footer-privacy,
 .footer-privacy:link,
 .footer-privacy:visited {
-  color: #9F987D;
+  color: #aaa;
   text-decoration: none;
   font-size: 0.9em;
 }
 
 .footer-privacy:hover {
+  color: #9F987D;
   text-decoration: underline;
 }
 
