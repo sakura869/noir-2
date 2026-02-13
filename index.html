@@ -669,11 +669,9 @@ h2 {
 /* =================================================
    自己評価
 ================================================= */
-
 /* PDFセクション全体 */
 .pdf-section {
   text-align: center;
-  margin-bottom: 20px; /* 下余白 */
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
@@ -682,8 +680,10 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 15px;  /* ボタン同士の間隔 */
   flex-wrap: wrap;
+  margin-top: 5px; /* テキストとの間隔は狭め */
+  margin-bottom: 20px; /* セクションの下余白 */
 }
 
 /* PDFボタン */
@@ -723,7 +723,7 @@ h2 {
 
 /* PDF説明文 */
 .pdf-text {
-  margin: 20px 0; /* 上下余白統一 */
+  margin: 0; /* テキスト直後のボタンまでの距離はmarginで調整 */
   text-align: center;
   font-size: 16px;
   line-height: 1.8;
@@ -731,16 +731,14 @@ h2 {
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
+/* セクション間の余白（テキストと次のテキストの間） */
+.pdf-text + .pdf-section {
+  margin-top: 30px; /* 次のPDFテキストとの間隔 */
+}
+
 /* 支援プログラムボタンとの間隔 */
 .program {
   margin-top: 40px;
-}
-
-/* PDFテキストとボタンの間隔統一 */
-.pdf-section + .pdf-text,
-.pdf-text + .pdf-section {
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 /* =================
@@ -752,9 +750,9 @@ h2 {
   .self-buttons {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 20px;
+    gap: 10px;  /* ボタン同士の間隔 */
+    margin-top: 5px; /* テキストとの間隔は狭く */
+    margin-bottom: 20px; /* セクション下余白 */
   }
 
   .self-buttons .pdf-link {
@@ -766,13 +764,9 @@ h2 {
     border-radius: 10px;
   }
 
-  /* PDFテキストとボタンの間隔調整 */
-  .pdf-section + .pdf-text,
-  .pdf-text + .pdf-section,
-  .pdf-section,
-  .pdf-text {
-    margin-top: 15px;
-    margin-bottom: 15px;
+  /* セクション間余白調整 */
+  .pdf-text + .pdf-section {
+    margin-top: 20px; /* 次テキストまでの間隔 */
   }
 }
 
