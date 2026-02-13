@@ -795,6 +795,7 @@ h2 {
 /* =================================================
    フッター
 ================================================= */
+/* ================= フッター共通 ================= */
 footer {
   background: rgba(255,255,255,0.5);
   padding: 20px 25px;
@@ -812,17 +813,15 @@ footer {
   flex-wrap: wrap;
 }
 
-/* フッター住所・連絡先 */
+/* 住所・連絡先 */
 .footer-address {
   line-height: 1.6;
   margin-bottom: 15px;
-  font-size: 1em;
 }
-  
+
 .footer-address a {
   color: #aaa;
   text-decoration: none;
-  font-size: 1em;
 }
 
 .footer-address a:hover {
@@ -832,11 +831,9 @@ footer {
 /* 電話とメールの間隔 */
 .footer-tel {
   margin-right: 18px;
-  font-size: 1em;
 }
 
 .footer-mail {
-  font-size: 1em;
   margin-bottom: 5px;
 }
 
@@ -844,9 +841,12 @@ footer {
 .footer-copy {
   font-size: 1em;
   color: #aaa;
+  line-height: 1.6;
+  display: inline-flex;
+  align-items: center;
 }
 
-/* フッターリンク全体をグリッドで3列に */
+/* フッターリンク全体（お問い合わせ｜プライバシーポリシー） */
 .footer-links {
   display: grid;
   grid-template-columns: auto 1ch auto; /* 左リンク｜中央区切り｜右リンク */
@@ -857,13 +857,6 @@ footer {
   gap: 6px;                              /* 左右リンクと区切りの隙間 */
 }
 
-/* 区切り */
-.footer-sep {
-  display: block;
-  text-align: center;
-}
-
-/* リンク色統一 */
 .footer-links a,
 .footer-links a:visited {
   color: #aaa;
@@ -873,25 +866,28 @@ footer {
 .footer-links a:hover {
   color: #9F987D;
   text-decoration: underline;
+}
 
-  
-.footer-copy,
-.footer-privacy,
 .footer-sep {
+  display: block;
+  text-align: center;
+  width: 1ch; /* 区切り文字幅を固定 */
+}
+
+/* プライバシーリンク個別 */
+.footer-privacy {
   line-height: 1.6;
   display: inline-flex;
   align-items: center;
 }
 
-.footer-privacy,
-.footer-privacy:link,
-.footer-privacy:visited {
+.footer-privacy a,
+.footer-privacy a:visited {
   color: #aaa;
   text-decoration: none;
-  font-size: 1em;
 }
 
-.footer-privacy:hover {
+.footer-privacy a:hover {
   color: #9F987D;
   text-decoration: underline;
 }
@@ -899,64 +895,47 @@ footer {
 /* ================= スマホ対応 ================= */
 @media (max-width: 768px) {
 
-  /* フッター全体の文字サイズ */
+  /* フッター全体文字サイズを少し小さく */
   footer {
     font-size: 14px;
   }
 
-  /* 住所ブロック：左揃え・中央寄せ */
+  /* 住所ブロック：中央寄せ＆左揃え */
   .footer-address {
     max-width: 320px;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     text-align: left;
   }
-  
+
   .zip {
     display: block;
   }
 
   /* 住所・TEL・MAIL を縦並び */
-  .footer-address a {
-    display: block;
-  }
-
+  .footer-address a,
   .footer-tel,
   .footer-mail {
     display: block;
+    margin-bottom: 4px;
   }
 
   /* お問い合わせ｜プライバシーポリシー */
-/* フッターリンク全体 */
-.footer-links {
-  display: inline-flex;        /* 横並び */
-  justify-content: center;     /* ブロック全体を中央 */
-  align-items: center;
-  gap: 6px;                    /* リンク間の隙間 */
-  font-size: 12px;
-  margin-bottom: 2px;
-  grid-template-columns: 1fr 1ch 1fr; /* 左右リンクを両端に広げて｜中央固定 */
-  gap: 4px;        
-}
+  .footer-links {
+    display: inline-flex;        /* 横並び */
+    justify-content: center;     /* 全体中央寄せ */
+    align-items: center;
+    gap: 4px;                    /* スマホ用隙間 */
+    grid-template-columns: none; /* グリッドは解除 */
+  }
 
-/* 区切りを正確に中央配置 */
-.footer-sep {
-  display: inline-block;
-  width: 1ch;                  /* 文字幅1文字分 */
-  text-align: center;
-}
+  .footer-sep {
+    width: 1ch;
+    text-align: center;
+  }
 
-/* フッターリンク色の統一 */
-.footer-links a,
-.footer-links a:visited {
-  color: #aaa;
-  text-decoration: none;
-  text-align: center;
-}
-
-.footer-links a:hover {
-  color: #9F987D;
-  text-decoration: underline;
-}
+  .footer-links a {
+    text-align: center;
+  }
 
   /* コピーライト */
   .footer-copy {
@@ -964,7 +943,8 @@ footer {
     margin-top: 2px;
   }
 }
-    
+
+
   
   body {
     background-attachment: scroll;
@@ -1155,36 +1135,33 @@ main {
 </main>
 
 <footer>
-  <p class="footer-address">
-    
-<a href="https://www.google.com/maps?q=新潟県新潟市東区中山6-19-5+ウェル新潟ビル206" target="_blank">
-  <span class="zip">〒950-0861</span>
-  新潟県新潟市東区中山6-19-5 ウェル新潟ビル206
-</a>
+  <!-- 住所・電話・メール -->
+  <div class="footer-address">
+    <a href="https://www.google.com/maps?q=新潟県新潟市東区中山6-19-5+ウェル新潟ビル206" target="_blank">
+      <span class="zip">〒950-0861</span>
+      新潟県新潟市東区中山6-19-5 ウェル新潟ビル206
+    </a>
 
     <span class="footer-tel">
       <a href="tel:0252907625">TEL：025-290-7625</a>
     </span>
 
     <span class="footer-mail">
-      <a href="mailto:noir.niigata@gmail.com">
-        MAIL：noir.niigata@gmail.com
-      </a>
+      <a href="mailto:noir.niigata@gmail.com">MAIL：noir.niigata@gmail.com</a>
     </span>
-  </p>
+  </div>
 
+  <!-- お問い合わせ｜プライバシーポリシー -->
   <div class="footer-links">
     <a href="#contact" class="footer-contact">お問い合わせ</a>
     <span class="footer-sep">｜</span>
     <a href="privacy.html" class="footer-privacy">プライバシーポリシー</a>
   </div>
-  
-<div class="footer-bottom">
-  <div class="footer-copy">
-    © 2026 合同会社ノワール
+
+  <!-- コピーライト -->
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 合同会社ノワール</div>
   </div>
-  
-</div>
 </footer>
 
 <script>
