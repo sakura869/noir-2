@@ -1113,102 +1113,117 @@ contactBtn?.addEventListener('click', e => {
   openContact();
 });
 
-/* ======================
-   スライダー（PCのみ）
-====================== */
-const pcSliderSection = document.querySelector('.slider-section.pc-only');
-if (pcSliderSection) {
 
-  const slider = pcSliderSection.querySelector('.slider');
-  const slides = pcSliderSection.querySelectorAll('.slide');
-  const prevBtn = pcSliderSection.querySelector('.slide-arrow.left');
-  const nextBtn = pcSliderSection.querySelector('.slide-arrow.right');
-  const dotsContainer = pcSliderSection.querySelector('.slider-dots');
- 
-  let index = 0;
+  /* ======================
+     スライダー（PCのみ）
+  ====================== */
+  if (window.matchMedia('(min-width: 481px)').matches) {
 
-  dotsContainer.innerHTML = '';
+    const pcSliderSection = document.querySelector('.slider-section.pc-only');
+    if (pcSliderSection) {
 
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => moveSlider(i));
-    dotsContainer.appendChild(dot);
-  });
+      const slider = pcSliderSection.querySelector('.slider');
+      const slides = pcSliderSection.querySelectorAll('.slide');
+      const prevBtn = pcSliderSection.querySelector('.slide-arrow.left');
+      const nextBtn = pcSliderSection.querySelector('.slide-arrow.right');
+      const dotsContainer = pcSliderSection.querySelector('.slider-dots');
 
-  const dots = dotsContainer.querySelectorAll('button');
+      let index = 0;
+      dotsContainer.innerHTML = '';
 
-  function moveSlider(i) {
-    const slideWidth = slides[0].clientWidth;
-    slider.scrollTo({
-      left: slideWidth * i,
-      behavior: 'smooth'
-    });
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => moveSlider(i));
+        dotsContainer.appendChild(dot);
+      });
 
-    index = i;
-    dots.forEach(d => d.classList.remove('active'));
-    dots[i].classList.add('active');
+      const dots = dotsContainer.querySelectorAll('button');
 
-    prevBtn.style.display = i === 0 ? 'none' : 'block';
-    nextBtn.style.display = i === slides.length - 1 ? 'none' : 'block';
-  }
+      function moveSlider(i) {
+        const slideWidth = slides[0].clientWidth;
+        slider.scrollTo({
+          left: slideWidth * i,
+          behavior: 'smooth'
+        });
 
-  moveSlider(0);
+        index = i;
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[i]) dots[i].classList.add('active');
 
-  nextBtn.addEventListener('click', () => {
-    if (index < slides.length - 1) moveSlider(index + 1);
-  });
+        prevBtn.style.display = i === 0 ? 'none' : 'block';
+        nextBtn.style.display = i === slides.length - 1 ? 'none' : 'block';
+      }
 
-  prevBtn.addEventListener('click', () => {
-    if (index > 0) moveSlider(index - 1);
-  });
-}
+      slider.addEventListener('scroll', () => {
+        const slideWidth = slides[0].clientWidth;
+        if (!slideWidth) return;
 
-/* ======================
-   スライダー（スマホ）
-====================== */
-const spSliderSection = document.querySelector('.slider-section.sp-only');
-if (spSliderSection) {
+        const newIndex = Math.round(slider.scrollLeft / slideWidth);
+        if (newIndex !== index) {
+          index = newIndex;
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[index]) dots[index].classList.add('active');
 
-  const slider = spSliderSection.querySelector('.slider');
-  const slides = spSliderSection.querySelectorAll('.slide');
-  const dotsContainer = spSliderSection.querySelector('.sp-dots');
+          prevBtn.style.display = index === 0 ? 'none' : 'block';
+          nextBtn.style.display = index === slides.length - 1 ? 'none' : 'block';
+        }
+      });
 
-  let index = 0;
-  dotsContainer.innerHTML = '';
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => moveSlider(i));
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = dotsContainer.querySelectorAll('button');
-
-  function moveSlider(i) {
-    const slideWidth = slides[0].clientWidth;
-    slider.scrollTo({
-      left: slideWidth * i,
-      behavior: 'smooth'
-    });
-
-    index = i;
-    dots.forEach(d => d.classList.remove('active'));
-    if (dots[i]) dots[i].classList.add('active');
-  }
-
-  slider.addEventListener('scroll', () => {
-    const slideWidth = slides[0].clientWidth;
-    const newIndex = Math.round(slider.scrollLeft / slideWidth);
-
-    if (newIndex !== index) {
-      index = newIndex;
-      dots.forEach(d => d.classList.remove('active'));
-      if (dots[index]) dots[index].classList.add('active');
+      moveSlider(0);
     }
-  });
-}
+  }
+
+  /* ======================
+     スライダー（スマホのみ）
+  ====================== */
+  if (window.matchMedia('(max-width: 480px)').matches) {
+
+    const spSliderSection = document.querySelector('.slider-section.sp-only');
+    if (spSliderSection) {
+
+      const slider = spSliderSection.querySelector('.slider');
+      const slides = spSliderSection.querySelectorAll('.slide');
+      const dotsContainer = spSliderSection.querySelector('.sp-dots');
+
+      let index = 0;
+      dotsContainer.innerHTML = '';
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => moveSlider(i));
+        dotsContainer.appendChild(dot);
+      });
+
+      const dots = dotsContainer.querySelectorAll('button');
+
+      function moveSlider(i) {
+        const slideWidth = slides[0].clientWidth;
+        slider.scrollTo({
+          left: slideWidth * i,
+          behavior: 'smooth'
+        });
+
+        index = i;
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[i]) dots[i].classList.add('active');
+      }
+
+      slider.addEventListener('scroll', () => {
+        const slideWidth = slides[0].clientWidth;
+        if (!slideWidth) return;
+
+        const newIndex = Math.round(slider.scrollLeft / slideWidth);
+        if (newIndex !== index) {
+          index = newIndex;
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[index]) dots[index].classList.add('active');
+        }
+      });
+    }
+  }
+
 
 /* ======================
    トグル（流れ）
