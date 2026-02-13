@@ -904,16 +904,17 @@ footer {
   /* フッターリンクを縦並びにして中央寄せ */
   .footer-links {
     display: flex;
-    flex-direction: row; /* column → row に変更 */
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
+    width: 100%;
   }
 
   .footer-contact,
   .footer-sep,
   .footer-privacy {
-    justify-self: unset;
+    margin: 0;
     text-align: center;
     margin: 0;
   }
