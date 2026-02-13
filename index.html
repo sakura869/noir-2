@@ -751,10 +751,11 @@ h2 {
 
   .self-buttons .pdf-link {
     width: 100%;
-    max-width: 220px;   /* ← 見た目を揃える魔法 */
+    max-width: 200px;   /* ← 見た目を揃える魔法 */
     margin: 0 auto;     /* ← これが決定打 */
     padding: 10px 8px;
     font-size: 0.85em;
+    border-radius: 10px;
   }
 }
 
@@ -762,7 +763,7 @@ h2 {
   .contact-form,
   .pdf-section,
   .self-buttons {
-    margin-bottom: 0;
+  margin-bottom: 0;
   }
 
 /* =================================================
@@ -841,24 +842,38 @@ footer {
 
 /* ================= スマホ対応 ================= */
 @media (max-width: 768px) {
+
   /* 郵便番号で改行 */
-.footer-address .zip {
-  display: block;
-}
+  .footer-address .zip {
+    display: block;
+  }
 
-/* TEL・MAIL を縦並び */
-.footer-tel,
-.footer-mail {
-  display: block;
-  margin-top: 6px;
-}
+  /* 住所・TEL・MAIL：左揃えの中央寄せ */
+  .footer-address {
+    max-width: 320px;
+    margin: 0 auto;
+    text-align: left;
+  }
 
-/* 会社名とプライバシーポリシーは横並び */
-.footer-bottom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
+  /* リンクを縦並びに */
+  .footer-address a {
+    display: block;
+  }
+
+  /* TEL・MAIL の間隔 */
+  .footer-tel,
+  .footer-mail {
+    display: block;
+    margin-top: 6px;
+  }
+
+  /* 会社名とプライバシーポリシーは横並び */
+  .footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
 }
   
   body {
