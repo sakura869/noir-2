@@ -865,55 +865,52 @@ footer {
     font-size: 14px;
   }
 
-  /* 郵便番号で改行 */
-  .footer-address .zip {
-    display: block;
-  }
-
-  /* 住所・TEL・MAIL：左揃えの中央寄せ */
+  /* 住所ブロック：左揃え・中央寄せ */
   .footer-address {
     max-width: 320px;
     margin: 0 auto;
     text-align: left;
   }
 
-  /* リンクを縦並びに */
+  /* 住所・TEL・MAIL を縦並び */
   .footer-address a {
     display: block;
   }
 
-  /* TEL・MAIL の間隔 */
   .footer-tel,
   .footer-mail {
     display: block;
     margin-top: 6px;
   }
 
-  /* フッター下部（会社名＋リンク全体） */
+  /* 下段（会社名・お問い合わせ・プライバシー） */
   .footer-bottom {
     margin-top: 20px;
-    text-align: center;
-  }
-
-  /* 会社名 */
-  .footer-copy {
-    font-size: 12px;
-    margin-bottom: 6px;
-  }
-
-  /* お問い合わせ｜プライバシーポリシー */
-  .footer-links {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 6px;
     font-size: 12px;
+    text-align: center;
   }
 
-  .footer-links a {
+  /* コピーライト */
+  .footer-copy {
+    font-size: 12px;
+  }
+
+  /* フッター内リンクの色を統一（青字防止） */
+  footer a,
+  footer a:visited {
+    color: #aaa;
     text-decoration: none;
   }
-}
+
+  footer a:hover {
+    color: #9F987D;
+    text-decoration: underline;
+    
+    
   
   body {
     background-attachment: scroll;
@@ -1121,17 +1118,18 @@ main {
       </a>
     </span>
   </p>
-  
-<div class="footer-bottom">
-  <div class="footer-copy">
-    © 2026 合同会社ノワール
-  </div>
 
   <div class="footer-links">
     <a href="#contact" class="footer-contact">お問い合わせ</a>
     <span class="footer-sep">｜</span>
     <a href="privacy.html" class="footer-privacy">プライバシーポリシー</a>
   </div>
+  
+<div class="footer-bottom">
+  <div class="footer-copy">
+    © 2026 合同会社ノワール
+  </div>
+  
 </div>
 </footer>
 
