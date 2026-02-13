@@ -392,7 +392,9 @@ h2 {
 /* ================= スマホだけトグル化 ================= */
 @media (max-width: 767px) {
 
-  /* ボタン表示 */
+  /* =================
+     トグルボタン共通
+  ================= */
   .toggle-button流れ,
   .toggle-button料金 {
     display: inline-flex;
@@ -402,7 +404,8 @@ h2 {
 
     font-size: 18px;
     padding: 10px 18px;
-    margin: 0 auto 5px;
+    margin-left: auto;
+    margin-right: auto;
 
     border-radius: 10px;
     border: 1px solid #ccc;
@@ -412,19 +415,20 @@ h2 {
 
     font-family: 'M PLUS Rounded 1c', sans-serif;
   }
-  
-  /* ご利用の流れ → 下の余白を小さく */
-.toggle-button流れ {
-  margin-bottom: 8px;   /* ← 今より小さく */
-}
 
-/* ご利用料金 → 上は近く、下は広く */
-.toggle-button料金 {
-  margin-top: 0;
-  margin-bottom: 32px;  /* ← アクセスと離す */
-}
+  /* ご利用の流れ → 下を少し詰める */
+  .toggle-button流れ {
+    margin-bottom: 8px;
+  }
 
-  /* 初期は閉じる */
+  /* ご利用料金 → 下を広くしてアクセスと離す */
+  .toggle-button料金 {
+    margin-bottom: 32px;
+  }
+
+  /* =================
+     トグル中身（初期）
+  ================= */
   .content流れ,
   .content料金 {
     display: none;
@@ -447,14 +451,16 @@ h2 {
     filter: blur(0);
   }
 
-  /* PC用タイトルは非表示 */
+  /* PC用タイトルはスマホで非表示 */
   .pc-title#flow,
   .pc-title#price {
     display: none;
   }
 }
 
-/* ================= トグル矢印（共通） ================= */
+/* =================
+   トグル矢印（共通）
+================= */
 .arrow流れ,
 .arrow料金 {
   font-family: 'Kiwi Maru', cursive;
