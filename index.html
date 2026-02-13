@@ -772,25 +772,22 @@ h2 {
    フッター
 ================================================= */
 footer {
-  margin-top: auto;
   padding: 30px 15px;
   background-color: rgba(255,255,255,0.5);
   text-align: center;
   font-family: 'Kiwi Maru', cursive;
   font-size: 1em;
   color: #aaa;
+  flex: 0 0 auto;
 }
 
 /* フッター住所・連絡先 */
-.footer-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.footer-address {
+  margin-bottom: 15px;
   line-height: 1.6;
-  margin-bottom: 10px;
 }
 
-.footer-info a {
+.footer-address a {
   color: #aaa;
   text-decoration: none;
   font-size: 0.9em;
@@ -804,6 +801,7 @@ footer {
 .footer-mail {
   display: inline-block;
   margin: 0 8px;
+  vertical-align: middle;
 }
 
 /* 下段コピーライト・プライバシーリンク */
@@ -1023,7 +1021,7 @@ main {
 </main>
 
 <footer>
-  <p class="footer-info">
+  <p class="footer-address">
     <a
       href="https://www.google.com/maps?q=新潟県新潟市東区中山6-19-5+ウェル新潟ビル206"
       target="_blank"
