@@ -1084,9 +1084,11 @@ document.addEventListener('DOMContentLoaded', () => {
 const menuToggle = document.getElementById('menu-toggle');
 const menu = document.getElementById('menu');
 
-menuToggle.addEventListener('click', () => {
-  menu.classList.toggle('show');
-});
+if (menuToggle && menu) {
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+}
 
 /* ======================
    お問い合わせ表示
@@ -1185,6 +1187,7 @@ contactBtn?.addEventListener('click', e => {
       const slider = spSliderSection.querySelector('.slider');
       const slides = spSliderSection.querySelectorAll('.slide');
       const dotsContainer = spSliderSection.querySelector('.sp-dots');
+      if (!dotsContainer) return;
 
       let index = 0;
       dotsContainer.innerHTML = '';
@@ -1304,6 +1307,24 @@ window.toggleContentSelf = function () {
   }
 };
 
+  /* ======================
+   画面幅切り替え時リロード
+====================== */
+let lastWidth = window.innerWidth;
+
+window.addEventListener('resize', () => {
+  const currentWidth = window.innerWidth;
+
+  // 480px をまたいだときだけリロード
+  if (
+    (lastWidth > 480 && currentWidth <= 480) ||
+    (lastWidth <= 480 && currentWidth > 480)
+  ) {
+    location.reload();
+  }
+
+  lastWidth = currentWidth;
+});
   
 });
 </script>
