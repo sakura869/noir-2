@@ -904,7 +904,8 @@ footer {
   /* フッターリンクを縦並びにして中央寄せ */
   .footer-links {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* column → row に変更 */
+    justify-content: center;
     align-items: center;
     gap: 4px;
   }
@@ -912,7 +913,7 @@ footer {
   .footer-contact,
   .footer-sep,
   .footer-privacy {
-    justify-self: unset; /* grid指定を解除 */
+    justify-self: unset;
     text-align: center;
     margin: 0;
   }
