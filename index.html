@@ -883,23 +883,17 @@ footer {
     margin-top: 6px;
   }
 
-  /* 下段（会社名・お問い合わせ・プライバシー） */
-  .footer-bottom {
-    margin-top: 20px;
+  /* お問い合わせ｜プライバシーポリシー */
+  .footer-links {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 6px;
     font-size: 12px;
-    text-align: center;
+    margin-bottom: 6px;
   }
 
-  /* コピーライト */
-  .footer-copy {
-    font-size: 12px;
-  }
-
-  /* フッター内リンクの色を統一（青字防止） */
+  /* フッター内リンクの色（青字防止） */
   footer a,
   footer a:visited {
     color: #aaa;
@@ -909,7 +903,14 @@ footer {
   footer a:hover {
     color: #9F987D;
     text-decoration: underline;
-    
+  }
+
+  /* コピーライト */
+  .footer-copy {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+}
     
   
   body {
