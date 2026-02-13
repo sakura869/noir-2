@@ -494,14 +494,28 @@ h2 {
 }
 
 /* ================= 住所テキスト ================= */
+.access-section {
+  max-width: 900px;
+  margin: 30px auto 50px;
+  padding: 25px;
+
+  background: rgba(255,255,255,0.75);
+  border-radius: 20px;
+
+  text-align: left;
+  color: #635656;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+/* ================= 住所テキスト ================= */
 .access-text {
   display: flex;
   flex-direction: column;   /* 縦並び */
   align-items: flex-start;  /* 左揃え */
   max-width: 550px;
-  margin: 0 auto 20px;      /* セクション中央配置 */
+  margin: 0 auto 20px;     /* セクション中央配置 */
   font-size: 1.3em;
-  line-height: 1.3;         /* 行間詰める */
+  line-height: 1.3;        /* 行間詰める */
   color: #635656;           /* 郵便番号青化防止 */
   -webkit-touch-callout: none; /* iOS自動リンク無効化補助 */
   -webkit-user-select: none;
@@ -510,35 +524,42 @@ h2 {
 /* 郵便番号 */
 .access-text .zip {
   font-size: 0.9em;
-  margin-right: 0.3em;
   color: #635656;           /* 青にならないよう明示 */
   text-decoration: none;    /* 自動リンク下線防止 */
+  margin-bottom: 2px;
+  display: block;
 }
 
 /* 住所 */
 .access-text .address {
   margin: 0;
   line-height: 1.3;
+  display: block;
 }
 
-/* ピンアイコンとテキストを横並び */
+/* ピンアイコンとテキストを縦並び */
 .access-text .icon-wrapper {
   display: flex;
-  align-items: center;
-  gap: 0.3em;
+  flex-direction: column;   /* ピンと住所縦並び */
+  align-items: flex-start;
+  gap: 0.2em;
 }
 
-/* PCは改行なし、スマホはウェル新潟ビルで改行 */
-.sp-br {
-  display: none;
-}
+/* スマホ文字サイズ */
 @media (max-width: 480px) {
   .access-text {
     font-size: 1em;
   }
+
+  /* スマホだけ改行を有効化 */
   .sp-br {
-    display: inline; /* スマホで改行 */
+    display: inline;
   }
+}
+
+/* デフォルトでは非表示（PCで改行されないように） */
+.sp-br {
+  display: none;
 }
 
 /* タイトル（スマホ） */
@@ -1015,9 +1036,12 @@ main {
 <section class="access-section">
   <p class="access-text">
     <span class="icon-wrapper">
-      📍<span class="zip">〒950‑0861</span> 
+      📍
+      <span class="zip">〒950‑0861</span><br>
       <span class="address">
-        新潟県新潟市東区中山6-19-5<span class="sp-br"><br></span>ウェル新潟ビル206
+        新潟県新潟市東区中山6-19-5
+        <span class="sp-br"><br></span>
+        ウェル新潟ビル206
       </span>
     </span>
   </p>
