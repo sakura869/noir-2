@@ -493,69 +493,60 @@ h2 {
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-/* ================= タイトル（スマホ） ================= */
-@media (max-width: 480px) {
-  .access-title {
-    display: block;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-}
-
 /* ================= 住所テキスト ================= */
 .access-text {
   display: flex;
   flex-direction: column;   /* 縦並び */
   align-items: flex-start;  /* 左揃え */
   max-width: 550px;
-  margin: 0 auto 20px;
+  margin: 0 auto 20px;      /* セクション中央配置 */
   font-size: 1.3em;
-  line-height: 1.2;         /* 行間を詰める */
-}
-
-/* アイコン＋郵便番号を同じ行に */
-.access-text .icon-wrapper {
-  display: inline-flex;
-  align-items: center;      /* アイコンと文字を縦中央揃え */
-  gap: 0.3em;               /* ピンと郵便番号の間隔 */
-  font-size: 1em;
+  line-height: 1.3;         /* 行間詰める */
+  color: #635656;           /* 郵便番号青化防止 */
+  -webkit-touch-callout: none; /* iOS自動リンク無効化補助 */
+  -webkit-user-select: none;
 }
 
 /* 郵便番号 */
 .access-text .zip {
   font-size: 0.9em;
-  color: #635656;           /* 青くならないように指定 */
-  text-decoration: none;    /* リンク化されていた場合に下線除去 */
-  margin: 0;
+  margin-right: 0.3em;
+  color: #635656;           /* 青にならないよう明示 */
+  text-decoration: none;    /* 自動リンク下線防止 */
 }
 
 /* 住所 */
 .access-text .address {
-  margin: 0;                /* 上下余白なし */
+  margin: 0;
   line-height: 1.3;
 }
 
-/* スマホ文字サイズ */
+/* ピンアイコンとテキストを横並び */
+.access-text .icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+/* PCは改行なし、スマホはウェル新潟ビルで改行 */
+.sp-br {
+  display: none;
+}
 @media (max-width: 480px) {
   .access-text {
     font-size: 1em;
   }
-
-  /* スマホだけ改行 */
   .sp-br {
-    display: block;
+    display: inline; /* スマホで改行 */
   }
 }
 
-/* デフォルトは非表示 */
-.sp-br {
-  display: none;
-}
-
-/* スマホだけ表示（改行） */
+/* タイトル（スマホ） */
 @media (max-width: 480px) {
-  .sp-br {
+  .access-title {
     display: block;
+    text-align: center;
+    margin-bottom: 20px;
   }
 }
 
@@ -1022,14 +1013,14 @@ main {
 
 <h2 class="pc-title" id="access">アクセス</h2>
 <section class="access-section">
-<p class="access-text">
-  <span class="icon-wrapper">
-    📍<span class="zip">950-0861</span>
-  </span>
-  <span class="address">
-    新潟県新潟市東区中山6-19-5<span class="sp-br"></span>ウェル新潟ビル206
-  </span>
-</p>
+  <p class="access-text">
+    <span class="icon-wrapper">
+      📍<span class="zip">〒950‑0861</span> 
+      <span class="address">
+        新潟県新潟市東区中山6-19-5<span class="sp-br"><br></span>ウェル新潟ビル206
+      </span>
+    </span>
+  </p>
 
   <div class="map-wrapper">
     <iframe
