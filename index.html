@@ -669,10 +669,18 @@ h2 {
 /* =================================================
    自己評価
 ================================================= */
-/* PDFセクション全体 */
 .pdf-section {
   text-align: center;
   font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+/* PDF説明文 */
+.pdf-text {
+  margin: 0; /* テキスト直後のボタンまでの距離を最小に */
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #635656;
 }
 
 /* PDFボタン並び（PC） */
@@ -680,34 +688,29 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;  /* ボタン同士の間隔 */
+  gap: 15px;       /* ボタン同士の間隔 */
   flex-wrap: wrap;
-  margin-top: 5px; /* テキストとの間隔は狭め */
-  margin-bottom: 20px; /* セクションの下余白 */
+  margin-top: 5px; /* テキストとの間隔を狭め */
+  margin-bottom: 20px; /* セクション下余白 */
 }
 
 /* PDFボタン */
 .self-buttons .pdf-link {
   width: 220px;
   padding: 22px 20px;
-
   background: #ffffff;
   color: #9F987D;
   text-decoration: none;
-
   border-radius: 16px;
   border: 1px solid #ccc;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
   font-size: 16px;
   line-height: 1.2;
   box-sizing: border-box;
-
   transition: all 0.3s ease;
 }
 
@@ -721,24 +724,14 @@ h2 {
   transform: scale(0.96);
 }
 
-/* PDF説明文 */
-.pdf-text {
-  margin: 0; /* テキスト直後のボタンまでの距離はmarginで調整 */
-  text-align: center;
-  font-size: 16px;
-  line-height: 1.8;
-  color: #635656;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-}
-
-/* セクション間の余白（テキストと次のテキストの間） */
+/* PDFセクション間の余白 */
 .pdf-text + .pdf-section {
-  margin-top: 30px; /* 次のPDFテキストとの間隔 */
+  margin-top: 20px; /* テキストと次セクションの間隔 */
 }
 
-/* 支援プログラムボタンとの間隔 */
-.program {
-  margin-top: 40px;
+/* 支援プログラムボタン用（必要なら個別調整） */
+.pdf-section.self-buttons.program {
+  margin-top: 5px; /* テキストとボタンの間を狭く */
 }
 
 /* =================
@@ -750,8 +743,8 @@ h2 {
   .self-buttons {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;  /* ボタン同士の間隔 */
-    margin-top: 0;
+    gap: 10px;       /* ボタン同士の間隔 */
+    margin-top: 0;   /* テキストとの間隔 */
     margin-bottom: 20px; /* セクション下余白 */
   }
 
@@ -763,6 +756,7 @@ h2 {
     font-size: 0.85em;
     border-radius: 10px;
   }
+}
 
 /* =================================================
    フッター
@@ -831,7 +825,8 @@ footer {
 }
 
 .footer-privacy {
-  justify-self: start;
+  justify-self: center;
+  text-align: center;
 }
 
 .footer-sep {
