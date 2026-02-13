@@ -842,17 +842,12 @@ footer {
 
 /* ================= スマホ対応 ================= */
 @media (max-width: 768px) {
-    /* フッター全体の文字サイズ */
+
+  /* フッター全体の文字サイズ */
   footer {
     font-size: 14px;
   }
 
-  /* コピーライト */
-  .footer-bottom {
-    font-size: 12px;
-  }
-}
-  
   /* 郵便番号で改行 */
   .footer-address .zip {
     display: block;
@@ -863,7 +858,6 @@ footer {
     max-width: 320px;
     margin: 0 auto;
     text-align: left;
-    justify-content: center;
   }
 
   /* リンクを縦並びに */
@@ -875,15 +869,32 @@ footer {
   .footer-tel,
   .footer-mail {
     display: block;
+    margin-top: 6px;
   }
 
-  /* 会社名とプライバシーポリシーは横並び */
+  /* フッター下部（会社名＋リンク全体） */
   .footer-bottom {
-    margin-top: 15px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  /* 会社名 */
+  .footer-copy {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  /* お問い合わせ｜プライバシーポリシー */
+  .footer-links {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 6px;
+    font-size: 12px;
+  }
+
+  .footer-links a {
+    text-decoration: none;
   }
 }
   
@@ -1094,11 +1105,17 @@ main {
     </span>
   </p>
   
- <div class="footer-bottom">
-    <span class="footer-copy">© 2026 合同会社ノワール</span>
+<div class="footer-bottom">
+  <div class="footer-copy">
+    © 2026 合同会社ノワール
+  </div>
+
+  <div class="footer-links">
+    <a href="#contact" class="footer-contact">お問い合わせ</a>
     <span class="footer-sep">｜</span>
     <a href="privacy.html" class="footer-privacy">プライバシーポリシー</a>
   </div>
+</div>
 </footer>
 
 <script>
