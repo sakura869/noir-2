@@ -803,6 +803,7 @@ footer {
   font-family: 'Kiwi Maru', cursive;
   font-size: 1em;
   color: #aaa;
+  margin-top: 0;
 }
 
 .footer-bottom {
@@ -920,11 +921,9 @@ footer {
   }
 }
 
-html,
-body {
+html, body {
   height: 100%;
   margin: 0;
-  overflow-x: hidden;
 }
 
 body {
@@ -934,8 +933,9 @@ body {
 }
 
 main {
-  flex: 1;
+  flex: 1; /* main が余白を埋める */
 }
+
   
 </style>
 </head>
@@ -1098,6 +1098,12 @@ main {
 </div>
 
 <div class="pdf-section self-buttons program">
+  <a href="支援プログラム1.pdf" target="_blank" class="pdf-link">
+    支援プログラム1
+  </a>
+  <a href="支援プログラム2.pdf" target="_blank" class="pdf-link">
+    支援プログラム2
+  </a>
 </div>
   
 </main>
