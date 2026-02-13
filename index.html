@@ -754,7 +754,7 @@ h2 {
     max-width: 200px;   /* ← 見た目を揃える魔法 */
     margin: 0 auto;     /* ← これが決定打 */
     padding: 10px 8px;
-    font-size: 0.85em;
+    font-size: 0.75em;
     border-radius: 10px;
   }
 }
@@ -842,7 +842,17 @@ footer {
 
 /* ================= スマホ対応 ================= */
 @media (max-width: 768px) {
+    /* フッター全体の文字サイズ */
+  footer {
+    font-size: 12px;
+  }
 
+  /* コピーライト */
+  .footer-bottom {
+    font-size: 10px;
+  }
+}
+  
   /* 郵便番号で改行 */
   .footer-address .zip {
     display: block;
