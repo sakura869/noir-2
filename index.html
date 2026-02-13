@@ -210,7 +210,12 @@ h2 {
   .pc-title::before,
   .access-title::before,
   .contact-title::before {
-    width: 100%;
+    content: "";          /* ::beforeを表示するために必要 */
+    display: block;       /* 横幅を持たせる */
+    height: 2px;          /* 線の太さ */
+    background-color: #000; /* 線の色 */
+    width: calc(100% - 50px); /* 右端を50px空ける */
+    margin-left: 0;       /* 左端は画面と揃える */
   }
 }
   
@@ -631,7 +636,7 @@ h2 {
 .contact-form {
   display: none;
   max-width: 900px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   padding: 0 20px;
 
   background: rgba(255,255,255,0.75);
@@ -815,8 +820,8 @@ footer {
 
 /* 住所・TEL・MAIL */
 .footer-address {
-  line-height: 1.6;
-  margin-bottom: 15px;
+  line-height: 1.2;
+  margin-bottom: 20px;
   font-size: 1em;
 }
 
