@@ -669,18 +669,15 @@ h2 {
 /* =================================================
    自己評価
 ================================================= */
+
+/* PDFセクション全体 */
 .pdf-section {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* 下余白 */
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-/* セクション間の余白 */
-.pdf-section:last-of-type {
-  margin-top: 20px;
-}
-
-/* ================= PDFボタン並び（PC） ================= */
+/* PDFボタン並び（PC） */
 .self-buttons {
   display: flex;
   justify-content: center;
@@ -693,7 +690,7 @@ h2 {
 .self-buttons .pdf-link {
   width: 220px;
   padding: 22px 20px;
-  
+
   background: #ffffff;
   color: #9F987D;
   text-decoration: none;
@@ -724,9 +721,9 @@ h2 {
   transform: scale(0.96);
 }
 
-/* ================= 説明文 ================= */
+/* PDF説明文 */
 .pdf-text {
-  margin: 10px 0 15px;
+  margin: 20px 0; /* 上下余白統一 */
   text-align: center;
   font-size: 16px;
   line-height: 1.8;
@@ -734,34 +731,30 @@ h2 {
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-/* 支援プログラムとの間隔 */
+/* 支援プログラムボタンとの間隔 */
 .program {
   margin-top: 40px;
 }
 
-/* ================= スマホ調整 ================= */
+/* PDFテキストとボタンの間隔統一 */
+.pdf-section + .pdf-text,
+.pdf-text + .pdf-section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* =================
+   スマホ調整
+================= */
 @media (max-width: 767px) {
 
-  /* =================
-     PDF説明文
-  ================= */
-  .pdf-text {
-    font-size: 16px;
-    margin-bottom: 6px;
-    padding: 0 10px;
-  }
-
-  /* =================
-     PDFボタン縦並び
-  ================= */
+  /* PDFボタン縦並び */
   .self-buttons {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
     align-items: center;
-
-    /* ★ 次のPDFタイトルとの間隔 */
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   .self-buttons .pdf-link {
@@ -773,22 +766,13 @@ h2 {
     border-radius: 10px;
   }
 
-  /* =================
-     自己評価は常に表示
-  ================= */
-  #self-content {
-    display: block !important;
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-  }
-
-  /* =================
-     余白リセット（必要最低限）
-  ================= */
-  .contact-form,
-  .pdf-section {
-    margin-bottom: 0;
+  /* PDFテキストとボタンの間隔調整 */
+  .pdf-section + .pdf-text,
+  .pdf-text + .pdf-section,
+  .pdf-section,
+  .pdf-text {
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 }
 
