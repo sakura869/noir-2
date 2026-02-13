@@ -813,10 +813,11 @@ footer {
   flex-wrap: wrap;
 }
 
-/* 住所・連絡先 */
+/* 住所・TEL・MAIL */
 .footer-address {
   line-height: 1.6;
   margin-bottom: 15px;
+  font-size: 1em;
 }
 
 .footer-address a {
@@ -828,35 +829,43 @@ footer {
   text-decoration: underline;
 }
 
-/* 電話とメールの間隔 */
-.footer-tel {
+.footer-tel, .footer-mail {
+  font-size: 1em;
+  display: inline-block;
   margin-right: 18px;
 }
 
-.footer-mail {
-  margin-bottom: 5px;
-}
-
-/* 下段コピーライト・プライバシーリンク */
+/* 下段コピーライト */
 .footer-copy {
   font-size: 1em;
   color: #aaa;
   line-height: 1.6;
-  display: inline-flex;
-  align-items: center;
 }
 
-/* フッターリンク全体（お問い合わせ｜プライバシーポリシー） */
+/* ================= フッターリンク ================= */
 .footer-links {
   display: grid;
-  grid-template-columns: auto 1ch auto; /* 左リンク｜中央区切り｜右リンク */
-  justify-content: center;               /* 全体を中央に */
+  grid-template-columns: 1fr auto 1fr; /* 左右リンク伸ばして｜中央 */
   align-items: center;
+  justify-items: center;               /* 左右リンクも中央寄せ */
   font-size: 12px;
   margin-bottom: 2px;
-  gap: 6px;                              /* 左右リンクと区切りの隙間 */
+  width: 100%;
 }
 
+.footer-contact {
+  justify-self: end;
+}
+
+.footer-privacy {
+  justify-self: start;
+}
+
+.footer-sep {
+  justify-self: center;
+}
+
+/* リンク色統一 */
 .footer-links a,
 .footer-links a:visited {
   color: #aaa;
@@ -868,42 +877,15 @@ footer {
   text-decoration: underline;
 }
 
-.footer-sep {
-  display: block;
-  text-align: center;
-  width: 1ch; /* 区切り文字幅を固定 */
-}
-
-/* プライバシーリンク個別 */
-.footer-privacy {
-  line-height: 1.6;
-  display: inline-flex;
-  align-items: center;
-}
-
-.footer-privacy a,
-.footer-privacy a:visited {
-  color: #aaa;
-  text-decoration: none;
-}
-
-.footer-privacy a:hover {
-  color: #9F987D;
-  text-decoration: underline;
-}
-
 /* ================= スマホ対応 ================= */
 @media (max-width: 768px) {
-
-  /* フッター全体文字サイズを少し小さく */
   footer {
     font-size: 14px;
   }
 
-  /* 住所ブロック：中央寄せ＆左揃え */
   .footer-address {
     max-width: 320px;
-    margin: 0 auto 10px;
+    margin: 0 auto;
     text-align: left;
   }
 
@@ -911,33 +893,19 @@ footer {
     display: block;
   }
 
-  /* 住所・TEL・MAIL を縦並び */
   .footer-address a,
   .footer-tel,
   .footer-mail {
     display: block;
+    margin: 2px 0;
   }
 
-  /* お問い合わせ｜プライバシーポリシー */
   .footer-links {
-    margin-top: 4px;
-    display: inline-flex;        /* 横並び */
-    justify-content: center;     /* 全体中央寄せ */
-    align-items: center;
-    gap: 4px;                    /* スマホ用隙間 */
-    grid-template-columns: none; /* グリッドは解除 */
+    font-size: 12px;
+    margin-bottom: 2px;
+    grid-template-columns: 1fr auto 1fr; /* 中央｜固定 */
   }
 
-  .footer-sep {
-    width: 1ch;
-    text-align: center;
-  }
-
-  .footer-links a {
-    text-align: center;
-  }
-
-  /* コピーライト */
   .footer-copy {
     font-size: 12px;
     margin-top: 2px;
