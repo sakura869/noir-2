@@ -781,61 +781,43 @@ footer {
   color: #aaa;
 }
 
-/* footer-bottom を中央寄せに */
-.footer-bottom {
-  display: flex;
-  justify-content: center; /* 横中央 */
-  align-items: center;     /* 縦中央 */
-  gap: 8px;                /* 要素間のスペース */
-  margin-top: 15px;
-}
-  
-.footer-copy,
-.footer-sep,
-.footer-privacy {
-  display: inline-block;  /* 横並びを維持 */
-  margin: 0 5px;          /* 間隔を少し調整 */
-  vertical-align: middle; /* 上下中央揃え */
+/* フッター住所・連絡先 */
+.footer-info {
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
-/* ================= フッター内リンク共通 ================= */
 .footer-info a {
   color: #aaa;
   text-decoration: none;
+  font-size: 0.9em;
 }
 
 .footer-info a:hover {
   text-decoration: underline;
 }
 
-/* ================= 住所・連絡先 ================= */
-.footer-address {
-  margin-bottom: 15px;
-  line-height: 1.6;
-  font-size: 0.9em;
-}
-
-.footer-address span {
-  display: inline-block;
-}
-
-.footer-tel {
-  margin-right: 18px;
-  font-size: 0.9em;
-}
-
+.footer-tel,
 .footer-mail {
-  font-size: 0.9em;
+  display: inline-block;
+  margin: 0 8px;
 }
 
-/* =================  下段（コピーライト・リンク） ================= */
-.footer-copy {
+/* 下段コピーライト・プライバシーリンク */
+.footer-bottom {
+  display: flex;
+  justify-content: center; /* 横中央揃え */
+  align-items: center;     /* 縦中央揃え */
+  gap: 8px;                /* 要素間スペース */
   margin-top: 15px;
+}
+
+.footer-copy {
   font-size: 0.9em;
   color: #aaa;
 }
 
-/* プライバシーポリシー */
 .footer-privacy,
 .footer-privacy:link,
 .footer-privacy:visited {
@@ -848,20 +830,11 @@ footer {
   text-decoration: underline;
 }
 
-/* ================= スマホ調整 ================= */
+/* ================= スマホ対応 ================= */
 @media (max-width: 768px) {
   body {
     background-attachment: scroll;
     overflow-x: hidden;
-  }
-}
-
-@media (max-width: 480px) {
-  #pdf::before,
-  .access-title::before,
-  .contact-title::before,
-  .pdf-title::before {
-    width: 350px;
   }
 }
 
