@@ -742,46 +742,55 @@ h2 {
 /* ================= スマホ調整 ================= */
 @media (max-width: 767px) {
 
-  /* 説明文 */
+  /* =================
+     PDF説明文
+  ================= */
   .pdf-text {
     font-size: 16px;
     margin-bottom: 6px;
     padding: 0 10px;
   }
 
-  /* スマホでは常に表示 */
-  #self-content {
-    display: block !important;
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    margin-bottom: 0;
-  }
-
-  /* ボタン縦並び */
+  /* =================
+     PDFボタン縦並び
+  ================= */
   .self-buttons {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
     align-items: center;
+
+    /* ★ 次のPDFタイトルとの間隔 */
+    margin-bottom: 40px;
   }
 
   .self-buttons .pdf-link {
     width: 100%;
-    max-width: 200px;   /* ← 見た目を揃える魔法 */
-    margin: 0 auto;     /* ← これが決定打 */
+    max-width: 200px;
+    margin: 0 auto;
     padding: 10px 8px;
     font-size: 0.85em;
     border-radius: 10px;
   }
-}
 
-  /* 下余白リセット */
-  .contact-form,
-  .pdf-section,
-  .self-buttons {
-  margin-bottom: 0;
+  /* =================
+     自己評価は常に表示
+  ================= */
+  #self-content {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
   }
+
+  /* =================
+     余白リセット（必要最低限）
+  ================= */
+  .contact-form,
+  .pdf-section {
+    margin-bottom: 0;
+  }
+}
 
 /* =================================================
    フッター
