@@ -505,45 +505,47 @@ h2 {
 /* ================= 住所テキスト ================= */
 .access-text {
   display: flex;
-  flex-direction: column;   /* 縦並び */
-  align-items: flex-start;  /* 左揃え */
+  flex-direction: column;    /* 縦並び */
+  align-items: flex-start;   /* 左揃え */
   max-width: 550px;
-  margin: 0 auto 20px;      /* セクション中央配置 */
+  margin: 0 auto 20px;
   font-size: 1.3em;
 }
 
-/* 郵便番号 */
+/* アイコン＋郵便番号を同じ行に */
+.access-text .icon-wrapper {
+  display: inline-flex;
+  align-items: center;      /* アイコンと文字を縦中央揃え */
+  gap: 0.3em;               /* ピンと郵便番号の間隔 */
+  font-size: 1em;
+}
+
+/* 郵便番号の余白調整 */
 .access-text .zip {
   font-size: 0.9em;
-  margin-bottom: 2px;
 }
 
 /* 住所 */
 .access-text .address {
+  margin: 0;                /* 上下余白なし */
   line-height: 1.3;
-  margin: 0;
 }
 
-/* アイコン＋テキストラッパー */
-.access-text .icon-wrapper {
-  display: flex;
-  align-items: center;      /* アイコンと文字を縦中央揃え */
-  gap: 0.5em;               /* アイコンと文字の間隔 */
-}
-
-/* スマホ用改行 */
-.sp-br {
-  display: none;            /* デフォルトは非表示 */
-}
-
+/* スマホ文字サイズ */
 @media (max-width: 480px) {
   .access-text {
-    font-size: 1em;         /* スマホ文字サイズ */
+    font-size: 1em;
   }
 
+  /* スマホだけ改行 */
   .sp-br {
-    display: block;          /* スマホだけ改行 */
+    display: block;
   }
+}
+
+/* デフォルトは非表示 */
+.sp-br {
+  display: none;
 }
 
 /* ================= マップ ================= */
@@ -1010,16 +1012,19 @@ main {
 <h2 class="pc-title" id="access">アクセス</h2>
 <section class="access-section">
   <p class="access-text">
-    📍<span class="zip">〒950-0861</span><br>
+    <span class="icon-wrapper">
+      📍<span class="zip">950-0861</span>
+    </span><br>
     <span class="address">
-      新潟県新潟市東区中山6-19-5　ウェル新潟ビル206<br class="sp-br">
+      新潟県新潟市東区中山6-19-5
+      <span class="sp-br"></span>ウェル新潟ビル206
     </span>
   </p>
 
   <div class="map-wrapper">
     <iframe
-     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.6605220127058!2d139.08114867535681!3d37.91499690407121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff4ca2b14fe7561%3A0x41f87e9442edc71f!2z44CSOTUwLTA4NjEg5paw5r2f55yM5paw5r2f5biC5p2x5Yy65Lit5bGx77yW5LiB55uu77yR77yZ4oiS77yVIOOCpuOCp-ODq-aWsOa9nw!5e0!3m2!1sja!2sjp!4v1766382089719!5m2!1sja!2sjp"
-     loading="lazy">
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.6605220127058!2d139.08114867535681!3d37.91499690407121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff4ca2b14fe7561%3A0x41f87e9442edc71f!2z44CSOTUwLTA4NjEg5paw5r2f55yM5paw5r2f5biC5p2x5Yy65Lit5bGx77yW5LiB55uu77yR77yZ4oiS77yVIOOCpuOCp-ODq-aWsOa9nw!5e0!3m2!1sja!2sjp!4v1766382089719!5m2!1sja!2sjp"
+      loading="lazy">
     </iframe>
   </div>
 </section>
