@@ -781,6 +781,19 @@ footer {
   color: #aaa;
 }
 
+/* footer-bottom を中央寄せに */
+.footer-bottom {
+  display: inline-block;  /* 横並びはそのまま残す */
+  margin-top: 15px;
+}
+.footer-copy,
+.footer-sep,
+.footer-privacy {
+  display: inline-block;  /* 横並びを維持 */
+  margin: 0 5px;          /* 間隔を少し調整 */
+  vertical-align: middle; /* 上下中央揃え */
+}
+
 /* ================= フッター内リンク共通 ================= */
 .footer-info a {
   color: #aaa;
