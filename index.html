@@ -897,26 +897,34 @@ footer {
   }
 
   /* お問い合わせ｜プライバシーポリシー */
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    margin-bottom: 2px;
-  }
+/* フッターリンク全体 */
+.footer-links {
+  display: inline-flex;        /* 横並び */
+  justify-content: center;     /* ブロック全体を中央 */
+  align-items: center;
+  gap: 6px;                    /* リンク間の隙間 */
+  font-size: 12px;
+  margin-bottom: 2px;
+}
 
-  /* フッター内リンクの色（青字防止） */
-  footer a,
-  footer a:visited {
-    color: #aaa;
-    text-decoration: none;
-  }
+/* 区切りを正確に中央配置 */
+.footer-sep {
+  display: inline-block;
+  width: 1ch;                  /* 文字幅1文字分 */
+  text-align: center;
+}
 
-  footer a:hover {
-    color: #9F987D;
-    text-decoration: underline;
-  }
+/* フッターリンク色の統一 */
+.footer-links a,
+.footer-links a:visited {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #9F987D;
+  text-decoration: underline;
+}
 
   /* コピーライト */
   .footer-copy {
