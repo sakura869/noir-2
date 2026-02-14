@@ -847,27 +847,35 @@ footer {
 .footer-links {
   position: relative;
   display: flex;
-  justify-content: center;  /* 真ん中寄せ */
+  justify-content: center;  /* 全体中央寄せ */
   align-items: center;
-  max-width: 400px;         /* フッター内の幅 */
-  margin: 20px auto 0;      /* 上下マージン */
+  max-width: 400px;
+  margin: 20px auto 0;
 }
 
 .footer-links .footer-sep {
-  position: absolute;       /* 画面真ん中に固定 */
+  position: absolute;       /* 画面中央に固定 */
   left: 50%;
   transform: translateX(-50%);
 }
 
+/* 左右リンクを｜を基準に中央寄せ */
+.footer-links .footer-contact,
+.footer-links .footer-privacy {
+  display: inline-block;
+  width: 100px;            /* 固定幅で文字の位置調整 */
+  text-align: center;      /* 文字中央寄せ */
+}
+
 .footer-links .footer-contact {
-  margin-right: 30px;       /* ｜との距離を調整 */
+  margin-right: 15px;      /* ｜との距離 */
 }
 
 .footer-links .footer-privacy {
-  margin-left: 30px;        /* ｜との距離を調整 */
+  margin-left: 15px;       /* ｜との距離 */
 }
 
-/* リンク色統一 */
+/* リンク色 */
 .footer-links a,
 .footer-links a:visited {
   color: #aaa;
@@ -879,69 +887,18 @@ footer {
   text-decoration: underline;
 }
 
-/* ================= 住所・連絡先 ================= */
-.footer-address {
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: left;
-  font-size: 14px;
-}
-
-.footer-address a,
-.footer-tel,
-.footer-mail {
-  display: block;
-  margin: 2px 0;
-}
-
-/* ================= コピーライト ================= */
-.footer-copy {
-  font-size: 12px;
-  text-align: center;
-  margin-top: 10px;
-}
-
 /* ================= スマホ対応 ================= */
 @media (max-width: 768px) {
-  footer {
-    font-size: 14px;
-  }
-
-  .footer-address {
-    max-width: 320px;
-    margin: 0 auto;
-  }
-
-  .zip {
-    display: block;
-  }
-
-  .footer-address a,
-  .footer-tel,
-  .footer-mail {
-    display: block;
-    margin: 2px 0;
-  }
-
-  /* フッターリンクもPCと同じ見え方に統一 */
   .footer-links {
     max-width: 320px;
     margin: 20px auto 0;
   }
 
-  .footer-links .footer-contact {
-    margin-right: 20px;
-  }
-
+  .footer-links .footer-contact,
   .footer-links .footer-privacy {
-    margin-left: 20px;
-  }
-
-  .footer-copy {
-    font-size: 12px;
-    margin-top: 5px;
-  }
-}
+    width: 80px;           /* スマホ用に少し狭く */
+    margin: 0 10px;
+  
 
   
   body {
