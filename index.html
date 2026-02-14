@@ -845,25 +845,22 @@ footer {
 
 /* ================= フッターリンク ================= */
 .footer-links {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr; /* 左右リンク同じ幅、中央にセパレーター */
-  align-items: center;
-  width: 100%;
+  display: flex;
+  justify-content: center;   /* 全体を中央に */
+  align-items: center;       /* 垂直方向中央揃え */
 }
 
 .footer-contact {
-  justify-self: end;   /* 左側リンクを右寄せ */
-  text-align: right;
-}
-
-.footer-sep {
-  justify-self: center; /* | を中央に */
-  text-align: center;
+  margin-right: 10px;        /* セパレーターとの距離 */
 }
 
 .footer-privacy {
-  justify-self: start;  /* 右側リンクを左寄せ */
-  text-align: left;
+  margin-left: 10px;         /* セパレーターとの距離 */
+}
+
+.footer-sep {
+  text-align: center;
+  font-weight: bold;
 }
 
 /* リンク色統一 */
@@ -1145,13 +1142,9 @@ main {
 
   <!-- お問い合わせ｜プライバシーポリシー -->
 <div class="footer-links">
-  <div class="footer-contact">
-    <a href="#contact">お問い合わせ</a>
-  </div>
-  <div class="footer-sep">｜</div>
-  <div class="footer-privacy">
-    <a href="privacy.html">プライバシーポリシー</a>
-  </div>
+  <a href="#contact" class="footer-contact">お問い合わせ</a>
+  <span class="footer-sep">｜</span>
+  <a href="privacy.html" class="footer-privacy">プライバシーポリシー</a>
 </div>
 
   <!-- コピーライト -->
