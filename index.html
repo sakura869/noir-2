@@ -868,11 +868,11 @@ footer {
 }
 
 .footer-links .footer-contact {
-  margin-right: 15px;      /* ｜との距離 */
+  margin-right: 5px;      /* ｜との距離 */
 }
 
 .footer-links .footer-privacy {
-  margin-left: 15px;       /* ｜との距離 */
+  margin-left: 5px;       /* ｜との距離 */
 }
 
 .footer-links a {
@@ -893,6 +893,37 @@ footer {
 
 /* ================= スマホ対応 ================= */
 @media (max-width: 768px) {
+  footer {
+    font-size: 14px;
+  }
+  
+  /* 住所・郵便番号・建物名を縦並びに */
+  .footer-address {
+    max-width: 360px;   /* 幅調整 */
+    margin: 0 auto;
+    text-align: left;
+    line-height: 1.4;   /* 行間を少し広げて読みやすく */
+  }
+
+  .footer-address .zip {
+    display: block;     /* 郵便番号を改行 */
+  }
+
+  /* 建物名も改行したい場合はspanで囲んで display:block */
+  .footer-address a {
+    display: block;     /* 全体をブロック化して改行 */
+  }
+
+  .footer-address a br {
+    display: block;     /* brタグが使える場合は確実に改行 */
+  }
+
+  .footer-address a,
+  .footer-tel,
+  .footer-mail {
+    display: block;
+    margin: 2px 0;
+  
   .footer-links {
     max-width: 360px;
     margin: 20px auto 0;
@@ -902,7 +933,13 @@ footer {
   .footer-links .footer-privacy {
     width: 80px;           /* スマホ用に少し狭く */
     margin: 0 10px;
+  }
   
+  .footer-links, 
+   footer-copy {
+    font-size: 12px;
+  }
+}
 
   
   body {
