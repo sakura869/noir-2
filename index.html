@@ -845,32 +845,26 @@ footer {
 
 /* ================= フッターリンク ================= */
 .footer-links {
+  position: relative;
   display: flex;
+  justify-content: space-between; /* 左右のリンクを端に寄せる */
   align-items: center;
-  gap: 1em; /* 「｜」とリンクの間隔 */
-  position: relative;         /* 親要素を相対位置に */
-  justify-content: space-between; /* 左右にリンクを配置 */
-  max-width: 300px;           /* 左右リンクの合計幅 + 余白 */
-  margin: 0 auto;             /* センタリング */
+  max-width: 300px;  /* 左右リンク+間隔の幅 */
+  margin: 0 auto;
+}
+
+.footer-links .footer-contact {
+  margin-right: 20px;  /* |との距離 */
+}
+
+.footer-links .footer-privacy {
+  margin-left: 20px;   /* |との距離 */
 }
 
 .footer-links .footer-sep {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%); /* 完全中央に */
-}
-
-/* 左右リンクの距離を固定 */
-.left-link {
-  margin-right: 0.5em; /* ｜との距離 */
-}
-
-.right-link {
-  margin-left: 0.5em;  /* ｜との距離 */
-}
-
-.footer-sep {
-  font-weight: bold;
+  transform: translateX(-50%);
 }
 
 /* リンク色統一 */
