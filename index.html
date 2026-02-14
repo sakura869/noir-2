@@ -846,20 +846,23 @@ footer {
 /* ================= フッターリンク ================= */
 .footer-links {
   display: flex;
-  justify-content: center;  /* 全体を中央寄せ */
+  justify-content: center; /* 中央寄せ */
   align-items: center;
-}
-
-.footer-links .footer-contact {
-  margin-right: 20px; /* 「｜」までの距離 */
+  gap: 60px; /* 左右リンクの間隔 */
+  position: relative;
+  max-width: 400px;
+  margin: 20px auto 0; /* 上下マージン調整 */
 }
 
 .footer-links .footer-sep {
-  margin: 0 10px;     /* 左右リンクとの距離 */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
+.footer-links .footer-contact,
 .footer-links .footer-privacy {
-  margin-left: 20px;  /* 「｜」までの距離 */
+  margin: 0;
 }
 
 /* リンク色統一 */
@@ -874,6 +877,28 @@ footer {
   text-decoration: underline;
 }
 
+/* 住所・電話・メール */
+.footer-address {
+  max-width: 320px;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 14px;
+}
+
+.footer-address a,
+.footer-tel,
+.footer-mail {
+  display: block;
+  margin: 2px 0;
+}
+
+/* コピーライト */
+.footer-copy {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+}
+
 /* ================= スマホ対応 ================= */
 @media (max-width: 768px) {
   footer {
@@ -883,23 +908,10 @@ footer {
   .footer-address {
     max-width: 320px;
     margin: 0 auto;
-    text-align: left;
   }
 
-  .zip {
-    display: block;
-  }
-
-  .footer-address a,
-  .footer-tel,
-  .footer-mail {
-    display: block;
-    margin: 2px 0;
-  }
-
-  .footer-copy {
-    font-size: 12px;
-    margin-top: 2px;
+  .footer-links {
+    gap: 40px; /* 間隔調整 */
   }
 }
 
