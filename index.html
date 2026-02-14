@@ -847,24 +847,22 @@ footer {
 .footer-links {
   position: relative;
   display: flex;
-  justify-content: space-between; /* 左右のリンクを端に寄せる */
+  justify-content: center;
+  gap: 60px;
   align-items: center;
   max-width: 400px;
   margin: 0 auto;
-}
-
-.footer-links .footer-contact {
-  margin-right: 40px;  /* |との距離 */
-}
-
-.footer-links .footer-privacy {
-  margin-left: 40px;   /* |との距離 */
 }
 
 .footer-links .footer-sep {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.footer-links .footer-contact,
+.footer-links .footer-privacy {
+  margin: 0;
 }
 
 /* リンク色統一 */
