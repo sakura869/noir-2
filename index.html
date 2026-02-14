@@ -805,15 +805,6 @@ footer {
   margin: 0;
 }
 
-/* 下段コピーライトや住所リンクのコンテナ */
-.footer-bottom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
 /* 住所・TEL・MAIL */
 .footer-address {
   line-height: 1.2;
@@ -836,7 +827,7 @@ footer {
   margin-right: 18px;
 }
 
-/* 下段コピーライト */
+/* コピーライト */
 .footer-copy {
   font-size: 1em;
   color: #aaa;
@@ -845,27 +836,33 @@ footer {
 
 /* ================= フッターリンク ================= */
 .footer-links {
+  position: relative;
   display: flex;
-  justify-content: center; /* 全体中央寄せ */
+  justify-content: center;
   align-items: center;
-  gap: 40px; /* 左右リンク間隔 */
   margin: 20px auto 0;
-  max-width: 500px; /* 画面幅に合わせて調整 */
-}
-
-.footer-links .footer-sep {
-  /* flexで自動配置するので特に絶対位置は不要 */
+  max-width: 500px;
 }
 
 .footer-links a {
-  white-space: nowrap; /* 改行防止 */
+  white-space: nowrap;
   text-decoration: none;
   color: #aaa;
+  padding: 0 8px; /* リンク間の隙間 */
 }
 
 .footer-links a:hover {
   color: #9F987D;
   text-decoration: underline;
+}
+
+/* | を絶対位置で中央に */
+.footer-links .footer-sep {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #aaa;
+  user-select: none;
 }
 
 /* ================= スマホ対応 ================= */
@@ -874,9 +871,9 @@ footer {
     font-size: 14px;
   }
 
-  /* 住所改行 */
+  /* 住所を中央寄せではなく改行して左揃え */
   .footer-address {
-    max-width: 360px; /* スマホ幅に調整 */
+    max-width: 360px;
     margin: 0 auto;
     text-align: left;
   }
@@ -898,7 +895,16 @@ footer {
     font-size: 12px;
     margin-top: 2px;
     text-align: center;
-  
+  }
+
+  /* フッターリンクは左右中央に */
+  .footer-links a {
+    padding: 0 6px;
+  }
+
+  .footer-links .footer-sep {
+    font-size: 14px;
+  }
 }
 
   
