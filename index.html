@@ -797,12 +797,12 @@ h2 {
 /* ================= フッター共通 ================= */
 footer {
   background: rgba(255,255,255,0.5);
-  padding: 20px 25px;
+  padding: 20px 0;
   text-align: center;
   font-family: 'Kiwi Maru', cursive;
   font-size: 1em;
   color: #aaa;
-  margin-top: 0;
+  margin: 0;
 }
 
 /* 下段コピーライトや住所リンクのコンテナ */
@@ -873,6 +873,10 @@ footer {
 
 .footer-links .footer-privacy {
   margin-left: 15px;       /* ｜との距離 */
+}
+
+.footer-links a {
+    white-space: nowrap; /* 改行させない */
 }
 
 /* リンク色 */
