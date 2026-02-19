@@ -512,39 +512,54 @@ h2 {
   display: flex;
   flex-direction: column;   /* 縦並び */
   align-items: flex-start;  /* 左揃え */
+
   max-width: 550px;
-  margin: 0 auto 20px;     /* セクション中央配置 */
+  margin: 0 auto 20px;      /* ブロックは中央配置 */
+
   font-size: 1.3em;
-  line-height: 1.3;        /* 行間詰める */
-  color: #635656;           /* 郵便番号青化防止 */
-  -webkit-touch-callout: none; /* iOS自動リンク無効化補助 */
+  line-height: 1.3;
+  color: #635656;
+
+  -webkit-touch-callout: none;
   -webkit-user-select: none;
+}
+
+/* ===== ピン＋郵便番号（1行） ===== */
+.pin-line {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;               /* 📍と〒の間隔 */
+  margin-bottom: 2px;
+}
+
+/* ピン */
+.pin {
+  font-size: 1em;
+  line-height: 1;
 }
 
 /* 郵便番号 */
 .access-text .zip {
   font-size: 0.9em;
-  color: #635656;           /* 青にならないよう明示 */
-  text-decoration: none;    /* 自動リンク下線防止 */
-  margin-bottom: 2px;
-  display: block;
+  line-height: 1.2;
+  color: #635656;
+  text-decoration: none;
 }
 
-/* 住所 */
+/* ===== 住所 ===== */
 .access-text .address {
-  margin: 0;
   line-height: 1.3;
-  display: block;
+  margin: 0;
 }
 
-/* ピンアイコンとテキストを縦並び */
+/* ===== 全体ラッパー ===== */
 .access-text .icon-wrapper {
   display: flex;
-  flex-direction: column;   /* ピンと住所縦並び */
+  flex-direction: column;
   align-items: flex-start;
-  gap: 0.2em;
+  gap: 0.1em;               /* 行間の微調整 */
 }
-
+  
 /* スマホ文字サイズ */
 @media (max-width: 480px) {
   .access-text {
@@ -1029,16 +1044,19 @@ main {
 <h2 class="pc-title" id="access">アクセス</h2>
 <section class="access-section">
   <p class="access-text">
-    <span class="icon-wrapper">
-      📍
-      <span class="zip">〒950‑0861</span><br>
-      <span class="address">
-        新潟県新潟市東区中山6-19-5
-        <span class="sp-br"><br></span>
-        ウェル新潟ビル206
-      </span>
+  <span class="icon-wrapper">
+    <span class="pin-line">
+      <span class="pin">📍</span>
+      <span class="zip">〒950-0861</span>
     </span>
-  </p>
+
+    <span class="address">
+      新潟県新潟市東区中山6-19-5
+      <span class="sp-br"><br></span>
+      ウェル新潟ビル206
+    </span>
+  </span>
+</p>
 
   <div class="map-wrapper">
     <iframe
