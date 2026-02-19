@@ -813,18 +813,18 @@ footer {
 /* ================= フッターリンク ================= */
 .footer-links {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 1.6em;          /* 高さを確保 */
   margin: 20px auto 0;
   max-width: 500px;
 }
 
+/* 共通リンク */
 .footer-links a {
+  position: absolute;
   white-space: nowrap;
   text-decoration: none;
   color: #aaa;
-  padding: 0 8px; /* リンク間の隙間 */
+  font-size: 0.9rem;
 }
 
 .footer-links a:hover {
@@ -832,7 +832,7 @@ footer {
   text-decoration: underline;
 }
 
-/* | を絶対位置で中央に */
+/* 中央の | */
 .footer-links .footer-sep {
   position: absolute;
   left: 50%;
@@ -841,8 +841,16 @@ footer {
   user-select: none;
 }
 
+/* 左：お問い合わせ */
+.footer-links .footer-contact {
+  right: 50%;
+  margin-right: 14px;   /* | からの距離（左右共通） */
+}
+
+/* 右：プライバシーポリシー */
 .footer-links .footer-privacy {
-  margin-left: 40px;
+  left: 50%;
+  margin-left: 14px;    /* | からの距離（左右共通） */
 }
 
 /* ================= スマホ対応 ================= */
