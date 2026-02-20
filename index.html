@@ -51,7 +51,6 @@ header {
   width: 100%;
 }
 
-/* ===== ヘッダー中身 ===== */
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -63,7 +62,6 @@ header {
   justify-content: flex-start;
 }
 
-/* ===== ロゴ ===== */
 .logo {
   display: flex;
   align-items: center;
@@ -76,13 +74,12 @@ header {
   width: auto;
 }
 
-/* ===== 中央タイトル ===== */
 .header-center {
   position: static;
   transform: none;
   text-align: center;
   font-weight: bold;
-  color: #675340;
+  color: #fff; /* ← 白に変更 */
   letter-spacing: 0.15em;
   text-shadow: 0 2px 6px rgba(0,0,0,0.35);
   white-space: nowrap;
@@ -90,13 +87,20 @@ header {
   margin-left: 20px;
   margin-right: 60px;
 }
-
+  
 /* ================= メニュー（PC） ================= */
 .menu {
   display: flex;
   gap: 20px;
   justify-content: flex-end;
 }
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  white-space: nowrap;
+}  
 
 .menu a:hover {
   opacity: 0.7;
