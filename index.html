@@ -56,19 +56,21 @@ h2 {
   scroll-margin-top: 120px;
 }
 
+/* ===== ヘッダー中身 ===== */
 .header-inner {
-  max-width: 1100px;
+  max-width: 1000px;   /* 少し絞って中央感UP */
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* ===== ロゴ全体（共通） ===== */
+/* ===== ロゴ全体 ===== */
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;          /* ロゴ内の余白を少し広げる */
+  margin-right: 40px; /* ロゴを気持ち左に */
 }
 
 /* ロゴ画像 */
@@ -78,43 +80,32 @@ h2 {
   width: auto;
 }
 
-/* ===== スマホだけ並びを逆にする ===== */
-@media (max-width: 480px) {
-  .logo {
-    flex-direction: row-reverse; /* ← ここがポイント */
-    gap: 6px;
-  }
-
-  .logo-img {
-    width: 34px; /* スマホ用に少し小さく */
-  }
-}
-
 /* ロゴ・メニュー文字共通 */
 .logo,
 .menu a {
   color: #fff;
-  font-size: clamp(0.7rem, 2vw, 1rem);
+  font-size: clamp(0.8rem, 2vw, 1rem);
   white-space: nowrap;
   text-decoration: none;
 }
 
-/* 中央タイトル */
+/* ===== 中央タイトル ===== */
 .header-center {
   text-align: center;
   font-weight: bold;
   color: #675340;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;   /* 文字間を少し広げる */
   text-shadow: 0 2px 6px rgba(0,0,0,0.35);
   white-space: nowrap;
+  margin: 0 40px;          /* 左右の間隔を広げる */
 
-  font-size: clamp(1.1rem, 3vw, 1.8rem);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
 }
 
-/* ================= メニュー（PC） ================= */
+/* ===== メニュー（PC） ===== */
 .menu {
   display: flex;
-  gap: 20px;
+  gap: 28px;               /* メニュー同士の間隔UP */
   justify-content: flex-end;
 }
 
@@ -131,7 +122,7 @@ h2 {
   color: #fff;
   cursor: pointer;
 }
-
+  
 /* ================= タブレット以下 ================= */
 @media (max-width: 1024px) {
   .header-inner {
@@ -152,6 +143,17 @@ h2 {
     align-items: center;
     justify-content: space-between;
   }
+
+  /* ===== スマホだけ並びを逆にする ===== */
+  .logo {
+    flex-direction: row-reverse; /* ← ここがポイント */
+    gap: 6px;
+  }
+
+  .logo-img {
+    width: 34px; /* スマホ用に少し小さく */
+  }
+}
 
   /* ロゴ＋補足文 */
   .logo {
