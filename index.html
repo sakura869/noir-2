@@ -51,38 +51,38 @@ header {
   width: 100%;
 }
 
+/* ===== ヘッダー内部 ===== */
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
-　padding-top: 20px;
-  padding-right: 30px;
-  padding-bottom: 30px;
-  padding-left: 0;
+  padding: 20px 30px; /* 上下20px、左右30px */
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; /* 左寄せ */
   height: 100px;
 }
 
+/* ===== ロゴ ===== */
 .logo {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 20px; /* ロゴマークとロゴテキストの間隔 */
   margin-right: 10px;
 }
 
 .logo-img {
   max-height: 80px;
   width: auto;
-  margin-left: -70px;
+  margin-left: -70px; /* 左端寄せ用 */
 }
 
 .logo-text {
   color: #fff;
   font-size: clamp(0.9rem, 2vw, 1.2rem);
   white-space: nowrap;
-}  
+}
 
+/* ===== 中央タイトル ===== */
 .header-center {
   position: static;
   transform: none;
@@ -93,7 +93,8 @@ header {
   text-shadow: 0 2px 6px rgba(0,0,0,0.35);
   white-space: nowrap;
   font-size: clamp(1.1rem, 3vw, 1.8rem);
-  margin-right: 100px;
+  margin-left: 40px;  /* ロゴテキストとの間隔 */
+  margin-right: 100px; /* 右側の余白 */
 }
   
 /* ================= メニュー（PC） ================= */
