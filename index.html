@@ -49,18 +49,18 @@ header {
   z-index: 1000;
   height: 80px;
   width: 100%;
-  padding: 14px 0;
 }
 
 /* ===== ヘッダー中身 ===== */
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding-left: 100px;   /* ← 全体を左右に動かしたい時はここ */
+  padding-left: 100px;   /* 全体位置調整（ここで左右を決める） */
   padding-right: 20px;
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 /* ===== ロゴ ===== */
@@ -68,25 +68,89 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-right: 20px;
 }
 
 .logo-img {
-  max-height: 60px;
+  max-height: 60px;   /* ヘッダー80px内に収まる */
   width: auto;
 }
 
-/* ===== 中央タイトル（発達支援ノワール） ===== */
+/* ===== 中央タイトル ===== */
 .header-center {
+  position: relative;
+  left: -40px;        /* ← 発達支援ノワールを左へ（数値調整OK） */
+
   font-weight: bold;
   color: #675340;
   letter-spacing: 0.15em;
   text-shadow: 0 2px 6px rgba(0,0,0,0.35);
   white-space: nowrap;
   font-size: clamp(1.1rem, 3vw, 1.8rem);
-
-  margin-right: 80px;   /* ← メニューとの間隔調整はここ */
 }
+
+/* ===== ロゴ全体（共通） ===== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 10px;
+}
+
+/* ロゴ画像 */
+.logo-img {
+  height: 100%;
+  max-height: 100px;
+  width: auto;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* 中央タイトル　*/
+.header-center {
+  position: static;      /* ← 重要 */
+  transform: none;       /* ← 消す */
+  text-align: center;
+  font-weight: bold;
+  color: #675340;
+  letter-spacing: 0.15em;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+  white-space: nowrap;
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
+  margin-left: 20px;
+  margin-right: 60px;
+  left: -40px;
+}
+
+/* ロゴ・メニュー文字共通 */
+.logo,
+.menu a {
+  color: #fff;
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* 中央タイトル */
+.header-center {
+  text-align: center;
+  font-weight: bold;
+  color: #675340;
+  letter-spacing: 0.15em;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+  white-space: nowrap;
+
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
+}
+
 /* ================= メニュー（PC） ================= */
 .menu {
   display: flex;
