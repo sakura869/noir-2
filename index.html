@@ -56,12 +56,11 @@ header {
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding-left: 100px;   /* 全体の左右位置調整 */
+  padding-left: 100px;   /* ← 全体を左右に動かしたい時はここ */
   padding-right: 20px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 左：ロゴ＋タイトル / 右：メニュー */
 }
 
 /* ===== ロゴ ===== */
@@ -69,27 +68,25 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .logo-img {
-  max-height: 60px;   /* ヘッダー80px内に収まる */
+  max-height: 60px;
   width: auto;
 }
 
 /* ===== 中央タイトル（発達支援ノワール） ===== */
 .header-center {
-  position: relative;
-  left: -40px;        /* タイトルだけ左へ（ここだけ調整） */
-
   font-weight: bold;
   color: #675340;
   letter-spacing: 0.15em;
   text-shadow: 0 2px 6px rgba(0,0,0,0.35);
   white-space: nowrap;
   font-size: clamp(1.1rem, 3vw, 1.8rem);
-}
 
+  margin-right: 80px;   /* ← メニューとの間隔調整はここ */
+}
 /* ================= メニュー（PC） ================= */
 .menu {
   display: flex;
