@@ -87,25 +87,28 @@ header {
 
   margin-right: 80px;   /* ← メニューとの間隔調整はここ */
 }
-/* ================= メニュー（PC） ================= */
+
+/* ===== メニュー（右寄せ） ===== */
 .menu {
   display: flex;
   gap: 20px;
-  justify-content: flex-end;
+  margin-left: auto;    /* ← 右寄せの決定打 */
+}
+
+.menu a {
+  color: #fff;
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .menu a:hover {
   opacity: 0.7;
 }
 
-/* ハンバーガーボタン（PC非表示） */
+/* ===== PCではハンバーガー非表示 ===== */
 .menu-toggle {
   display: none;
-  font-size: 26px;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
 }
 
 /* ================= タブレット以下 ================= */
