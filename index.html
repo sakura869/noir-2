@@ -53,30 +53,17 @@ header {
 
 .header-inner {
   max-width: 1100px;
-  margin: 0 auto;           /* 左右均等に中央寄せ */
+  margin: 0 auto;
+  padding: 20px; /* 上下左右同じ */
   display: flex;
-  align-items: center;       /* 上下中央揃え */
-  justify-content: space-between; /* 左右端に要素を配置 */
-  height: 100%;
-  padding: 0 30px;           /* 左右端からの距離を統一 */
-  box-sizing: border-box;
+  align-items: center;
+  justify-content: flex-start; /* 左寄せ */
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 30px;                 /* ロゴマークとテキスト間隔 */
-}
-
-.logo-img {
-  max-height: 80px;
-  width: auto;
-}
-
-.logo-text {
-  color: #fff;
-  font-size: clamp(0.9rem, 2vw, 1.2rem);
-  white-space: nowrap;
+  gap: 30px; /* ロゴとテキスト間 */
 }
 
 .header-center {
@@ -86,13 +73,16 @@ header {
   text-shadow: 0 2px 6px rgba(0,0,0,0.35);
   white-space: nowrap;
   font-size: clamp(1.1rem, 3vw, 1.8rem);
+  margin-left: 30px; /* ロゴテキストとの間隔 */
 }
 
+/* メニューを右端に */
 .menu {
   display: flex;
   gap: 20px;
+  margin-left: auto; /* ← ここが重要 */
 }
-
+  
 .menu a {
   color: #fff;
   text-decoration: none;
