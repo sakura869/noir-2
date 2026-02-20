@@ -78,6 +78,18 @@ h2 {
   width: auto;
 }
 
+/* ===== スマホだけ並びを逆にする ===== */
+@media (max-width: 480px) {
+  .logo {
+    flex-direction: row-reverse; /* ← ここがポイント */
+    gap: 6px;
+  }
+
+  .logo-img {
+    width: 34px; /* スマホ用に少し小さく */
+  }
+}
+
 /* ロゴ・メニュー文字共通 */
 .logo,
 .menu a {
@@ -119,7 +131,7 @@ h2 {
   color: #fff;
   cursor: pointer;
 }
-  
+
 /* ================= タブレット以下 ================= */
 @media (max-width: 1024px) {
   .header-inner {
@@ -140,17 +152,6 @@ h2 {
     align-items: center;
     justify-content: space-between;
   }
-
-  /* ===== スマホだけ並びを逆にする ===== */
-  .logo {
-    flex-direction: row-reverse; /* ← ここがポイント */
-    gap: 6px;
-  }
-
-  .logo-img {
-    width: 34px; /* スマホ用に少し小さく */
-  }
-}
 
   /* ロゴ＋補足文 */
   .logo {
