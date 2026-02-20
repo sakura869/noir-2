@@ -74,19 +74,25 @@ h2 {
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding-left: 60px;
+  padding-left: 100px; /* ← 全体を右に */
   padding-right: 20px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
 }
 
+/* 中央タイトル：absolute をやめる */
 .header-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;      /* ← 重要 */
+  transform: none;       /* ← 消す */
+  text-align: center;
+  font-weight: bold;
+  color: #675340;
+  letter-spacing: 0.15em;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.35);
   white-space: nowrap;
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
 }
 
 /* ロゴ・メニュー文字共通 */
