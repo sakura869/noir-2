@@ -56,21 +56,19 @@ h2 {
   scroll-margin-top: 120px;
 }
 
-/* ===== ヘッダー中身 ===== */
 .header-inner {
-  max-width: 1000px;   /* 少し絞って中央感UP */
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* ===== ロゴ全体 ===== */
+/* ===== ロゴ全体（共通） ===== */
 .logo {
   display: flex;
   align-items: center;
-  gap: 14px;          /* ロゴ内の余白を少し広げる */
-  margin-right: 40px; /* ロゴを気持ち左に */
+  gap: 10px;
 }
 
 /* ロゴ画像 */
@@ -84,28 +82,27 @@ h2 {
 .logo,
 .menu a {
   color: #fff;
-  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-size: clamp(0.7rem, 2vw, 1rem);
   white-space: nowrap;
   text-decoration: none;
 }
 
-/* ===== 中央タイトル ===== */
+/* 中央タイトル */
 .header-center {
   text-align: center;
   font-weight: bold;
   color: #675340;
-  letter-spacing: 0.2em;   /* 文字間を少し広げる */
+  letter-spacing: 0.15em;
   text-shadow: 0 2px 6px rgba(0,0,0,0.35);
   white-space: nowrap;
-  margin: 0 40px;          /* 左右の間隔を広げる */
 
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
 }
 
-/* ===== メニュー（PC） ===== */
+/* ================= メニュー（PC） ================= */
 .menu {
   display: flex;
-  gap: 28px;               /* メニュー同士の間隔UP */
+  gap: 20px;
   justify-content: flex-end;
 }
 
