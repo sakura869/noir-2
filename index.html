@@ -64,6 +64,39 @@ h2 {
   column-gap: clamp(12px, 4vw, 40px);
 }
 
+/* ===== ロゴ全体（共通） ===== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ロゴ画像 */
+.logo-img {
+  width: 42px;
+  height: auto;
+  display: block;
+}
+
+/* ロゴ文字 */
+.logo-text {
+  color: #fff;
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  white-space: nowrap;
+}
+
+/* ===== スマホだけ並びを逆にする ===== */
+@media (max-width: 480px) {
+  .logo {
+    flex-direction: row-reverse; /* ← ここがポイント */
+    gap: 6px;
+  }
+
+  .logo-img {
+    width: 34px; /* スマホ用に少し小さく */
+  }
+}
+
 /* ロゴ・メニュー文字共通 */
 .logo,
 .menu a {
@@ -946,9 +979,10 @@ main {
 <header>
  <div class="header-inner">
 
-    <div class="logo">
-      放課後等デイサービス・児童発達支援
-    </div>
+ <div class="logo">
+   <img src="logo.png" alt="" class="logo-img">
+   <span class="logo-text">放課後等デイサービス・児童発達支援</span>
+ </div>
 
     <div class="header-center">
       発達支援ノワール
