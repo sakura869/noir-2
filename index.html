@@ -1233,6 +1233,19 @@ contactBtn?.addEventListener('click', e => {
       const slides = pcSliderSection.querySelectorAll('.slide');
       const prevBtn = pcSliderSection.querySelector('.slide-arrow.left');
       const nextBtn = pcSliderSection.querySelector('.slide-arrow.right');
+
+　　　prevBtn.addEventListener('click', () => {
+  if (index > 0) {
+    moveSlider(index - 1);
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (index < slides.length - 1) {
+    moveSlider(index + 1);
+  }
+});
+      
       const dotsContainer = pcSliderSection.querySelector('.slider-dots');
 
       let index = 0;
