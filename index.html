@@ -134,14 +134,24 @@ header {
 @media (max-width: 480px) {
   header {
     padding: 12px 0;       /* 左右は header-inner に任せる */
-    height: 80px;
+    height: auto;          /* 高さは自動で調整 */
+  }
+
+  /* ヘッダー内全体 */
+  .header-inner {
+    padding: 0 16px;       
+    display: flex;
+    flex-direction: column; /* 縦並びに変更 */
+    align-items: center;
+    justify-content: center;
+    position: relative;     /* 中央タイトルの絶対位置解除用 */
   }
 
   /* ロゴ＋補足文 */
   .logo {
     display: flex;
     align-items: center;
-    flex-direction: row-reverse;
+    flex-direction: row;    /* 画像と文字は横並び */
     gap: 6px;
   }
 
@@ -150,22 +160,16 @@ header {
     height: 48px;
     width: auto;
   }
-  
-  .header-inner {
-    padding: 0 16px;       /* 左右余白はここ */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
 
   /* 中央タイトル */
   .header-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: static;       /* 絶対位置を解除して自然に下に配置 */
+    transform: none;
+    margin-top: 4px;        /* 上の文字との間隔 */
     font-size: 1.1rem;
-    white-space: nowrap;
-    pointer-events: none; /* タップ誤爆防止 */
+    text-align: center;
+    white-space: normal;    /* 折り返し可能に */
+    pointer-events: auto;   /* タップ可能 */
   }
 
   /* ☰ ボタン */
@@ -176,6 +180,7 @@ header {
     border: none;
     color: #fff;
     cursor: pointer;
+    margin-top: 6px;        /* ロゴ下に少し余白 */
   }
 
   /* メニュー */
@@ -202,7 +207,7 @@ header {
     text-decoration: none;
   }
 }
-
+  
 /* ===============================
    PC用タイトル
 =============================== */
