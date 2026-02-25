@@ -1266,79 +1266,85 @@ contactBtn?.addEventListener('click', e => {
 });
 
 
-  /* ======================
-     スライダー（PCのみ）
-  ====================== */
-  if (window.matchMedia('(min-width: 481px)').matches) {
+/* ======================
+   スライダー（PCのみ）
+====================== */
+if (window.matchMedia('(min-width: 481px)').matches) {
 
-    const pcSliderSection = document.querySelector('.slider-section.pc-only');
-    if (pcSliderSection) {
+  const pcSliderSection = document.querySelector('.slider-section.pc-only');
+  if (pcSliderSection) {
 
-      const slider = pcSliderSection.querySelector('.slider');
-      const slides = pcSliderSection.querySelectorAll('.slide');
-      const prevBtn = pcSliderSection.querySelector('.slide-arrow.left');
-      const nextBtn = pcSliderSection.querySelector('.slide-arrow.right');
+    const slider = pcSliderSection.querySelector('.slider');
+    const slides = pcSliderSection.querySelectorAll('.slide');
+    const prevBtn = pcSliderSection.querySelector('.slide-arrow.left');
+    const nextBtn = pcSliderSection.querySelector('.slide-arrow.right');
+    const dotsContainer = pcSliderSection.querySelector('.slider-dots');
 
-      prevBtn.addEventListener('click', () => {
-  if (index > 0) {
-    moveSlider(index - 1);
-  }
-});
+    let index = 0;
 
-nextBtn.addEventListener('click', () => {
-  if (index < slides.length - 1) {
-    moveSlider(index + 1);
-  }
-});
-      
-      const dotsContainer = pcSliderSection.querySelector('.slider-dots');
+    // ドットを生成
+    dotsContainer.innerHTML = '';
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => moveSlider(i));
+      dotsContainer.appendChild(dot);
+    });
+    const dots = dotsContainer.querySelectorAll('button');
 
-      let index = 0;
-      dotsContainer.innerHTML = '';
-
-      slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => moveSlider(i));
-        dotsContainer.appendChild(dot);
+    // スライド移動関数
+    function moveSlider(i) {
+      if (!slides[i]) return;
+      const slideWidth = slides[i].clientWidth;
+      slider.scrollTo({
+        left: slideWidth * i,
+        behavior: 'smooth'
       });
-
-      const dots = dotsContainer.querySelectorAll('button');
-
-      function moveSlider(i) {
-        const slideWidth = slides[0].clientWidth;
-        slider.scrollTo({
-          left: slideWidth * i,
-          behavior: 'smooth'
-        });
-
-        index = i;
-        dots.forEach(d => d.classList.remove('active'));
-        if (dots[i]) dots[i].classList.add('active');
-
-        prevBtn.style.display = i === 0 ? 'none' : 'block';
-        nextBtn.style.display = i === slides.length - 1 ? 'none' : 'block';
-      }
-
-      slider.addEventListener('scroll', () => {
-        const slideWidth = slides[0].clientWidth;
-        if (!slideWidth) return;
-
-        const newIndex = Math.round(slider.scrollLeft / slideWidth);
-        if (newIndex !== index) {
-          index = newIndex;
-          dots.forEach(d => d.classList.remove('active'));
-          if (dots[index]) dots[index].classList.add('active');
-
-          prevBtn.style.display = index === 0 ? 'none' : 'block';
-          nextBtn.style.display = index === slides.length - 1 ? 'none' : 'block';
-        }
-      });
-
-      moveSlider(0);
+      index = i;
+      updateDots();
+      updateArrows();
     }
-  }
 
+    // ドット更新
+    function updateDots() {
+      dots.forEach(d => d.classList.remove('active'));
+      if (dots[index]) dots[index].classList.add('active');
+    }
+
+    // 矢印表示更新
+    function updateArrows() {
+      prevBtn.style.display = index === 0 ? 'none' : 'block';
+      nextBtn.style.display = index === slides.length - 1 ? 'none' : 'block';
+    }
+
+    // クリックイベント
+    prevBtn.addEventListener('click', () => {
+      if (index > 0) moveSlider(index - 1);
+    });
+    nextBtn.addEventListener('click', () => {
+      if (index < slides.length - 1) moveSlider(index + 1);
+    });
+
+    // 初期表示は画像読み込み後
+    window.addEventListener('load', () => {
+      moveSlider(0);
+    });
+
+    // スライダー手動スクロールでドット連動
+    slider.addEventListener('scroll', () => {
+      const slideWidth = slides[0].clientWidth;
+      if (!slideWidth) return;
+      const newIndex = Math.round(slider.scrollLeft / slideWidth);
+      if (newIndex !== index) {
+        index = newIndex;
+        updateDots();
+        updateArrows();
+      }
+    });
+
+  }
+}
+  
   /* ======================
      スライダー（スマホのみ）
   ====================== */
