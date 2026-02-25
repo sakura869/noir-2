@@ -133,50 +133,51 @@ header {
 /* ================= スマホ ================= */
 @media (max-width: 480px) {
   header {
-    padding: 12px 16px;
     height: auto;
+    padding: 12px 0;
   }
 
-  /* ヘッダー内全体 */
   .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 16px;
     position: relative;
   }
 
-  /* 左側：テキスト2行 */
-  .header-left {
+  /* 左側：2行テキスト */
+  .logo {
     display: flex;
-    flex-direction: column; /* 2行にする */
+    flex-direction: column;
     justify-content: center;
+  }
+
+  .logo-text {
+    font-size: 0.95rem;
     line-height: 1.2;
   }
 
-  .header-left .subtitle {
-    font-size: 0.9rem;
-  }
-
-  .header-left .title {
+  .header-center {
     font-size: 1.1rem;
-    font-weight: bold;
+    line-height: 1.2;
   }
 
-  /* 中央右：ロゴ */
-  .logo {
+  /* 右側：ロゴ画像 */
+  .logo-img {
     height: 48px;
     width: auto;
-    margin-left: 8px;
+    margin-left: 8px; /* 少し間隔 */
   }
 
-  /* 一番右：ハンバーガーメニュー */
+  /* ハンバーガーメニューは右端 */
   .menu-toggle {
     display: block;
     font-size: 26px;
     background: none;
     border: none;
-    color: #000; /* 必要に応じて色調整 */
+    color: #000; /* 必要に応じて色変更 */
     cursor: pointer;
+    margin-left: 8px;
   }
 
   /* メニュー */
@@ -186,9 +187,10 @@ header {
     right: 0;
     width: 60%;
     max-width: 260px;
-    background: rgba(169,169,169,0.95);
+    background: rgba(169, 169, 169, 0.95);
     padding: 14px 16px;
     display: none;
+    z-index: 999;
   }
 
   .menu.show {
@@ -1031,6 +1033,7 @@ main {
 
   </div>
  </header>
+  
 <main>
 
 <div class="catch-slide">
