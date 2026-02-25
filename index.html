@@ -1162,7 +1162,7 @@ main {
 
   <!-- お問い合わせ｜プライバシーポリシー -->
   <div class="footer-links">
-    <a href="contact.html" class="footer-contact">お問い合わせ</a>
+    <a href="#" class="footer-contact" id="footer-contact-link">お問い合わせ</a>
     <span class="footer-sep">|</span>
     <a href="privacy.html" class="footer-privacy">プライバシーポリシー</a>
   </div>
@@ -1195,6 +1195,7 @@ const contactLink = document.getElementById('contact-link');
 const contactForm = document.getElementById('contact-section');
 const contactBtn = document.getElementById('contact-cta-btn');
 const contactTitle = document.getElementById('contact');
+const footerContactLink = document.getElementById('footer-contact-link');
 
 function openContact() {
   contactForm.classList.add('show');
@@ -1204,6 +1205,11 @@ function openContact() {
 }
 
 contactLink?.addEventListener('click', e => {
+  e.preventDefault();
+  openContact();
+});
+
+footerContactLink?.addEventListener('click', e => {
   e.preventDefault();
   openContact();
 });
