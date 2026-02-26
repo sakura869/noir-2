@@ -132,49 +132,43 @@ header {
 
 /* ================= スマホ ================= */
 @media (max-width: 480px) {
+
   .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 16px;
+    padding: 0 12px;
   }
 
-  /* 左側：テキストを縦2行に */
+  /* 左：タイトル2行 */
   .logo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
     gap: 2px;
   }
 
   .logo-text {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.2;
-    white-space: normal; /* 折り返しOK */
+    white-space: normal;
   }
 
-  /* 中央タイトルは左のテキストに吸収 */
+  /* PC用中央タイトルは非表示 */
   .header-center {
-    display: none; /* スマホでは非表示 */
+    display: none;
   }
 
-  /* ロゴマークはテキストの右 */
+  /* 右側グループ */
   .logo-img {
-    order: 1; /* 左側テキストの次 */
-    height: 48px;
-    margin-left: 8px;
+    height: 44px;
+    margin-left: 10px;
   }
 
-  /* ハンバーガーは右端 */
   .menu-toggle {
-    display: block;
-    order: 2; /* 最後に表示 */
+    margin-left: 10px;
     font-size: 26px;
-    background: none;
-    border: none;
-    color: #000; /* 必要に応じて変更 */
-    cursor: pointer;
-    margin-left: 8px;
+    color: #fff;
   }
 
   /* メニュー表示（既存コードと同じ） */
