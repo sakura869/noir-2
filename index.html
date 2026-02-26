@@ -146,6 +146,7 @@ header {
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
+    flex: 1;
   }
 
   .logo-text {
@@ -154,24 +155,27 @@ header {
     white-space: normal;
   }
 
-  /* PC用中央タイトルは非表示 */
+  /* PC中央タイトルは非表示 */
   .header-center {
     display: none;
   }
 
-  /* 右側グループ */
+  /* 中：ロゴ画像 */
   .logo-img {
     height: 44px;
     margin-left: 10px;
+    flex-shrink: 0;
   }
 
+  /* 右：ハンバーガー */
   .menu-toggle {
     margin-left: 10px;
     font-size: 26px;
     color: #fff;
+    flex-shrink: 0;
   }
 
-  /* メニュー表示（既存コードと同じ） */
+  /* メニュー */
   .menu {
     position: absolute;
     top: 100%;
@@ -196,7 +200,6 @@ header {
     text-decoration: none;
   }
 }
-  
 /* ===============================
    PC用タイトル
 =============================== */
