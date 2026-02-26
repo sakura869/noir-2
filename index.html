@@ -133,6 +133,7 @@ header {
 /* ================= スマホ ================= */
 @media (max-width: 480px) {
 
+  /* ヘッダー全体 */
   .header-inner {
     display: flex;
     align-items: center;
@@ -140,13 +141,12 @@ header {
     padding: 0 12px;
   }
 
-  /* 左：タイトル2行 */
+  /* 左側：タイトル2行 */
   .logo {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2px;
-    flex: 1;
+    flex-shrink: 0;
   }
 
   .logo-text {
@@ -155,24 +155,28 @@ header {
     white-space: normal;
   }
 
-  /* PC中央タイトルは非表示 */
-  .header-center {
-    display: none;
+  /* 右側：ロゴ + ハンバーガー */
+  .header-right {
+    display: flex;
+    align-items: center;
   }
 
-  /* 中：ロゴ画像 */
   .logo-img {
     height: 44px;
     margin-left: 10px;
-    flex-shrink: 0;
+    display: block;
   }
 
-  /* 右：ハンバーガー */
   .menu-toggle {
     margin-left: 10px;
     font-size: 26px;
     color: #fff;
-    flex-shrink: 0;
+    display: block;
+  }
+
+  /* PC用中央タイトルは非表示 */
+  .header-center {
+    display: none;
   }
 
   /* メニュー */
