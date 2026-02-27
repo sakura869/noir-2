@@ -201,6 +201,36 @@ header {
     text-decoration: none;
   }
 }
+
+/* 初期状態：PC */
+.pc-header { display: flex; }
+.sp-header { display: none; }
+
+/* スマホだけ切替 */
+@media (max-width: 480px) {
+  .pc-header { display: none; }
+  .sp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sp-title {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    color: #fff;
+  }
+
+  .sp-sub { font-size: 0.8rem; }
+  .sp-main { font-size: 1rem; font-weight: bold; }
+
+  .sp-logo {
+    height: 36px;
+    margin-left: auto;
+    margin-right: 8px;
+  }
+}
 /* ===============================
    PC用タイトル
 =============================== */
@@ -1006,34 +1036,43 @@ main {
 <div class="background-image"></div>
 
 <header>
- <div class="header-inner">
+   <!-- ===== PC用ヘッダー ===== -->
+  <div class="header-inner pc-header">
 
-  <!-- 左：2行タイトル -->
-  <div class="logo-text-wrap">
-    <span class="logo-text-sub">放課後等デイサービス・児童発達支援</span>
-    <span class="logo-text-main">発達支援ノワール</span>
-  </div>
+    <div class="logo">
+      <img src="logo.png" alt="" class="logo-img">
+      <span class="logo-text">放課後等デイサービス・児童発達支援</span>
+    </div>
 
-  <!-- 右：ロゴ -->
-  <img src="logo.png" alt="" class="logo-img-sp">
+    <div class="header-center">
+      発達支援ノワール
+    </div>
 
-    <!-- スマホ用メニューボタン -->
-    <button class="menu-toggle" id="menu-toggle">☰</button>
-
-    <!-- メニューは1つだけ！ -->
-    <nav class="menu" id="menu">
-  <a href="#flow">ご利用の流れ</a>
-  <a href="#price">ご利用料金</a>
-  <a href="#access">アクセス</a>
-  <a href="#" id="contact-link">お問い合わせ</a>
-  <!--2025年度は非表示 <a href="#pdf">自己評価</a> -->
-  <a href="https://www.instagram.com/noir_niigata/" target="_blank" class="insta-link">
-    Instagram
-  </a>
+    <nav class="menu">
+      <!-- PCメニュー -->
     </nav>
 
   </div>
- </header>
+
+  <!-- ===== スマホ用ヘッダー ===== -->
+  <div class="header-inner sp-header">
+
+    <div class="sp-title">
+      <span class="sp-sub">放課後等デイサービス・児童発達支援</span>
+      <span class="sp-main">発達支援ノワール</span>
+    </div>
+
+    <img src="logo.png" class="sp-logo" alt="">
+
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+
+    <nav class="menu" id="menu">
+      <!-- スマホメニュー -->
+    </nav>
+
+  </div>
+
+</header>
   
 <main>
   
