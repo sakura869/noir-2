@@ -140,39 +140,33 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 12px;
   }
 
-  /* 左：タイトル2行 */
-  .logo {
+  /* 左：2行タイトル */
+  .logo-text-wrap {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2px;
-    flex-shrink: 1;
-  }
-
-  .logo-img {
-    display: none; /* ← 左側では非表示 */
-  }
-
-  .logo-text {
-    font-size: 0.85rem;
     line-height: 1.2;
-    white-space: normal;
   }
 
-  /* 中央タイトルはスマホ非表示 */
-  .header-center {
-    display: none;
+  .logo-text-sub {
+    font-size: 0.8rem;
+    color: #fff;
   }
 
-  /* ロゴ画像（右側用） */
-  .header-inner > .logo-img {
-    display: block;
-    height: 40px;
+  .logo-text-main {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  /* ロゴ */
+  .logo-img-sp {
+    height: 38px;
     width: auto;
-    margin-left: 10px;
+    margin-left: auto;
+    margin-right: 8px;
   }
 
   /* ハンバーガー */
@@ -1014,14 +1008,14 @@ main {
 <header>
  <div class="header-inner">
 
- <div class="logo">
-   <img src="logo.png" alt="" class="logo-img">
-   <span class="logo-text">放課後等デイサービス・児童発達支援</span>
- </div>
+  <!-- 左：2行タイトル -->
+  <div class="logo-text-wrap">
+    <span class="logo-text-sub">放課後等デイサービス・児童発達支援</span>
+    <span class="logo-text-main">発達支援ノワール</span>
+  </div>
 
-    <div class="header-center">
-      発達支援ノワール
-    </div>
+  <!-- 右：ロゴ -->
+  <img src="logo.png" alt="" class="logo-img-sp">
 
     <!-- スマホ用メニューボタン -->
     <button class="menu-toggle" id="menu-toggle">☰</button>
