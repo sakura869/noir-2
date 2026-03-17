@@ -187,16 +187,27 @@ header {
   .menu-toggle {
     display: block;
     margin-left: 10px;
+    background: none;
+    border: none;
+    padding: 0;
     font-weight: normal;
   }
-
+  
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px; /* ←ここで細さ調整 */
+    background: #fff;
+    margin: 4px 0;
+  }
+  
   /* スマホメニュー */
   .menu {
     position: absolute;
     top: 100%;
     right: 0;
-    width: 65%;
-    max-width: 260px;
+    width: 50%;
+    max-width: 200px;
     background: rgba(169,169,169,0.85);
     padding: 14px 16px;
     display: none;
@@ -1055,7 +1066,11 @@ main {
 
     <img src="logo.png" class="sp-logo" alt="">
 
-    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <button class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
     <nav class="menu" id="menu">
      <a href="#flow">ご利用の流れ</a>
