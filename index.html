@@ -142,7 +142,7 @@ header {
     font-weight: bold;
     color: #675340;
     letter-spacing: 0.15em;
-    text-shadow: 0 4px 4px rgba(0,0,0,0.3);
+    text-shadow: 0 4px 4px rgba(0,0,0,0.2);
     white-space: nowrap;
     font-size: clamp(1.1rem, 3vw, 1.8rem);
   }
@@ -177,7 +177,7 @@ header {
 
   /* ロゴ */
   .sp-logo {
-    height: 48px;
+    height: 52px;
     width: auto;
     margin-left: 6px;
     margin-right: 8px;
@@ -283,8 +283,13 @@ header {
 @media (max-width: 480px) {
   .catch-slide {
     height: auto;
-    margin: 0;
+    margin: -5px 0 20px 0;
     width: 100%;          /* 必要に応じてサイズ調整 */
+  }
+
+  .catch-slide img {
+    width: 110%;   /* ←大きくする */
+    max-width: none;
   }
 }
 
