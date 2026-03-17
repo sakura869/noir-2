@@ -142,7 +142,7 @@ header {
     font-weight: bold;
     color: #675340;
     letter-spacing: 0.15em;
-    text-shadow: 0 4px 4px rgba(255,255,255,0.5);
+    text-shadow: 0 4px 4px rgba(0,0,0,0.5);
     white-space: nowrap;
     font-size: clamp(1.1rem, 3vw, 1.8rem);
   }
@@ -187,6 +187,7 @@ header {
   .menu-toggle {
     display: block;
     margin-left: 10px;
+    font-weight: normal;
   }
 
   /* スマホメニュー */
@@ -201,7 +202,6 @@ header {
     display: none;
     z-index: 999;
     flex-direction: column;
-    text-decoration: none;
   }
 
   .menu.show {
@@ -212,6 +212,7 @@ header {
     display: block;
     padding: 10px 0;
     font-size: 1em;
+    text-shadow: none;
   }
 }
   
