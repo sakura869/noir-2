@@ -26,7 +26,7 @@ body {
     "Yu Gothic UI",
     sans-serif;
   background-color: #fff;
-  color: #675340;
+  color: #675340; /*こげベージュ→9F987D:*/
   margin: 0;
 
   min-height: 100vh;
@@ -40,8 +40,8 @@ body {
   inset: 0;
   background:
     linear-gradient(
-      rgba(0,0,0,0.05),
-      rgba(0,0,0,0.05)
+      rgba(0,0,0,0.2),
+      rgba(0,0,0,0.2)
     ),
     url("がぞー.png") center / cover no-repeat;
   z-index: -1;
@@ -164,7 +164,6 @@ header {
     flex-direction: column;
     line-height: 1.2;
     color: #fff;
-    margin-left: 3px;
   }
 
   .sp-sub {
@@ -180,13 +179,14 @@ header {
   .sp-logo {
     height: 52px;
     width: auto;
-    margin-left: -5px;
+    margin-left: 6px;
+    margin-right: 8px;
   }
 
   /* ハンバーガー */
   .menu-toggle {
     display: block;
-    margin-left: -5px;
+    margin-left: 10px;
     background: none;
     border: none;
     padding: 0;
@@ -195,10 +195,10 @@ header {
   
   .menu-toggle span {
     display: block;
-    width: 20px;
-    height: 1px; /* ←ここで細さ調整 */
+    width: 22px;
+    height: 2px; /* ←ここで細さ調整 */
     background: #fff;
-    margin: 6px 0;
+    margin: 4px 0;
   }
   
   /* スマホメニュー */
@@ -238,7 +238,7 @@ header {
   text-align: center;
   font-size: 1.6em;
   font-weight: 300;
-  color: #4a3a3a;
+  color: #fff;
 
   position: relative;
   display: block;
@@ -252,7 +252,7 @@ header {
   width: 65%;
   height: 0.8em;
 
-  background: rgba(120,120,120,0.35);
+  background: rgba(80,80,80,0.5);
 
   border-radius: 0 15px 15px 0;
   z-index: -1;
@@ -488,8 +488,8 @@ header {
 
     border-radius: 10px;
     border: 1px solid #ccc;
-    background: rgba(255,255,255,0.75);
-    color: #847777;
+    background: rgba(255,255,255,0.6);
+    color: #9F987D;
     cursor: pointer;
 
     font-family:
@@ -598,7 +598,7 @@ header {
 
   font-size: 1.3em;
   line-height: 1.3;
-  color: #847777;
+  color: #635656;
 
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -716,8 +716,8 @@ header {
 
   border-radius: 10px;
   border: 1px solid #ccc;
-  background: rgba(255,255,255,0.75);
-  color: #847777;
+  background: rgba(255,255,255,0.6);
+  color: #9F987D;
   cursor: pointer;
 
   font-family:
@@ -747,7 +747,7 @@ header {
 
 @media (max-width: 480px) {
   .toggle-button-contact {
-    font-size: 18px;
+    font-size: 16px;
     padding: 10px 14px;
   }
 }
@@ -766,7 +766,7 @@ header {
   text-align: center;
   font-size: 16px;
   line-height: 1.8;
-  color: #847777;
+  color: #635656;
 }
 
 /* PDFボタン並び（PC） */
@@ -785,7 +785,7 @@ header {
   width: 220px;
   padding: 22px 20px;
   background: #ffffff;
-  color: #847777;
+  color: #9F987D;
   text-decoration: none;
   border-radius: 16px;
   border: 1px solid #ccc;
@@ -859,13 +859,13 @@ footer {
     serif;
   font-weight: bold;
   font-size: 1em;
-  color: #847777;
+  color: #9F987D;
   margin: 0;
 }
 
 /* 住所・TEL・MAIL */
 footer .zip {
-  color: #847777;
+  color: #9F987D;
   font-size: 1em;
 }
   
@@ -877,7 +877,7 @@ footer .zip {
 }
 
 .footer-address a {
-  color: #847777;
+  color: #9F987D;
   text-decoration: none;
 }
 
@@ -905,7 +905,7 @@ footer .zip {
 /* コピーライト */
 .footer-copy {
   font-size: 0.8em;
-  color: #847777;
+  color: #9F987D;
   line-height: 1.6;
   padding-top: 10px;
 }
@@ -923,7 +923,7 @@ footer .zip {
   position: absolute;
   white-space: nowrap;
   text-decoration: none;
-  color: #847777;
+  color: #9F987D;
   font-size: 0.9rem;
 }
 
@@ -937,7 +937,7 @@ footer .zip {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  color: #847777;
+  color: #9F987D;
   user-select: none;
 }
 
@@ -1234,6 +1234,10 @@ main {
   </a>
 </div>
 
+</section>
+-->
+
+<!-- ===== 支援プログラム ===== -->
 <p class="pdf-text">
   ･･･支援プログラム･･･
 </p>
@@ -1243,9 +1247,6 @@ main {
     支援プログラム
   </a>
 </div>
-
-</section>
--->
   
 </main>
 
